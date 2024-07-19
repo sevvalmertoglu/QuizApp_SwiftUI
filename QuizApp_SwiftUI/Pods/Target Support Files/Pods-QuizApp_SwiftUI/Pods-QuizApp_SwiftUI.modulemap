@@ -1,0 +1,6 @@
+framework module Pods_QuizApp_SwiftUI {
+  umbrella header "Pods-QuizApp_SwiftUI-umbrella.h"
+
+  export *
+  module * { export * }
+}

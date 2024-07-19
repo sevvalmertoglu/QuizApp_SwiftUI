@@ -8,18 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @ObservedObject var categoryListViewModel : CategoryListViewModel
-    
-    init() {
-        self.categoryListViewModel = CategoryListViewModel()
-        self.categoryListViewModel.fetchCategory()
-    }
-    
     var body: some View {
-        List(categoryListViewModel.categories, id: \.id) {category in
-            Text(category.name)
-            
+        NavigationView {
+            VStack {
+                NavigationLink(destination: LoginView()) {
+                    Text("Login")
+                        .padding()
+                        .background(Color.purple)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                NavigationLink(destination: RegisterView()) {
+                    Text("Register")
+                        .padding()
+                        .background(Color.indigo)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+            }
+            .navigationTitle("Welcome")
         }
     }
 }
