@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A92306C02C4A4C920049A537 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92306BF2C4A4C920049A537 /* Category.swift */; };
+		A92306C32C4A4E740049A537 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92306C22C4A4E740049A537 /* CategoryManager.swift */; };
+		A92306C62C4A5F3C0049A537 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92306C52C4A5F3C0049A537 /* CategoryViewModel.swift */; };
 		A9AB30CA2C46C4F100604B97 /* QuizApp_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AB30C92C46C4F100604B97 /* QuizApp_SwiftUIApp.swift */; };
 		A9AB30CC2C46C4F100604B97 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AB30CB2C46C4F100604B97 /* ContentView.swift */; };
 		A9AB30CE2C46C4F400604B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9AB30CD2C46C4F400604B97 /* Assets.xcassets */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A92306BF2C4A4C920049A537 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		A92306C22C4A4E740049A537 /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
+		A92306C52C4A5F3C0049A537 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		A9AB30C62C46C4F100604B97 /* QuizApp_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9AB30C92C46C4F100604B97 /* QuizApp_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizApp_SwiftUIApp.swift; sourceTree = "<group>"; };
 		A9AB30CB2C46C4F100604B97 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +38,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A92306C12C4A4DA10049A537 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A92306C22C4A4E740049A537 /* CategoryManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		A92306C42C4A5E580049A537 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A92306C52C4A5F3C0049A537 /* CategoryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A9AB30BD2C46C4F100604B97 = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +73,9 @@
 		A9AB30C82C46C4F100604B97 /* QuizApp_SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				A9E1E1212C49094200B07649 /* Models */,
+				A92306C42C4A5E580049A537 /* ViewModel */,
+				A92306C12C4A4DA10049A537 /* Service */,
 				A9AB30C92C46C4F100604B97 /* QuizApp_SwiftUIApp.swift */,
 				A9AB30CB2C46C4F100604B97 /* ContentView.swift */,
 				A9AB30CD2C46C4F400604B97 /* Assets.xcassets */,
@@ -65,6 +90,14 @@
 				A9AB30D02C46C4F400604B97 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A9E1E1212C49094200B07649 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A92306BF2C4A4C920049A537 /* Category.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +116,8 @@
 			dependencies = (
 			);
 			name = QuizApp_SwiftUI;
+			packageProductDependencies = (
+			);
 			productName = QuizApp_SwiftUI;
 			productReference = A9AB30C62C46C4F100604B97 /* QuizApp_SwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +146,8 @@
 				Base,
 			);
 			mainGroup = A9AB30BD2C46C4F100604B97;
+			packageReferences = (
+			);
 			productRefGroup = A9AB30C72C46C4F100604B97 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +175,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9AB30CC2C46C4F100604B97 /* ContentView.swift in Sources */,
+				A92306C32C4A4E740049A537 /* CategoryManager.swift in Sources */,
+				A92306C62C4A5F3C0049A537 /* CategoryViewModel.swift in Sources */,
 				A9AB30CA2C46C4F100604B97 /* QuizApp_SwiftUIApp.swift in Sources */,
+				A92306C02C4A4C920049A537 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var categoryListViewModel : CategoryListViewModel
+    
+    init() {
+        self.categoryListViewModel = CategoryListViewModel()
+        self.categoryListViewModel.fetchCategory()
+    }
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        List(categoryListViewModel.categories, id: \.id) {category in
+            Text(category.name)
+            
         }
-        .padding()
     }
 }
 
