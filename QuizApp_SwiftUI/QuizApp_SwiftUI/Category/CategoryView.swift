@@ -20,22 +20,19 @@ struct CategoryView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("Categories")
-                            .font(.largeTitle)
-                            .bold()
-                            .padding(.top, 5)
-                            .padding(.leading, 16)
+                .font(.largeTitle)
+                .bold()
+                .padding(.top, 5)
+                .padding(.leading, 16)
             
-            List(categoryListViewModel.categories, id: \.id) {category in
+            List(categoryListViewModel.categories) { category in
                 Text(category.name)
                 
             }.frame(height: 400)
-            .listStyle(PlainListStyle())
-            
-        
-            
+                .listStyle(PlainListStyle())
         }
         .frame(maxHeight: .infinity, alignment: .top)
-     
+        
     }
     
 }

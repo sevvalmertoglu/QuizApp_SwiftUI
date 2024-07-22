@@ -11,11 +11,10 @@ struct CategoryData: Decodable {
     var trivia_categories: [Category]
 }
 
-struct Category: Decodable{
+struct Category: Decodable, Identifiable{
     let id: Int
     let name: String
 }
-
 
 struct CategoryStats: Decodable {
     let category_id: Int

@@ -21,10 +21,7 @@ class CategoryListViewModel: ObservableObject {
                 print(error)
             case .success(let categoryArray):
                 if let categoryArray = categoryArray {
-                    DispatchQueue.main.async {
                         self.categories = categoryArray
-                    }
-                   
                 }
             }
         }
