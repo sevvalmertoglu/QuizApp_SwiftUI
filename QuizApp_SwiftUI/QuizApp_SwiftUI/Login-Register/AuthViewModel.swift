@@ -17,6 +17,8 @@ class AuthViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var isLoading: Bool = false
+    
+    @EnvironmentObject var appState: AppState
         
     func signIn() {
         guard !email.isEmpty, !password.isEmpty else {
@@ -31,6 +33,7 @@ class AuthViewModel: ObservableObject {
                 switch result {
                 case .success(_):
                     self?.isSignedIn = true
+                    self?.appState.isUserLoggedIn = true
                 case .failure(let error):
                     self?.alertMessage = error.localizedDescription
                     self?.showAlert = true
@@ -47,6 +50,7 @@ class AuthViewModel: ObservableObject {
                 switch result {
                 case .success(_):
                     self?.isSignedIn = true
+                    self?.appState.isUserLoggedIn = true
                 case .failure(let error):
                     self?.alertMessage = error.localizedDescription
                     self?.showAlert = true

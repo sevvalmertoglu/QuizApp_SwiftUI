@@ -11,6 +11,7 @@ struct CategoryView: View {
     
     @ObservedObject var categoryListViewModel : CategoryListViewModel
     @State private var selectedCategory: Category?
+    @State var showTypeView = false
     
     init() {
         self.categoryListViewModel = CategoryListViewModel()
@@ -18,21 +19,33 @@ struct CategoryView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Categories")
-                .font(.largeTitle)
-                .bold()
-                .padding(.top, 5)
-                .padding(.leading, 16)
+        VStack() {
             
-            List(categoryListViewModel.categories) { category in
-                Text(category.name)
-                
-            }.frame(height: 400)
-                .listStyle(PlainListStyle())
+            Text("Please select a category").font(.headline)
+            
+            VStack() {
+                List(categoryListViewModel.categories) { category in
+                    Text(category.name)
+                    
+                }.frame(height: 400)
+                    .listStyle(PlainListStyle())
+            }
+            NavigationLink(destination: TypeView()) {
+                Text("Next")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(width: 140, height: 50)
+                    .background(Color.indigo)
+                    .clipShape(Capsule())
+                    .padding()
+                    .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .position(x: 200, y: 270)
         }
-        .frame(maxHeight: .infinity, alignment: .top)
+        .navigationTitle("Categories")
         
+        .frame(maxHeight: .infinity, alignment: .top)
     }
     
 }

@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var appState: AppState
+    
     var body: some View {
-            VStack {
+        VStack {
+            if appState.isUserLoggedIn {
+                NumberOfQuestionsView()
+            } else {
                 SplashView()
             }
+        }
     }
 }
 

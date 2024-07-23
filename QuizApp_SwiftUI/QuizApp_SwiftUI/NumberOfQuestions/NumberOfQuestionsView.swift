@@ -14,26 +14,30 @@ struct NumberOfQuestionsView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 AuthHeaderView(title1: "Please", title2: "select number of questions")
-                    .position(CGPoint(x: 196.0, y: 60.0))
-
-                    Text("Number of Questions: \(number)")
-                        .padding()
-                    
-                    Stepper(value: $number, in: 1...25) {
-                        Text("Number Of Questions:").padding()
-                    }.padding()
+                    .position(CGPoint(x: 196.0, y: 70.0))
+                
+                Text("Number of Questions: \(number)")
+                    .padding()
+                
+                Stepper(value: $number, in: 1...25) {
+                    Text("Number Of Questions:").padding()
+                }.padding()
                 
                 Spacer()
-   
-                NavigationLink(destination: CategoryView(), label: {Text("Next")})  .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(width: 140, height: 50)
-                    .background(Color.indigo)
-                    .clipShape(Capsule())
-                    .padding()
-                    .position(x:200, y: 60) .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
+                
+                NavigationLink(destination: CategoryView()) {
+                    Text("Next")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(width: 140, height: 50)
+                        .background(Color.indigo)
+                        .clipShape(Capsule())
+                        .padding()
+                        .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .position(x: 200, y: 250)
             }
-
         }
     }
 }

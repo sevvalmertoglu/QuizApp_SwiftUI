@@ -29,6 +29,8 @@
 		A9AB30CE2C46C4F400604B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9AB30CD2C46C4F400604B97 /* Assets.xcassets */; };
 		A9AB30D12C46C4F400604B97 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9AB30D02C46C4F400604B97 /* Preview Assets.xcassets */; };
 		A9C078A52C4E7CF600DD83B2 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078A42C4E7CF600DD83B2 /* SplashView.swift */; };
+		A9C078AC2C4FDAFB00DD83B2 /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078AB2C4FDAFB00DD83B2 /* TypeView.swift */; };
+		A9C078AE2C4FEA6600DD83B2 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078AD2C4FEA6600DD83B2 /* AppState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		A9AB30CD2C46C4F400604B97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9AB30D02C46C4F400604B97 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A9C078A42C4E7CF600DD83B2 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		A9C078AB2C4FDAFB00DD83B2 /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
+		A9C078AD2C4FEA6600DD83B2 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		ACC8DD36D8A8D178CB843B26 /* Pods-QuizApp_SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp_SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-QuizApp_SwiftUI/Pods-QuizApp_SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,9 +136,11 @@
 				A9C078A22C4E43FA00DD83B2 /* Login-Register */,
 				A92306C42C4A5E580049A537 /* NumberOfQuestions */,
 				A9E1E1212C49094200B07649 /* Category */,
+				A9C078AA2C4FDAB300DD83B2 /* Type&Difficulty */,
 				A92306C72C4A74D20049A537 /* Game */,
 				A9AB30C92C46C4F100604B97 /* QuizApp_SwiftUIApp.swift */,
 				A9AB30CB2C46C4F100604B97 /* ContentView.swift */,
+				A9C078AD2C4FEA6600DD83B2 /* AppState.swift */,
 				A9AB30CD2C46C4F400604B97 /* Assets.xcassets */,
 				A9AB30CF2C46C4F400604B97 /* Preview Content */,
 			);
@@ -169,6 +175,14 @@
 				A9C078A42C4E7CF600DD83B2 /* SplashView.swift */,
 			);
 			path = Welcome;
+			sourceTree = "<group>";
+		};
+		A9C078AA2C4FDAB300DD83B2 /* Type&Difficulty */ = {
+			isa = PBXGroup;
+			children = (
+				A9C078AB2C4FDAFB00DD83B2 /* TypeView.swift */,
+			);
+			path = "Type&Difficulty";
 			sourceTree = "<group>";
 		};
 		A9E1E1212C49094200B07649 /* Category */ = {
@@ -298,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A92306D72C4A8E470049A537 /* FirebaseManager.swift in Sources */,
+				A9C078AC2C4FDAFB00DD83B2 /* TypeView.swift in Sources */,
 				A9AB30CC2C46C4F100604B97 /* ContentView.swift in Sources */,
 				A92306CB2C4A753A0049A537 /* LoginView.swift in Sources */,
 				A92306C32C4A4E740049A537 /* CategoryManager.swift in Sources */,
@@ -307,6 +322,7 @@
 				A92306D92C4A8E8C0049A537 /* CustomInputField.swift in Sources */,
 				A92306CD2C4A75460049A537 /* RegisterView.swift in Sources */,
 				A92306DB2C4A8FDC0049A537 /* User.swift in Sources */,
+				A9C078AE2C4FEA6600DD83B2 /* AppState.swift in Sources */,
 				A9AB30CA2C46C4F100604B97 /* QuizApp_SwiftUIApp.swift in Sources */,
 				A9505C8E2C4A9D1B0075640F /* NumberOfQuestionsView.swift in Sources */,
 				A9505C882C4A95020075640F /* AuthHeaderView.swift in Sources */,
