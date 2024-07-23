@@ -13,7 +13,8 @@ struct NumberOfQuestionsView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                AuthHeaderView(title1: "Please", title2: "select number of questions").position(CGPoint(x: 196.0, y: -20.0))
+                AuthHeaderView(title1: "Please", title2: "select number of questions")
+                    .position(CGPoint(x: 196.0, y: 60.0))
 
                     Text("Number of Questions: \(number)")
                         .padding()
@@ -31,7 +32,7 @@ struct NumberOfQuestionsView: View {
                     .clipShape(Capsule())
                     .padding()
                     .position(x:200, y: 60) .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
-            }.navigationBarBackButtonHidden(true).navigationBarHidden(true)
+            }
 
         }
     }

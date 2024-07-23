@@ -12,8 +12,15 @@ struct LoginView: View {
     @State private var navigateToNumberOfQuestions = false
     
     var body: some View {
-        NavigationView {
                 VStack {
+                    NavigationLink(
+                        destination: NumberOfQuestionsView()
+                            .navigationBarBackButtonHidden(true),
+                        isActive: $navigateToNumberOfQuestions,
+                        label: {
+                            EmptyView()
+                        })
+                    .hidden()
                     AuthHeaderView(title1: "Hello,", title2: "Welcome back")
                     VStack(spacing: 40) {
                         CustomInputField(imageName: "envelope",
@@ -92,18 +99,9 @@ struct LoginView: View {
                         navigateToNumberOfQuestions = true
                     }
                 }
-                .background(
-                    NavigationLink(
-                        destination: NumberOfQuestionsView() .navigationBarBackButtonHidden(true),
-                        isActive: $navigateToNumberOfQuestions,
-                        label: {
-                            EmptyView()
-                        })
-                    .hidden()
-                )
+              
             }
         }
-    }
 #Preview {
     LoginView()
 }

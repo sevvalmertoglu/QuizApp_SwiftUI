@@ -13,8 +13,8 @@ struct RegisterView: View {
     @State private var navigateToNumberOfQuestions = false
     
     var body: some View {
-        NavigationView {
             VStack {
+           
                 AuthHeaderView(title1: "Get started,", title2: "Create your account")
                 VStack(spacing: 40) {
                     CustomInputField(imageName: "envelope",
@@ -79,6 +79,7 @@ struct RegisterView: View {
                 }
                 .padding(.bottom, 32)
                 .foregroundColor(Color.indigo)
+      
             }
             .ignoresSafeArea()
             .alert(isPresented: $viewModel.showAlert) {
@@ -89,16 +90,16 @@ struct RegisterView: View {
                 }
             }
             .background(  NavigationLink(
-                destination: NumberOfQuestionsView().navigationBarBackButtonHidden(true),
+                destination: NumberOfQuestionsView(),
                 isActive: $navigateToNumberOfQuestions,
                 label: {
                     EmptyView()
                 })
-                .hidden()  // Hide the NavigationLink, we use it programmatically
+                .hidden() 
             )
         }
     }
-}
+
 #Preview {
     RegisterView()
 }
