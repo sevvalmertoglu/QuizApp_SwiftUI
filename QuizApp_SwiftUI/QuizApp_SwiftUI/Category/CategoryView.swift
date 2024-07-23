@@ -24,6 +24,7 @@ struct CategoryView: View {
                 .bold()
                 .padding(.top, 5)
                 .padding(.leading, 16)
+                .navigationBarBackButtonHidden(true)
             
             List(categoryListViewModel.categories) { category in
                 Text(category.name)

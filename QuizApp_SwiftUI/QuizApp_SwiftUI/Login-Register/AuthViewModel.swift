@@ -20,7 +20,8 @@ class AuthViewModel: ObservableObject {
         
     func signIn() {
         guard !email.isEmpty, !password.isEmpty else {
-            print("No email or password found.")
+            self.alertMessage = "No email or password found."
+            self.showAlert = true
             return
         }
         isLoading = true

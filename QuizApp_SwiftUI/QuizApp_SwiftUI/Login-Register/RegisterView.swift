@@ -16,7 +16,6 @@ struct RegisterView: View {
         NavigationView {
             VStack {
                 AuthHeaderView(title1: "Get started,", title2: "Create your account")
-                
                 VStack(spacing: 40) {
                     CustomInputField(imageName: "envelope",
                                      placeholderText: "Email",
@@ -65,8 +64,9 @@ struct RegisterView: View {
                 
                 Spacer()
                 
-                Button {
-                    presentationMode.wrappedValue.dismiss()
+                NavigationLink  {
+                    LoginView()
+                        .navigationBarHidden(true)
                 } label: {
                     HStack {
                         Text("Already have an account?")
@@ -78,22 +78,25 @@ struct RegisterView: View {
                     }
                 }
                 .padding(.bottom, 32)
-                
+                .foregroundColor(Color.indigo)
             }
             .ignoresSafeArea()
             .alert(isPresented: $viewModel.showAlert) {
-                Alert(title: Text("Error"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+                Alert(title: Text("Warning"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+            }.onChange(of: viewModel.isSignedIn) { isSignedIn in
+                if isSignedIn {
+                    navigateToNumberOfQuestions = true
+                }
             }
-        }
-
-            NavigationLink(
-                destination: NumberOfQuestionsView(),
+            .background(  NavigationLink(
+                destination: NumberOfQuestionsView().navigationBarBackButtonHidden(true),
                 isActive: $navigateToNumberOfQuestions,
                 label: {
                     EmptyView()
                 })
-            .hidden()  // Hide the NavigationLink, we use it programmatically
-        
+                .hidden()  // Hide the NavigationLink, we use it programmatically
+            )
+        }
     }
 }
 #Preview {
