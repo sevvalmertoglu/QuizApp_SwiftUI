@@ -12,7 +12,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     FirebaseApp.configure()
-
     return true
   }
 }
@@ -21,11 +20,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct QuizApp_SwiftUIApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject var appState = AppState()
+    @StateObject private var appState = AppState()
     
     var body: some Scene {
         WindowGroup {
+            let authViewModel = AuthViewModel(appState: appState)
             ContentView()
+                .environmentObject(authViewModel)
                 .environmentObject(appState)
         }
     }

@@ -9,12 +9,11 @@ import SwiftUI
 
 struct RegisterView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject private var viewModel = AuthViewModel()
-    @State private var navigateToNumberOfQuestions = false
+    @StateObject private var viewModel = AuthViewModel(appState: AppState())
+    @State private var navigateToMainView = false
     
     var body: some View {
             VStack {
-           
                 AuthHeaderView(title1: "Get started,", title2: "Create your account")
                 VStack(spacing: 40) {
                     CustomInputField(imageName: "envelope",
@@ -86,12 +85,13 @@ struct RegisterView: View {
                 Alert(title: Text("Warning"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
             }.onChange(of: viewModel.isSignedIn) { isSignedIn in
                 if isSignedIn {
-                    navigateToNumberOfQuestions = true
+                    navigateToMainView = true
                 }
             }
             .background(  NavigationLink(
-                destination: NumberOfQuestionsView(),
-                isActive: $navigateToNumberOfQuestions,
+                destination: MainView()
+                    .navigationBarBackButtonHidden(true),
+                isActive: $navigateToMainView,
                 label: {
                     EmptyView()
                 })

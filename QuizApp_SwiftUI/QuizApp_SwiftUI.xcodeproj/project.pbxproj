@@ -31,6 +31,8 @@
 		A9C078A52C4E7CF600DD83B2 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078A42C4E7CF600DD83B2 /* SplashView.swift */; };
 		A9C078AC2C4FDAFB00DD83B2 /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078AB2C4FDAFB00DD83B2 /* TypeView.swift */; };
 		A9C078AE2C4FEA6600DD83B2 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078AD2C4FEA6600DD83B2 /* AppState.swift */; };
+		A9C078B02C4FEDED00DD83B2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078AF2C4FEDED00DD83B2 /* MainView.swift */; };
+		A9C078B22C4FEE7700DD83B2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078B12C4FEE7700DD83B2 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		A9C078A42C4E7CF600DD83B2 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		A9C078AB2C4FDAFB00DD83B2 /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
 		A9C078AD2C4FEA6600DD83B2 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		A9C078AF2C4FEDED00DD83B2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A9C078B12C4FEE7700DD83B2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		ACC8DD36D8A8D178CB843B26 /* Pods-QuizApp_SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp_SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-QuizApp_SwiftUI/Pods-QuizApp_SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +145,8 @@
 				A9AB30C92C46C4F100604B97 /* QuizApp_SwiftUIApp.swift */,
 				A9AB30CB2C46C4F100604B97 /* ContentView.swift */,
 				A9C078AD2C4FEA6600DD83B2 /* AppState.swift */,
+				A9C078B32C4FEE8000DD83B2 /* Profile */,
+				A9C078AF2C4FEDED00DD83B2 /* MainView.swift */,
 				A9AB30CD2C46C4F400604B97 /* Assets.xcassets */,
 				A9AB30CF2C46C4F400604B97 /* Preview Content */,
 			);
@@ -183,6 +189,14 @@
 				A9C078AB2C4FDAFB00DD83B2 /* TypeView.swift */,
 			);
 			path = "Type&Difficulty";
+			sourceTree = "<group>";
+		};
+		A9C078B32C4FEE8000DD83B2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A9C078B12C4FEE7700DD83B2 /* ProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		A9E1E1212C49094200B07649 /* Category */ = {
@@ -312,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A92306D72C4A8E470049A537 /* FirebaseManager.swift in Sources */,
+				A9C078B02C4FEDED00DD83B2 /* MainView.swift in Sources */,
 				A9C078AC2C4FDAFB00DD83B2 /* TypeView.swift in Sources */,
 				A9AB30CC2C46C4F100604B97 /* ContentView.swift in Sources */,
 				A92306CB2C4A753A0049A537 /* LoginView.swift in Sources */,
@@ -330,6 +345,7 @@
 				A92306D32C4A89540049A537 /* AuthViewModel.swift in Sources */,
 				A9505C8A2C4A9C700075640F /* SettingsOptions .swift in Sources */,
 				A92306C02C4A4C920049A537 /* Category.swift in Sources */,
+				A9C078B22C4FEE7700DD83B2 /* ProfileView.swift in Sources */,
 				A9C078A52C4E7CF600DD83B2 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

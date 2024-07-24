@@ -11,16 +11,14 @@ struct ContentView: View {
     @EnvironmentObject var appState: AppState
     
     var body: some View {
-        VStack {
-            if appState.isUserLoggedIn {
-                NumberOfQuestionsView()
-            } else {
-                SplashView()
-            }
-        }
-    }
-}
+         Group {
+             if appState.isUserLoggedIn == true {
+                 MainView()
+             } else {
+                 SplashView()
+             }
+         }
+     }
+ }
 
-#Preview {
-    ContentView()
-}
+

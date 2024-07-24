@@ -18,7 +18,11 @@ class AuthViewModel: ObservableObject {
     @Published var alertMessage: String = ""
     @Published var isLoading: Bool = false
     
-    @EnvironmentObject var appState: AppState
+    private var appState: AppState
+
+       init(appState: AppState) {
+           self.appState = appState
+       }
         
     func signIn() {
         guard !email.isEmpty, !password.isEmpty else {
@@ -59,11 +63,16 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func logOut() throws {
-        try FirebaseManager.shared.signOut()
+    func logOut() {
+        do {
+            try FirebaseManager.shared.signOut()
+            self.isSignedIn = false
+            self.appState.isUserLoggedIn = false
+        } catch let error {
+            self.alertMessage = error.localizedDescription
+            self.showAlert = true
+        }
     }
-    
-    
 }
 
 

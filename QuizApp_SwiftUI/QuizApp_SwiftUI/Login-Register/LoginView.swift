@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var viewModel = AuthViewModel()
-    @State private var navigateToNumberOfQuestions = false
+    @StateObject private var viewModel = AuthViewModel(appState: AppState())
+    @State private var navigateToMainView = false
     
     var body: some View {
                 VStack {
                     NavigationLink(
-                        destination: NumberOfQuestionsView()
+                        destination: MainView()
                             .navigationBarBackButtonHidden(true),
-                        isActive: $navigateToNumberOfQuestions,
+                        isActive: $navigateToMainView,
                         label: {
                             EmptyView()
                         })
@@ -96,7 +96,7 @@ struct LoginView: View {
                     Alert(title: Text("Error"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
                 }.onChange(of: viewModel.isSignedIn) { isSignedIn in
                     if isSignedIn {
-                        navigateToNumberOfQuestions = true
+                        navigateToMainView = true
                     }
                 }
               

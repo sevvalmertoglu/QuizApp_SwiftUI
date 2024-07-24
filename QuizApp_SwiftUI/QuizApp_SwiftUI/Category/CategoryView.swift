@@ -20,14 +20,13 @@ struct CategoryView: View {
     
     var body: some View {
         VStack() {
-            
             Text("Please select a category").font(.headline)
             
             VStack() {
                 List(categoryListViewModel.categories) { category in
                     Text(category.name)
                     
-                }.frame(height: 400)
+                }.frame(height: 420)
                     .listStyle(PlainListStyle())
             }
             NavigationLink(destination: TypeView()) {
@@ -41,7 +40,7 @@ struct CategoryView: View {
                     .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
             }
             .buttonStyle(PlainButtonStyle())
-            .position(x: 200, y: 270)
+            .position(x: 200, y: 190)
         }
         .navigationTitle("Categories")
         
