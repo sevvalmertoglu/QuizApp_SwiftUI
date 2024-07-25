@@ -16,7 +16,7 @@ struct CustomInputField: View {
     var textInputAutoCapital: TextInputAutocapitalization?
     var isSecureField: Bool? = false
     @Binding var text: String
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -25,7 +25,7 @@ struct CustomInputField: View {
                     .scaledToFit()
                     .frame(width: 20, height: 20)
                     .foregroundColor(Color(.darkGray))
-                
+
                 if isSecureField ?? false {
                     SecureField(placeholderText, text: $text)
                         .textContentType(textContentType != nil ? textContentType : .none)
@@ -37,12 +37,12 @@ struct CustomInputField: View {
                     .textContentType(textContentType != nil ? textContentType : .none)
                     .disableAutocorrection(true)
                     .textInputAutocapitalization(textInputAutoCapital != nil ? textInputAutoCapital : .none)
-                    .onChange(of: text) { newValue in
+                    .onChange(of: text) { _ in
                         text = setTextCase(text: text)
                     }
                 }
             }
-            
+
             Divider()
                 .background(Color(.darkGray))
         }
@@ -56,7 +56,6 @@ struct CustomInputField_Previews: PreviewProvider {
 }
 
 extension CustomInputField {
-    
     func setTextCase(text: String) -> String {
         if let textCase = textCase {
             if textCase == .uppercase {
@@ -68,4 +67,3 @@ extension CustomInputField {
         return text
     }
 }
-

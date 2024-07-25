@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct CategoryView: View {
-    
-    @ObservedObject var categoryListViewModel : CategoryListViewModel
+    @ObservedObject var categoryListViewModel: CategoryListViewModel
     @State private var selectedCategory: Category?
     @State var showTypeView = false
     
@@ -19,11 +18,11 @@ struct CategoryView: View {
     }
     
     var body: some View {
-        VStack() {
+        VStack {
             Text("Please select a category").font(.headline)
             
-            VStack() {
-                List(categoryListViewModel.categories) { category in
+            VStack {
+                List(self.categoryListViewModel.categories) { category in
                     Text(category.name)
                     
                 }.frame(height: 420)
@@ -43,10 +42,8 @@ struct CategoryView: View {
             .position(x: 200, y: 190)
         }
         .navigationTitle("Categories")
-        
         .frame(maxHeight: .infinity, alignment: .top)
     }
-    
 }
 
 #Preview {

@@ -14,7 +14,7 @@ struct MainView: View {
                 .tabItem {
                     Label("Game", systemImage: "gamecontroller.fill")
                 }
-            
+
             ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle.fill")

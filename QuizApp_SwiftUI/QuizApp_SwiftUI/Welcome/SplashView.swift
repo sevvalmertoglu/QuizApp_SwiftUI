@@ -16,14 +16,13 @@ struct SplashView: View {
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
                     .offset(x: -5, y: 14)
-                
+
                 Text("Welcome Quiz App!")
                     .bold()
                     .foregroundColor(.white)
                     .font(.title2)
-                    .position(x:200, y:345)
-                
-               
+                    .position(x: 200, y: 345)
+
                 VStack {
                     NavigationLink(destination: LoginView()) {
                         Text("Login")
@@ -31,7 +30,6 @@ struct SplashView: View {
                             .background(Color.purple)
                             .foregroundColor(.white)
                             .cornerRadius(15)
-                            
                     }
                     NavigationLink(destination: RegisterView()) {
                         Text("Register")
@@ -40,7 +38,7 @@ struct SplashView: View {
                             .foregroundColor(.white)
                             .cornerRadius(15)
                     }
-                }.position(x:200,y:600)
+                }.position(x: 200, y: 600)
             }
         }
     }

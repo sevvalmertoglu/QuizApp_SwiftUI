@@ -9,16 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var appState: AppState
-    
+
     var body: some View {
-         Group {
-             if appState.isUserLoggedIn == true {
-                 MainView()
-             } else {
-                 SplashView()
-             }
-         }
-     }
- }
-
-
+        Group {
+            if appState.isUserLoggedIn == true {
+                MainView()
+            } else {
+                SplashView()
+            }
+        }
+    }
+}

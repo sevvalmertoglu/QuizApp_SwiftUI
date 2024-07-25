@@ -146,7 +146,6 @@
 				A9AB30CB2C46C4F100604B97 /* ContentView.swift */,
 				A9C078AD2C4FEA6600DD83B2 /* AppState.swift */,
 				A9C078B32C4FEE8000DD83B2 /* Profile */,
-				A9C078AF2C4FEDED00DD83B2 /* MainView.swift */,
 				A9AB30CD2C46C4F400604B97 /* Assets.xcassets */,
 				A9AB30CF2C46C4F400604B97 /* Preview Content */,
 			);
@@ -179,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				A9C078A42C4E7CF600DD83B2 /* SplashView.swift */,
+				A9C078AF2C4FEDED00DD83B2 /* MainView.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";

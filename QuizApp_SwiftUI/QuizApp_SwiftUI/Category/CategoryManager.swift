@@ -8,13 +8,11 @@
 import Foundation
 
 class CategoryManager {
-    
-    func getCategory(completion: @escaping(Result<[Category]?, DownloaderError>) -> Void) {
-        
+    func getCategory(completion: @escaping (Result<[Category]?, DownloaderError>) -> Void) {
         guard let url = URL(string: "https://opentdb.com/api_category.php") else {
             return completion(.failure(.wrongUrl))
         }
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 return completion(.failure(.noData))
             }

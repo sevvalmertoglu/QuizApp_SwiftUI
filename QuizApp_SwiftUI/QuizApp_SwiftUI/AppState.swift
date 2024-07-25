@@ -5,9 +5,9 @@
 //  Created by Şevval Mertoğlu on 23.07.2024.
 //
 
+import FirebaseAuth
 import Foundation
 import SwiftUI
-import FirebaseAuth
 
 class AppState: ObservableObject {
     @Published var isUserLoggedIn: Bool = false
@@ -25,4 +25,3 @@ class AppState: ObservableObject {
         }
     }
 }
-

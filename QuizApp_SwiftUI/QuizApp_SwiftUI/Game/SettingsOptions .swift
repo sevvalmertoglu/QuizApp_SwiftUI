@@ -7,11 +7,9 @@
 
 import Foundation
 
-protocol SettingsModelDelegate {
-}
+protocol SettingsModelDelegate {}
 
-struct SettingsModel {
-}
+struct SettingsModel {}
 
 struct SettingsOptions {
     var numberOfQuestions: Int = 10

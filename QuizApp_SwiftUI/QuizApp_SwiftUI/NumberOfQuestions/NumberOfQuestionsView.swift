@@ -9,22 +9,22 @@ import SwiftUI
 
 struct NumberOfQuestionsView: View {
     @State var number = 10
-    
+
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 AuthHeaderView(title1: "Please", title2: "select number of questions")
                     .position(CGPoint(x: 196.0, y: 70.0))
-                
+
                 Text("Number of Questions: \(number)")
                     .padding()
-                
-                Stepper(value: $number, in: 1...25) {
+
+                Stepper(value: $number, in: 1 ... 25) {
                     Text("Number Of Questions:").padding()
                 }.padding()
-                
+
                 Spacer()
-                
+
                 NavigationLink(destination: CategoryView()) {
                     Text("Next")
                         .font(.headline)
@@ -41,7 +41,6 @@ struct NumberOfQuestionsView: View {
         }
     }
 }
-
 
 #Preview {
     NumberOfQuestionsView()

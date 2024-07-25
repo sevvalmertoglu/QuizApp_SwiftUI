@@ -10,15 +10,15 @@ import SwiftUI
 struct AuthHeaderView: View {
     let title1: String
     let title2: String
-    
+
     var body: some View {
         VStack(alignment: .center) {
-            HStack { Spacer()}
-            
+            HStack { Spacer() }
+
             Text(title1)
                 .font(.largeTitle)
                 .fontWeight(.semibold)
-            
+
             Text(title2)
                 .font(.largeTitle)
                 .fontWeight(.semibold)
@@ -39,10 +39,9 @@ struct AuthHeaderView_Previews: PreviewProvider {
 
 struct RoundedShape: Shape {
     var corners: UIRectCorner
-    
+
     func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: 80, height: 80))
         return Path(path.cgPath)
     }
-    
 }
