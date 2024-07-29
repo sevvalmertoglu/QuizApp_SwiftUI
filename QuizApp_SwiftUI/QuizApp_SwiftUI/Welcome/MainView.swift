@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import CoreAPI
 
 struct MainView: View {
     var body: some View {
         TabView {
-            NumberOfQuestionsView()
+            CategoryView()
                 .tabItem {
                     Label("Game", systemImage: "gamecontroller.fill")
                 }

@@ -11,29 +11,36 @@ struct ProfileView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @EnvironmentObject var appState: AppState
     @State private var navigateToSplashView = false
-
+    
     var body: some View {
         VStack {
             Text("Profile")
                 .font(.largeTitle)
                 .padding()
-
-            Button(action: {
-                viewModel.logOut()
-                navigateToSplashView = true
-            }) {
-                Text("Log Out")
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.red)
-                    .cornerRadius(8)
-            }
-            .background(
-                NavigationLink(destination: SplashView(), isActive: $navigateToSplashView) {
-                    EmptyView()
+            
+            if viewModel.isLoading {
+                ProgressView()
+            } else {
+                Button(action: {
+                    viewModel.logOut()
+                    navigateToSplashView = true
+                }) {
+                    Text("Log Out")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.red)
+                        .cornerRadius(8)
                 }
-                .hidden()
-            )
+                .background(
+                    NavigationLink(destination: SplashView()
+                        .navigationBarBackButtonHidden(true),
+                                   isActive: $navigateToSplashView)
+                    {
+                        EmptyView()
+                    }
+                        .hidden()
+                )
+            }
         }
     }
 }

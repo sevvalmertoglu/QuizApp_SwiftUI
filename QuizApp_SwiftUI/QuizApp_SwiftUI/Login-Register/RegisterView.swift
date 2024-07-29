@@ -82,7 +82,7 @@ struct RegisterView: View {
         .ignoresSafeArea()
         .alert(isPresented: $viewModel.showAlert) {
             Alert(title: Text("Warning"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
-        }.onChange(of: viewModel.isSignedIn) { isSignedIn in
+        }.onChange(of: viewModel.isSignedIn) { _, isSignedIn in
             if isSignedIn {
                 navigateToMainView = true
             }

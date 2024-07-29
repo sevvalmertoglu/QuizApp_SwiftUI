@@ -21,24 +21,30 @@ struct SplashView: View {
                     .bold()
                     .foregroundColor(.white)
                     .font(.title2)
-                    .position(x: 200, y: 345)
+                    .padding(.bottom, 160)
 
                 VStack {
                     NavigationLink(destination: LoginView()) {
                         Text("Login")
                             .padding()
+                            .frame(maxWidth: .infinity)
                             .background(Color.purple)
                             .foregroundColor(.white)
                             .cornerRadius(15)
-                    }
+                    }.padding(.horizontal, 50)
+
                     NavigationLink(destination: RegisterView()) {
                         Text("Register")
                             .padding()
+                            .frame(maxWidth: .infinity)
                             .background(Color.indigo)
                             .foregroundColor(.white)
                             .cornerRadius(15)
-                    }
-                }.position(x: 200, y: 600)
+                    }.padding(.horizontal, 50)
+                    Spacer().frame(height: 50)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .padding(.top, 300)
             }
         }
     }

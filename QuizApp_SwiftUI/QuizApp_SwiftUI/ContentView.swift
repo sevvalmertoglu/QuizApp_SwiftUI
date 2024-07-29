@@ -12,7 +12,7 @@ struct ContentView: View {
 
     var body: some View {
         Group {
-            if appState.isUserLoggedIn == true {
+            if appState.isUserLoggedIn {
                 MainView()
             } else {
                 SplashView()
