@@ -6,46 +6,70 @@
 //
 
 import SwiftUI
+import CoreAPI
+
 
 struct CategoryView: View {
-    @ObservedObject var categoryListViewModel: CategoryListViewModel
-    @State private var selectedCategory: Category?
-    @State var showTypeView = false
+    @StateObject private var viewModel = CategoryViewModel()
+    @State private var lightMode: Bool = true
     
-    init() {
-        self.categoryListViewModel = CategoryListViewModel()
-        self.categoryListViewModel.fetchCategory()
-    }
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        VStack {
-            Text("Please select a category").font(.headline)
-            
-            VStack {
-                List(self.categoryListViewModel.categories) { category in
-                    Text(category.name)
-                    
-                }.frame(height: 420)
-                    .listStyle(PlainListStyle())
-            }
-            NavigationLink(destination: TypeView()) {
-                Text("Next")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(width: 140, height: 50)
-                    .background(Color.indigo)
-                    .clipShape(Capsule())
-                    .padding()
-                    .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
-            }
-            .buttonStyle(PlainButtonStyle())
-            .position(x: 200, y: 190)
-        }
-        .navigationTitle("Categories")
-        .frame(maxHeight: .infinity, alignment: .top)
+        ZStack {
+            Color.backgroundColor
+                .ignoresSafeArea([.all])
+            NavigationView {
+                ZStack {
+                    ScrollView {
+                        Text("Please select a category")
+                            .font(.system(size: 24, weight: .bold))
+                        VStack(spacing: 15) {
+                            ForEach(viewModel.categories, id:\.id) { category in
+                                NavigationLink(destination: GameSelectionView(triviaCategory: category)) {
+                                    GeometryReader { geometry in
+                                        HStack() {
+                                            Text(viewModel.formatCategoryName(name: category.name))
+                                                .font(.system(size: 22, weight: .bold))
+                                                .foregroundColor(Color.backgroundColor)
+                                                .padding()
+                                                .multilineTextAlignment(.leading)
+                                            Spacer()
+                                        }
+                                        .frame(width: geometry.size.width * 0.95, height: 60)
+                                        .background(Color.indigo)
+                                        .cornerRadius(15)
+                                        .frame(width: geometry.size.width) // Center horizontally
+                                        
+                                    } // GeometryReader
+                                    .frame(height: 50)
+                                } // NavigationLink
+                            } // ForEach
+                        } // VStack
+                    } // ScrollView
+                } // ZStack
+                .toolbar {
+                    ToolbarItem {
+                        Button(action: { lightMode.toggle() }) {
+                            Image(systemName: lightMode == true ? "sun.max" : "sun.max.fill")
+                                .font(.system(size: 20, weight: .medium))
+                                .foregroundColor(lightMode == true ? Color.black : Color.white)
+                        }
+                    }
+                }
+                .onAppear {
+                    Task {
+                        await viewModel.setupCategories()
+                    }
+                }
+            } // NavigationView
+            .navigationViewStyle(.stack) // Prevents constraint error
+        } // Root ZStack
+        .preferredColorScheme(lightMode == true ? .light : .dark)
     }
 }
 
-#Preview {
+
+#Preview  {
     CategoryView()
 }

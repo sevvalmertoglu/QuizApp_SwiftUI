@@ -6,23 +6,41 @@
 //
 
 import Foundation
-import SwiftUI
+import CoreAPI
 
-class CategoryListViewModel: ObservableObject {
-    @Published var categories = [Category]()
-
-    let categoryManager = CategoryManager()
-
-    func fetchCategory() {
-        categoryManager.getCategory { result in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let categoryArray):
-                if let categoryArray = categoryArray {
-                    self.categories = categoryArray
-                }
+@MainActor final class CategoryViewModel: ObservableObject {
+        @Published var selectedCategory: String
+        @Published var categories: [TriviaCategory]
+        @Published var errorMessage: String = ""
+        @Published var triviaOptionsActive: Bool = false // False by default
+        @Published var rootActive: Bool = true // True by default
+        
+        private let triviaService: TriviaService
+        
+        init() {
+            selectedCategory = ""
+            categories = []
+            triviaService = TriviaService()
+        }
+        
+        public func setupCategories() async -> Void {
+            if !categories.isEmpty {
+                return // Kategoriler zaten yüklendiyse tekrar yüklemeyin
             }
+            
+            let serviceResponse = await triviaService.fetchCategories()
+            
+            if let error = serviceResponse.error {
+                errorMessage = error
+                return
+            }
+            
+            categories = serviceResponse.categories
+        }
+        
+        public func formatCategoryName(name: String) -> String {
+            return name.replacingOccurrences(of: "Entertainment: ", with: "")
         }
     }
-}
+
+

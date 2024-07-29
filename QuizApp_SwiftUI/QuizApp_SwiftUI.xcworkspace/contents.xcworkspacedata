@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../CoreAPI">
+   </FileRef>
+   <FileRef
       location = "group:QuizApp_SwiftUI.xcodeproj">
    </FileRef>
    <FileRef
