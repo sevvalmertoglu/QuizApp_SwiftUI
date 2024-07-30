@@ -38,6 +38,8 @@
 		A9BEDC762C577E5000210FD8 /* TriviaCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BEDC6E2C577D2E00210FD8 /* TriviaCategory.swift */; };
 		A9BEDC782C577FE100210FD8 /* TriviaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BEDC772C577FE100210FD8 /* TriviaService.swift */; };
 		A9BEDC7B2C578CDE00210FD8 /* CustomStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BEDC7A2C578CDE00210FD8 /* CustomStepper.swift */; };
+		A9BEDC7D2C59043900210FD8 /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9BEDC7C2C59043900210FD8 /* correct.mp3 */; };
+		A9BEDC7F2C59053E00210FD8 /* incorrect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9BEDC7E2C59053E00210FD8 /* incorrect.mp3 */; };
 		A9C078A52C4E7CF600DD83B2 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078A42C4E7CF600DD83B2 /* SplashView.swift */; };
 		A9C078AE2C4FEA6600DD83B2 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078AD2C4FEA6600DD83B2 /* AppState.swift */; };
 		A9C078B02C4FEDED00DD83B2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078AF2C4FEDED00DD83B2 /* MainView.swift */; };
@@ -77,6 +79,8 @@
 		A9BEDC712C577D5300210FD8 /* TriviaAPIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaAPIEndpoint.swift; sourceTree = "<group>"; };
 		A9BEDC772C577FE100210FD8 /* TriviaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaService.swift; sourceTree = "<group>"; };
 		A9BEDC7A2C578CDE00210FD8 /* CustomStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStepper.swift; sourceTree = "<group>"; };
+		A9BEDC7C2C59043900210FD8 /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
+		A9BEDC7E2C59053E00210FD8 /* incorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = incorrect.mp3; sourceTree = "<group>"; };
 		A9C078A42C4E7CF600DD83B2 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		A9C078AD2C4FEA6600DD83B2 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A9C078AF2C4FEDED00DD83B2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				A92306CE2C4A81B80049A537 /* GoogleService-Info.plist */,
+				A9BEDC7C2C59043900210FD8 /* correct.mp3 */,
+				A9BEDC7E2C59053E00210FD8 /* incorrect.mp3 */,
 				A92499B62C53DA2D0044A0DF /* Extensions.swift */,
 				A9BEDC792C57815700210FD8 /* Network */,
 				A92499B32C53D9C90044A0DF /* Components */,
@@ -307,9 +313,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9BEDC7F2C59053E00210FD8 /* incorrect.mp3 in Resources */,
 				A9AB30D12C46C4F400604B97 /* Preview Assets.xcassets in Resources */,
 				A92306CF2C4A81B80049A537 /* GoogleService-Info.plist in Resources */,
 				A9AB30CE2C46C4F400604B97 /* Assets.xcassets in Resources */,
+				A9BEDC7D2C59043900210FD8 /* correct.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
