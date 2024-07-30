@@ -17,9 +17,15 @@ struct AnswerBox: View {
     @Binding var selectedUUID: UUID // Relays to QuestionView of selection is incorrect / correct
     @Binding var clickedComplete: Bool
     @Binding var selectionCorrect: Bool
+    var nextClicked: () -> Void
 
     // Private properties
     @State private var wasSelected: Bool = false // Highlights only the selected box
+
+    var selectionIcon: String {
+        let isCorrectAnswer = (clickedComplete && !possibility.incorrect)
+        return isCorrectAnswer ? "checkmark" : "xmark"
+    }
 
     var body: some View {
         ZStack {
@@ -32,6 +38,9 @@ struct AnswerBox: View {
                         clickedComplete = true
                         wasSelected = true
                     }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        nextClicked() // To call the nextClicked function after 1 second
+                    }
                 }) {
                     HStack(spacing: 0) {
                         Text(possibility.text)
@@ -43,8 +52,8 @@ struct AnswerBox: View {
                             .padding([.leading], wasSelected ? 40 : 0)
                             .frame(maxWidth: .infinity)
                             .frame(height: 60)
-                        if wasSelected == true {
-                            Image(systemName: clickedComplete == true && possibility.incorrect == false ? "checkmark" : "xmark")
+                        if wasSelected {
+                            Image(systemName: self.selectionIcon)
                                 .font(.system(size: 28, weight: .bold))
                                 .foregroundColor(Color.white)
                                 .frame(width: 40, height: 40)
@@ -52,8 +61,8 @@ struct AnswerBox: View {
                     }
                     .frame(width: geometry.size.width * 0.9, height: 60)
                     .overlay {
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.black, lineWidth: 2)
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke(Color.indigo, lineWidth: 4)
                     }
                 } // button
                 .background(markCorrect())
