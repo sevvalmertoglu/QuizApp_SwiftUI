@@ -15,53 +15,53 @@
 /**
  * Enum representing the internal state of an upload or download task.
  */
-internal enum StorageTaskState {
-  /**
-   * Unknown task state
-   */
-  case unknown
-  /**
-   * Task is being queued is ready to run
-   */
-  case queueing
-  /**
-   * Task is resuming from a paused state
-   */
-  case resuming
-  /**
-   * Task is currently running
-   */
-  case running
-  /**
-   * Task reporting a progress event
-   */
-  case progress
-  /**
-   * Task is pausing
-   */
-  case pausing
-  /**
-   * Task is completing successfully
-   */
-  case completing
-  /**
-   * Task is failing unrecoverably
-   */
-  case failing
-  /**
-   * Task paused successfully
-   */
-  case paused
-  /**
-   * Task cancelled successfully
-   */
-  case cancelled
-  /**
-   * Task completed successfully
-   */
-  case success
-  /**
-   * Task failed unrecoverably
-   */
-  case failed
+enum StorageTaskState {
+    /**
+     * Unknown task state
+     */
+    case unknown
+    /**
+     * Task is being queued is ready to run
+     */
+    case queueing
+    /**
+     * Task is resuming from a paused state
+     */
+    case resuming
+    /**
+     * Task is currently running
+     */
+    case running
+    /**
+     * Task reporting a progress event
+     */
+    case progress
+    /**
+     * Task is pausing
+     */
+    case pausing
+    /**
+     * Task is completing successfully
+     */
+    case completing
+    /**
+     * Task is failing unrecoverably
+     */
+    case failing
+    /**
+     * Task paused successfully
+     */
+    case paused
+    /**
+     * Task cancelled successfully
+     */
+    case cancelled
+    /**
+     * Task completed successfully
+     */
+    case success
+    /**
+     * Task failed unrecoverably
+     */
+    case failed
 }

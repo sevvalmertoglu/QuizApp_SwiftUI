@@ -11,7 +11,7 @@ struct RegisterView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = AuthViewModel(appState: AppState())
     @State private var navigateToMainView = false
-    
+
     var body: some View {
         VStack {
             AuthHeaderView(title1: "Get started,", title2: "Create your account")
@@ -22,20 +22,20 @@ struct RegisterView: View {
                                  keyboardType: .emailAddress,
                                  textContentType: .emailAddress,
                                  text: $viewModel.email)
-                    
+
                 CustomInputField(imageName: "person",
                                  placeholderText: "Username",
                                  textCase: .lowercase,
                                  keyboardType: .default,
                                  textContentType: .username,
                                  text: $viewModel.nickname)
-                    
+
                 CustomInputField(imageName: "person",
                                  placeholderText: "Full name",
                                  textContentType: .name,
                                  textInputAutoCapital: .words,
                                  text: $viewModel.name)
-                    
+
                 CustomInputField(imageName: "lock",
                                  placeholderText: "Password",
                                  textContentType: .newPassword,
@@ -43,7 +43,7 @@ struct RegisterView: View {
                                  text: $viewModel.password)
             }
             .padding(32)
-                
+
             if viewModel.isLoading {
                 ProgressView()
             } else {
@@ -60,9 +60,9 @@ struct RegisterView: View {
                 }
                 .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
             }
-                
+
             Spacer()
-                
+
             NavigationLink {
                 LoginView()
                     .navigationBarHidden(true)
@@ -70,7 +70,7 @@ struct RegisterView: View {
                 HStack {
                     Text("Already have an account?")
                         .font(.footnote)
-                        
+
                     Text("Sign In")
                         .font(.footnote)
                         .fontWeight(.semibold)
@@ -93,8 +93,9 @@ struct RegisterView: View {
             isActive: $navigateToMainView,
             label: {
                 EmptyView()
-            })
-            .hidden()
+            }
+        )
+        .hidden()
         )
     }
 }

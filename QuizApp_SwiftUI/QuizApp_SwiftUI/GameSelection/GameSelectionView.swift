@@ -4,26 +4,25 @@
 //
 //  Created by Şevval Mertoğlu on 19.07.2024.
 //
-import SwiftUI
 import CoreAPI
+import SwiftUI
 
 struct GameSelectionView: View {
     @StateObject private var viewModel: GameSelectionViewModel
-    
     @State private var isLoading: Bool = false
 
     let triviaCategory: TriviaCategory
 
     let column = [
         GridItem(.flexible(maximum: 150)),
-        GridItem(.flexible(maximum: 150))
+        GridItem(.flexible(maximum: 150)),
     ]
-    
+
     init(triviaCategory: TriviaCategory) {
         self.triviaCategory = triviaCategory
         _viewModel = StateObject(wrappedValue: GameSelectionViewModel(triviaCategory: triviaCategory))
     }
-    
+
     var body: some View {
         ZStack {
             Color.backgroundColor
@@ -32,16 +31,16 @@ struct GameSelectionView: View {
                 VStack {
                     Text("Difficulty")
                         .font(.system(size: 26, weight: .medium))
-                    
+
                     LazyVGrid(columns: column, spacing: 20) {
                         OptionButton(
                             title: "Any",
                             action: {
                                 viewModel.updateDifficulty(selected: .any)
                             },
-                            isSelected: viewModel.isDifficultyActive(.any))
-                        
-                        
+                            isSelected: viewModel.isDifficultyActive(.any)
+                        )
+
                         OptionButton(
                             title: "Easy",
                             action: {
@@ -49,8 +48,7 @@ struct GameSelectionView: View {
                             },
                             isSelected: viewModel.isDifficultyActive(.easy)
                         )
-                        
-                        
+
                         OptionButton(
                             title: "Medium",
                             action: {
@@ -58,8 +56,7 @@ struct GameSelectionView: View {
                             },
                             isSelected: viewModel.isDifficultyActive(.medium)
                         )
-                        
-                        
+
                         OptionButton(
                             title: "Hard",
                             action: {
@@ -69,11 +66,11 @@ struct GameSelectionView: View {
                         )
                     }
                 }
-                
+
                 VStack {
                     Text("Question Type")
                         .font(.system(size: 26, weight: .medium))
-                    
+
                     LazyVGrid(columns: column, spacing: 20) {
                         OptionButton(
                             title: "Both",
@@ -82,8 +79,7 @@ struct GameSelectionView: View {
                             },
                             isSelected: viewModel.isTriviaTypeActive(.both)
                         )
-                        
-                        
+
                         OptionButton(
                             title: "Multiple Choice",
                             action: {
@@ -92,7 +88,7 @@ struct GameSelectionView: View {
                             isSelected: viewModel.isTriviaTypeActive(.multipleChoice)
                         )
                     }
-                    
+
                     OptionButton(
                         title: "True / False",
                         action: {
@@ -101,15 +97,15 @@ struct GameSelectionView: View {
                         isSelected: viewModel.isTriviaTypeActive(.trueFalse)
                     )
                 }
-                
+
                 VStack {
                     Text("Number of questions")
                         .font(.system(size: 26, weight: .medium))
-                    
-                    CustomStepper(value: $viewModel.numberOfQuestions, range: 1...25)
+
+                    CustomStepper(value: $viewModel.numberOfQuestions, range: 1 ... 25)
                         .padding()
                 }
-                
+
                 NavigationLink(destination: QuestionsView(questions: $viewModel.questions), isActive: $viewModel.successfulLoad) {
                     Text("Start!")
                         .font(.system(size: 26, weight: .bold))
@@ -136,13 +132,13 @@ struct GameSelectionView: View {
                         }
                         .padding([.top])
                 }
-                
+
                 if viewModel.errorMessage != "" {
                     Text(viewModel.errorMessage)
                         .font(.system(size: 16, weight: .medium))
                         .foregroundColor(Color.red)
                 }
-                
+
                 Spacer()
             }
             .navigationTitle(triviaCategory.name)
@@ -155,6 +151,3 @@ struct GameSelectionView: View {
     GameSelectionView(triviaCategory: TriviaCategory(id: 9, name: "General Knowledge"))
         .preferredColorScheme(.dark)
 }
-
-
-

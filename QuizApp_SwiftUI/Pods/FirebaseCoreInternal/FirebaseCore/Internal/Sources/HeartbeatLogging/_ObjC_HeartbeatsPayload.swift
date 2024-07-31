@@ -18,23 +18,23 @@ import Foundation
 /// requests.
 @objc(FIRHeartbeatsPayload)
 public class _ObjC_HeartbeatsPayload: NSObject, HTTPHeaderRepresentable {
-  /// The underlying Swift structure.
-  private let heartbeatsPayload: HeartbeatsPayload
+    /// The underlying Swift structure.
+    private let heartbeatsPayload: HeartbeatsPayload
 
-  /// Designated initializer.
-  /// - Parameter heartbeatsPayload: A native-Swift heartbeats payload.
-  public init(_ heartbeatsPayload: HeartbeatsPayload) {
-    self.heartbeatsPayload = heartbeatsPayload
-  }
+    /// Designated initializer.
+    /// - Parameter heartbeatsPayload: A native-Swift heartbeats payload.
+    public init(_ heartbeatsPayload: HeartbeatsPayload) {
+        self.heartbeatsPayload = heartbeatsPayload
+    }
 
-  /// Returns a processed payload string intended for use in a HTTP header.
-  /// - Returns: A string value from the heartbeats payload.
-  @objc public func headerValue() -> String {
-    heartbeatsPayload.headerValue()
-  }
+    /// Returns a processed payload string intended for use in a HTTP header.
+    /// - Returns: A string value from the heartbeats payload.
+    @objc public func headerValue() -> String {
+        heartbeatsPayload.headerValue()
+    }
 
-  /// A Boolean value indicating whether the payload is empty.
-  @objc public var isEmpty: Bool {
-    heartbeatsPayload.isEmpty
-  }
+    /// A Boolean value indicating whether the payload is empty.
+    @objc public var isEmpty: Bool {
+        heartbeatsPayload.isEmpty
+    }
 }

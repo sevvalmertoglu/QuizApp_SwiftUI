@@ -10,19 +10,22 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "CoreAPI",
-            targets: ["CoreAPI"]),
+            targets: ["CoreAPI"]
+        ),
     ],
     dependencies: [
-        .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.9.1"))
+        .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.9.1")),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "CoreAPI",
-            dependencies: ["Alamofire"]),
+            dependencies: ["Alamofire"]
+        ),
         .testTarget(
             name: "CoreAPITests",
-            dependencies: ["CoreAPI"]),
+            dependencies: ["CoreAPI"]
+        ),
     ]
 )

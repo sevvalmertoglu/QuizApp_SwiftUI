@@ -38,7 +38,7 @@ class AuthViewModel: ObservableObject {
                 case .success:
                     self?.isSignedIn = true
                     self?.appState.isUserLoggedIn = true
-                case .failure(let error):
+                case let .failure(error):
                     self?.alertMessage = error.localizedDescription
                     self?.showAlert = true
                 }
@@ -55,7 +55,7 @@ class AuthViewModel: ObservableObject {
                 case .success:
                     self?.isSignedIn = true
                     self?.appState.isUserLoggedIn = true
-                case .failure(let error):
+                case let .failure(error):
                     self?.alertMessage = error.localizedDescription
                     self?.showAlert = true
                 }

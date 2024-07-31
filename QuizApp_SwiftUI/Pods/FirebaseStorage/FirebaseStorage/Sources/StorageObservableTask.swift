@@ -15,9 +15,9 @@
 import Foundation
 
 #if COCOAPODS
-  import GTMSessionFetcher
+    import GTMSessionFetcher
 #else
-  import GTMSessionFetcherCore
+    import GTMSessionFetcherCore
 #endif
 
 /**
@@ -27,153 +27,157 @@ import Foundation
  * observers at a later date.
  */
 @objc(FIRStorageObservableTask) open class StorageObservableTask: StorageTask {
-  /**
-   * Observes changes in the upload status: Resume, Pause, Progress, Success, and Failure.
-   * - Parameters:
-   *   - status: The `StorageTaskStatus` change to observe.
-   *   - handler: A callback that fires every time the status event occurs,
-   *        containing a `StorageTaskSnapshot` describing task state.
-   * - Returns: A task handle that can be used to remove the observer at a later date.
-   */
-  @objc(observeStatus:handler:) @discardableResult
-  open func observe(_ status: StorageTaskStatus,
-                    handler: @escaping (StorageTaskSnapshot) -> Void) -> String {
-    let callback = handler
+    /**
+     * Observes changes in the upload status: Resume, Pause, Progress, Success, and Failure.
+     * - Parameters:
+     *   - status: The `StorageTaskStatus` change to observe.
+     *   - handler: A callback that fires every time the status event occurs,
+     *        containing a `StorageTaskSnapshot` describing task state.
+     * - Returns: A task handle that can be used to remove the observer at a later date.
+     */
+    @objc(observeStatus:handler:) @discardableResult
+    open func observe(_ status: StorageTaskStatus,
+                      handler: @escaping (StorageTaskSnapshot) -> Void) -> String
+    {
+        let callback = handler
 
-    // Note: self.snapshot is synchronized
-    let snapshot = self.snapshot
+        // Note: self.snapshot is synchronized
+        let snapshot = self.snapshot
 
-    // TODO: use an increasing counter instead of a random UUID
-    let uuidString = updateHandlerDictionary(for: status, with: callback)
-    if let handlerDictionary = handlerDictionaries[status] {
-      switch status {
-      case .pause:
-        if state == .pausing || state == .paused {
-          fire(handlers: handlerDictionary, snapshot: snapshot)
+        // TODO: use an increasing counter instead of a random UUID
+        let uuidString = updateHandlerDictionary(for: status, with: callback)
+        if let handlerDictionary = handlerDictionaries[status] {
+            switch status {
+            case .pause:
+                if state == .pausing || state == .paused {
+                    fire(handlers: handlerDictionary, snapshot: snapshot)
+                }
+            case .resume:
+                if state == .resuming || state == .running {
+                    fire(handlers: handlerDictionary, snapshot: snapshot)
+                }
+            case .progress:
+                if state == .running || state == .progress {
+                    fire(handlers: handlerDictionary, snapshot: snapshot)
+                }
+            case .success:
+                if state == .success {
+                    fire(handlers: handlerDictionary, snapshot: snapshot)
+                }
+            case .failure:
+                if state == .failed || state == .failing {
+                    fire(handlers: handlerDictionary, snapshot: snapshot)
+                }
+            case .unknown: fatalError("Invalid observer status requested, use one " +
+                    "of: Pause, Resume, Progress, Complete, or Failure")
+            }
         }
-      case .resume:
-        if state == .resuming || state == .running {
-          fire(handlers: handlerDictionary, snapshot: snapshot)
+        objc_sync_enter(StorageObservableTask.self)
+        handleToStatusMap[uuidString] = status
+        objc_sync_exit(StorageObservableTask.self)
+
+        return uuidString
+    }
+
+    /**
+     * Removes the single observer with the provided handle.
+     * - Parameter handle The handle of the task to remove.
+     */
+    @objc(removeObserverWithHandle:) open func removeObserver(withHandle handle: String) {
+        if let status = handleToStatusMap[handle] {
+            objc_sync_enter(StorageObservableTask.self)
+            handlerDictionaries[status]?.removeValue(forKey: handle)
+            handleToStatusMap.removeValue(forKey: handle)
+            objc_sync_exit(StorageObservableTask.self)
         }
-      case .progress:
-        if state == .running || state == .progress {
-          fire(handlers: handlerDictionary, snapshot: snapshot)
+    }
+
+    /**
+     * Removes all observers for a single status.
+     * - Parameter status A `StorageTaskStatus` to remove all listeners for.
+     */
+    @objc(removeAllObserversForStatus:)
+    open func removeAllObservers(for status: StorageTaskStatus) {
+        if let handlerDictionary = handlerDictionaries[status] {
+            objc_sync_enter(StorageObservableTask.self)
+            for (key, _) in handlerDictionary {
+                handleToStatusMap.removeValue(forKey: key)
+            }
+            handlerDictionaries[status]?.removeAll()
+            objc_sync_exit(StorageObservableTask.self)
         }
-      case .success:
-        if state == .success {
-          fire(handlers: handlerDictionary, snapshot: snapshot)
+    }
+
+    /**
+     * Removes all observers.
+     */
+    @objc open func removeAllObservers() {
+        objc_sync_enter(StorageObservableTask.self)
+        for (status, _) in handlerDictionaries {
+            handlerDictionaries[status]?.removeAll()
         }
-      case .failure:
-        if state == .failed || state == .failing {
-          fire(handlers: handlerDictionary, snapshot: snapshot)
+        handleToStatusMap.removeAll()
+        objc_sync_exit(StorageObservableTask.self)
+    }
+
+    // MARK: - Private Handler Dictionaries
+
+    var handlerDictionaries: [StorageTaskStatus: [String: (StorageTaskSnapshot) -> Void]]
+    var handleToStatusMap: [String: StorageTaskStatus]
+
+    /**
+     * The file to download to or upload from
+     */
+    let fileURL: URL?
+
+    // MARK: - Internal Implementations
+
+    init(reference: StorageReference,
+         service: GTMSessionFetcherService,
+         queue: DispatchQueue,
+         file: URL?)
+    {
+        handlerDictionaries = [
+            .resume: [String: (StorageTaskSnapshot) -> Void](),
+            .pause: [String: (StorageTaskSnapshot) -> Void](),
+            .progress: [String: (StorageTaskSnapshot) -> Void](),
+            .success: [String: (StorageTaskSnapshot) -> Void](),
+            .failure: [String: (StorageTaskSnapshot) -> Void](),
+        ]
+        handleToStatusMap = [:]
+        fileURL = file
+        super.init(reference: reference, service: service, queue: queue)
+    }
+
+    func updateHandlerDictionary(for status: StorageTaskStatus,
+                                 with handler: @escaping ((StorageTaskSnapshot) -> Void))
+        -> String
+    {
+        // TODO: use an increasing counter instead of a random UUID
+        let uuidString = NSUUID().uuidString
+        objc_sync_enter(StorageObservableTask.self)
+        handlerDictionaries[status]?[uuidString] = handler
+        objc_sync_exit(StorageObservableTask.self)
+        return uuidString
+    }
+
+    func fire(for status: StorageTaskStatus, snapshot: StorageTaskSnapshot) {
+        if let observerDictionary = handlerDictionaries[status] {
+            fire(handlers: observerDictionary, snapshot: snapshot)
         }
-      case .unknown: fatalError("Invalid observer status requested, use one " +
-          "of: Pause, Resume, Progress, Complete, or Failure")
-      }
     }
-    objc_sync_enter(StorageObservableTask.self)
-    handleToStatusMap[uuidString] = status
-    objc_sync_exit(StorageObservableTask.self)
 
-    return uuidString
-  }
-
-  /**
-   * Removes the single observer with the provided handle.
-   * - Parameter handle The handle of the task to remove.
-   */
-  @objc(removeObserverWithHandle:) open func removeObserver(withHandle handle: String) {
-    if let status = handleToStatusMap[handle] {
-      objc_sync_enter(StorageObservableTask.self)
-      handlerDictionaries[status]?.removeValue(forKey: handle)
-      handleToStatusMap.removeValue(forKey: handle)
-      objc_sync_exit(StorageObservableTask.self)
+    func fire(handlers: [String: (StorageTaskSnapshot) -> Void],
+              snapshot: StorageTaskSnapshot)
+    {
+        let callbackQueue = fetcherService.callbackQueue ?? DispatchQueue.main
+        objc_sync_enter(StorageObservableTask.self)
+        let enumeration = handlers.enumerated()
+        objc_sync_exit(StorageObservableTask.self)
+        for (_, handler) in enumeration {
+            callbackQueue.async {
+                handler.value(snapshot)
+            }
+        }
     }
-  }
-
-  /**
-   * Removes all observers for a single status.
-   * - Parameter status A `StorageTaskStatus` to remove all listeners for.
-   */
-  @objc(removeAllObserversForStatus:)
-  open func removeAllObservers(for status: StorageTaskStatus) {
-    if let handlerDictionary = handlerDictionaries[status] {
-      objc_sync_enter(StorageObservableTask.self)
-      for (key, _) in handlerDictionary {
-        handleToStatusMap.removeValue(forKey: key)
-      }
-      handlerDictionaries[status]?.removeAll()
-      objc_sync_exit(StorageObservableTask.self)
-    }
-  }
-
-  /**
-   * Removes all observers.
-   */
-  @objc open func removeAllObservers() {
-    objc_sync_enter(StorageObservableTask.self)
-    for (status, _) in handlerDictionaries {
-      handlerDictionaries[status]?.removeAll()
-    }
-    handleToStatusMap.removeAll()
-    objc_sync_exit(StorageObservableTask.self)
-  }
-
-  // MARK: - Private Handler Dictionaries
-
-  var handlerDictionaries: [StorageTaskStatus: [String: (StorageTaskSnapshot) -> Void]]
-  var handleToStatusMap: [String: StorageTaskStatus]
-
-  /**
-   * The file to download to or upload from
-   */
-  let fileURL: URL?
-
-  // MARK: - Internal Implementations
-
-  internal init(reference: StorageReference,
-                service: GTMSessionFetcherService,
-                queue: DispatchQueue,
-                file: URL?) {
-    handlerDictionaries = [
-      .resume: [String: (StorageTaskSnapshot) -> Void](),
-      .pause: [String: (StorageTaskSnapshot) -> Void](),
-      .progress: [String: (StorageTaskSnapshot) -> Void](),
-      .success: [String: (StorageTaskSnapshot) -> Void](),
-      .failure: [String: (StorageTaskSnapshot) -> Void](),
-    ]
-    handleToStatusMap = [:]
-    fileURL = file
-    super.init(reference: reference, service: service, queue: queue)
-  }
-
-  internal func updateHandlerDictionary(for status: StorageTaskStatus,
-                                        with handler: @escaping ((StorageTaskSnapshot) -> Void))
-    -> String {
-    // TODO: use an increasing counter instead of a random UUID
-    let uuidString = NSUUID().uuidString
-    objc_sync_enter(StorageObservableTask.self)
-    handlerDictionaries[status]?[uuidString] = handler
-    objc_sync_exit(StorageObservableTask.self)
-    return uuidString
-  }
-
-  internal func fire(for status: StorageTaskStatus, snapshot: StorageTaskSnapshot) {
-    if let observerDictionary = handlerDictionaries[status] {
-      fire(handlers: observerDictionary, snapshot: snapshot)
-    }
-  }
-
-  internal func fire(handlers: [String: (StorageTaskSnapshot) -> Void],
-                     snapshot: StorageTaskSnapshot) {
-    let callbackQueue = fetcherService.callbackQueue ?? DispatchQueue.main
-    objc_sync_enter(StorageObservableTask.self)
-    let enumeration = handlers.enumerated()
-    objc_sync_exit(StorageObservableTask.self)
-    for (_, handler) in enumeration {
-      callbackQueue.async {
-        handler.value(snapshot)
-      }
-    }
-  }
 }

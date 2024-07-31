@@ -1,5 +1,5 @@
-import XCTest
 @testable import CoreAPI
+import XCTest
 
 final class CoreAPITests: XCTestCase {
     func testExample() throws {

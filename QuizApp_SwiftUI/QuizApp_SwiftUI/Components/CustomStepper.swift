@@ -23,11 +23,11 @@ struct CustomStepper: View {
                     .font(.system(size: 30))
                     .foregroundColor(.gray)
             }
-            
+
             Text("\(value)")
                 .font(.system(size: 22))
                 .padding(.horizontal)
-            
+
             Button(action: {
                 if value < range.upperBound {
                     value += step

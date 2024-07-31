@@ -14,7 +14,7 @@ struct SplashView: View {
                 Image("background")
                     .resizable()
                     .scaledToFill()
-                    .edgesIgnoringSafeArea(.all)
+                    .ignoresSafeArea(.all)
                     .offset(x: -5, y: 14)
 
                 Text("Welcome Quiz App!")

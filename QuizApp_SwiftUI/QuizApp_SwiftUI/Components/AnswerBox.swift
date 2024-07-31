@@ -15,16 +15,16 @@ struct AnswerBox: View {
     @Binding var clickedComplete: Bool
     @Binding var selectionCorrect: Bool
     var nextClicked: () -> Void
-    
+
     // Private properties
     @State private var wasSelected: Bool = false // Highlights only the selected box
     @State private var audioPlayer: AVAudioPlayer?
-    
+
     var selectionIcon: String {
         let isCorrectAnswer = (clickedComplete && !possibility.incorrect)
         return isCorrectAnswer ? "checkmark" : "xmark"
     }
-    
+
     var body: some View {
         ZStack {
             GeometryReader { geometry in
@@ -32,8 +32,7 @@ struct AnswerBox: View {
                     if possibility.incorrect == false {
                         selectionCorrect = true
                         playSound(named: "correct")
-                    }
-                    else {
+                    } else {
                         playSound(named: "incorrect")
                     }
                     withAnimation(.easeOut(duration: 0.1)) {
@@ -74,19 +73,19 @@ struct AnswerBox: View {
             .frame(height: 60)
         }
     }
-    
+
     func markCorrect() -> Color {
         if clickedComplete == true && possibility.incorrect == false { // Correct; display correct unconditionally
             return Color.green // Returns green color unconditionally after clicked complete was finished
         }
-        
+
         if wasSelected == true && possibility.incorrect == true { // Mark the incorrect button that was selected
             return Color.red // Return red if selected was incorrect
         }
-        
+
         return Color.white // Returns white by default (non-selected)
     }
-    
+
     func playSound(named soundName: String) {
         guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3") else { return }
         do {

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  TriviaAPIEndpoint.swift
 //
 //
 //  Created by Şevval Mertoğlu on 26.07.2024.
@@ -20,7 +20,7 @@ extension TriviaAPI: Endpoint {
 
     var path: String {
         switch self {
-        case .fetchTriviaQuestions(let difficulty, let category, let triviaType, let quantity):
+        case let .fetchTriviaQuestions(difficulty, category, triviaType, quantity):
             var urlString = "api.php?amount=\(quantity)&category=\(category.id)"
             if difficulty != .any {
                 urlString += "&difficulty=\(difficulty.rawValue)"

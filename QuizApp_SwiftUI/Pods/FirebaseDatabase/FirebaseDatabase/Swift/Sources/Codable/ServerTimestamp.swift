@@ -15,7 +15,7 @@
  */
 
 #if SWIFT_PACKAGE
-  @_exported import FirebaseDatabaseInternal
+    @_exported import FirebaseDatabaseInternal
 #endif // SWIFT_PACKAGE
 
 /// A property wrapper that marks an `Optional<Date>` field to be
@@ -34,37 +34,37 @@
 /// current timestamp.
 @propertyWrapper
 public struct ServerTimestamp: Codable, Equatable, Hashable {
-  var value: Date?
+    var value: Date?
 
-  public init(wrappedValue value: Date?) {
-    self.value = value
-  }
-
-  public var wrappedValue: Date? {
-    get { value }
-    set { value = newValue }
-  }
-
-  // MARK: Codable
-
-  public init(from decoder: Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    if container.decodeNil() {
-      value = nil
-    } else {
-      let msecs = try container.decode(Int.self)
-      value = Date(timeIntervalSince1970: TimeInterval(msecs) / 1000)
+    public init(wrappedValue value: Date?) {
+        self.value = value
     }
-  }
 
-  public func encode(to encoder: Encoder) throws {
-    var container = encoder.singleValueContainer()
-    if let value = value {
-      let interval = value.timeIntervalSince1970
-      try container.encode(Int(interval * 1000))
-    } else {
-      let dictionary = ServerValue.timestamp() as! [String: String]
-      try container.encode(dictionary)
+    public var wrappedValue: Date? {
+        get { value }
+        set { value = newValue }
     }
-  }
+
+    // MARK: Codable
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if container.decodeNil() {
+            value = nil
+        } else {
+            let msecs = try container.decode(Int.self)
+            value = Date(timeIntervalSince1970: TimeInterval(msecs) / 1000)
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        if let value = value {
+            let interval = value.timeIntervalSince1970
+            try container.encode(Int(interval * 1000))
+        } else {
+            let dictionary = ServerValue.timestamp() as! [String: String]
+            try container.encode(dictionary)
+        }
+    }
 }

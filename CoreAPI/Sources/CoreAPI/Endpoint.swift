@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Şevval Mertoğlu on 26.07.2024.
 //
@@ -17,4 +17,3 @@ public extension Endpoint {
     var parameters: [String: Any] { [:] }
     var url: String { "\(baseUrl)\(path)" }
 }
-

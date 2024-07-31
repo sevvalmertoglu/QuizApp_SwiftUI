@@ -11,10 +11,10 @@ import SwiftUI
 // View that controls which question to be displayed and redirects to result screen
 struct QuestionsView: View {
     @StateObject private var viewModel = QuestionsViewModel()
-    
+
     // Parameters
     @Binding var questions: [Question]
-    
+
     // Properties
     @State var currentQuestionIndex: Int = 0
     @State var possibilities: [Answer] = []
@@ -23,9 +23,9 @@ struct QuestionsView: View {
     @State var displayResults: Bool = false
     @State var timeRemaining: Int = 10 // Countdown timer
     @State var timer: Timer? = nil
-    
+
     @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
         VStack {
             ZStack {
@@ -39,13 +39,13 @@ struct QuestionsView: View {
                     }
                     .font(.system(size: 20, weight: .bold))
                     .padding()
-                    
+
                     if displayResults == false {
                         triviaQuizView()
                     } else {
                         resultsView()
                     } // else
-                    
+
                     Spacer()
                 } // VStack
                 .onAppear {
@@ -56,11 +56,11 @@ struct QuestionsView: View {
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
             .toolbar(.hidden, for: .tabBar) // To hide TabView
-            
+
             ProgressBar(percentComplete: Double(currentQuestionIndex + 1) / Double(questions.count))
         } // VStack
     }
-    
+
     func startTimer() {
         timeRemaining = 10
         timer?.invalidate()
@@ -73,7 +73,7 @@ struct QuestionsView: View {
             }
         }
     }
-    
+
     func nextClicked() {
         if selectionCorrect {
             viewModel.correctCount += 1
@@ -90,7 +90,7 @@ struct QuestionsView: View {
         possibilities = viewModel.initPossiblities(question: questions[currentQuestionIndex])
         startTimer()
     }
-    
+
     @ViewBuilder
     func triviaQuizView() -> some View {
         VStack {
@@ -103,14 +103,14 @@ struct QuestionsView: View {
                     .foregroundColor(.indigo)
             }
             .padding([.top], 10)
-            
+
             QuestionView(question: questions[currentQuestionIndex].question, possibilities: possibilities, clicked: $clicked, selectionCorrect: $selectionCorrect, nextClicked: nextClicked)
                 .onChange(of: currentQuestionIndex) { _, _ in
                     possibilities = viewModel.initPossiblities(question: questions[currentQuestionIndex])
                 }
         }
     }
-    
+
     @ViewBuilder
     func resultsView() -> some View {
         ZStack {
@@ -119,12 +119,12 @@ struct QuestionsView: View {
                 .scaledToFill()
                 .ignoresSafeArea(.all)
                 .offset(x: -10)
-            
+
             Text("GAME OVER!")
                 .font(.system(size: 50, weight: .heavy))
                 .foregroundColor(.indigo)
                 .padding(.bottom, 260)
-            
+
             VStack(spacing: 30) {
                 VStack {
                     if Double(viewModel.correctCount) / Double(questions.count) >= 0.8 {
@@ -135,7 +135,7 @@ struct QuestionsView: View {
                         Text("You got \(viewModel.correctCount) out of \(questions.count) questions right.\n\nPractice makes perfect!")
                     }
                 } // Message VStack
-                
+
                 Button(action: {
                     self.dismiss()
                 }) {

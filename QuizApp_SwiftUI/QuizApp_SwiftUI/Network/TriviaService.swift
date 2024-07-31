@@ -18,13 +18,13 @@ public class TriviaService {
         await withCheckedContinuation { continuation in
             networkManager.request(endpoint: .fetchTriviaQuestions(difficulty: difficulty, category: category, triviaType: triviaType, quantity: quantity), type: QuestionsDecodable.self) { result in
                 switch result {
-                case .success(let response):
+                case let .success(response):
                     let questions = response.results
                     for question in questions {
                         question.decodeBase64Strings()
                     }
                     continuation.resume(returning: (questions, nil))
-                case .failure(let error):
+                case let .failure(error):
                     continuation.resume(returning: ([], error.message))
                 }
             }
@@ -35,9 +35,9 @@ public class TriviaService {
         await withCheckedContinuation { continuation in
             networkManager.request(endpoint: .fetchCategories, type: TriviaCategories.self) { result in
                 switch result {
-                case .success(let response):
+                case let .success(response):
                     continuation.resume(returning: (response.trivia_categories, nil))
-                case .failure(let error):
+                case let .failure(error):
                     continuation.resume(returning: ([], error.message))
                 }
             }

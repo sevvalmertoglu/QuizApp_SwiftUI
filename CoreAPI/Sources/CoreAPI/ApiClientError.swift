@@ -1,10 +1,9 @@
 //
-//  File.swift
-//  
+//  ApiClientError.swift
+//
 //
 //  Created by Şevval Mertoğlu on 26.07.2024.
 //
-
 import Foundation
 
 public protocol APIError: Decodable {
@@ -30,7 +29,7 @@ public enum APIClientError: Error {
 
     public var message: String {
         switch self {
-        case .handledError(let error):
+        case let .handledError(error):
             return error.message
         case .decoding:
             return "An unexpected error occurred"
@@ -38,7 +37,7 @@ public enum APIClientError: Error {
             return "An unexpected error occurred."
         case .timeout:
             return "The request timed out, please try again later."
-        case .message(let message):
+        case let .message(message):
             return message
         }
     }
@@ -52,27 +51,26 @@ public enum APIClientError: Error {
 
     public var debugMessage: String {
         switch self {
-        case .handledError(let error):
+        case let .handledError(error):
             return error.debugMessage
-        case .decoding(let decodingError):
+        case let .decoding(decodingError):
             guard let decodingError = decodingError else { return "Decode Error" }
             return "\(decodingError)"
         case .networkError:
             return "Network Error"
         case .timeout:
             return "Timeout"
-        case .message(let message):
+        case let .message(message):
             return message
         }
     }
 
     public var code: Int {
         switch self {
-        case .handledError(let error):
+        case let .handledError(error):
             return error.code
         default:
             return 500
         }
     }
 }
-

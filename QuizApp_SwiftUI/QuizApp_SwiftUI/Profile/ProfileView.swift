@@ -11,13 +11,13 @@ struct ProfileView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @EnvironmentObject var appState: AppState
     @State private var navigateToSplashView = false
-    
+
     var body: some View {
         VStack {
             Text("Profile")
                 .font(.largeTitle)
                 .padding()
-            
+
             if viewModel.isLoading {
                 ProgressView()
             } else {
@@ -34,11 +34,11 @@ struct ProfileView: View {
                 .background(
                     NavigationLink(destination: SplashView()
                         .navigationBarBackButtonHidden(true),
-                                   isActive: $navigateToSplashView)
+                        isActive: $navigateToSplashView)
                     {
                         EmptyView()
                     }
-                        .hidden()
+                    .hidden()
                 )
             }
         }

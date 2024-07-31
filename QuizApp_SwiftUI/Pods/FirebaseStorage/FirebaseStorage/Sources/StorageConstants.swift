@@ -15,10 +15,10 @@
 import Foundation
 
 @objc(FIRStorageTaskStatus) public enum StorageTaskStatus: Int {
-  case unknown
-  case resume
-  case progress
-  case pause
-  case success
-  case failure
+    case unknown
+    case resume
+    case progress
+    case pause
+    case success
+    case failure
 }

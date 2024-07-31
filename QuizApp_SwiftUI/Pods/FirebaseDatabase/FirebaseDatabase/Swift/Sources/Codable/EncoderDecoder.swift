@@ -15,11 +15,11 @@
  */
 
 #if SWIFT_PACKAGE
-  @_exported import FirebaseDatabaseInternal
+    @_exported import FirebaseDatabaseInternal
 #endif // SWIFT_PACKAGE
 import FirebaseSharedSwift
 
 public extension Database {
-  typealias Encoder = FirebaseDataEncoder
-  typealias Decoder = FirebaseDataDecoder
+    typealias Encoder = FirebaseDataEncoder
+    typealias Decoder = FirebaseDataDecoder
 }

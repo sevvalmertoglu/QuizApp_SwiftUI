@@ -5,22 +5,22 @@
 //  Created by Şevval Mertoğlu on 26.07.2024.
 //
 
-import Foundation
 import CoreAPI
+import Foundation
 
 class QuestionsViewModel: ObservableObject {
     @Published var correctCount: Int = 0
     @Published var incorrectCount: Int = 0
-    
-    public func initPossiblities(question: Question) -> Array<Answer> {
+
+    public func initPossiblities(question: Question) -> [Answer] {
         if question.type == TriviaType.multipleChoice.rawValue {
             return initMultipleChoice(question: question)
         }
         return initTrueFalse(question: question)
     }
-    
-    private func initMultipleChoice(question: Question) -> Array<Answer> {
-        var possibilities: Array<Answer> = []
+
+    private func initMultipleChoice(question: Question) -> [Answer] {
+        var possibilities: [Answer] = []
         let correctAnswer = Answer(question.correct_answer, incorrect: false)
         possibilities.append(correctAnswer)
         for incorrectAnswer in question.incorrect_answers {
@@ -29,9 +29,9 @@ class QuestionsViewModel: ObservableObject {
         possibilities.shuffle()
         return possibilities
     }
-    
-    private func initTrueFalse(question: Question) -> Array<Answer> {
-        var possibilities: Array<Answer> = []
+
+    private func initTrueFalse(question: Question) -> [Answer] {
+        var possibilities: [Answer] = []
         if question.correct_answer == "True" {
             possibilities.append(Answer("True", incorrect: false))
             possibilities.append(Answer("False", incorrect: true))
@@ -42,4 +42,3 @@ class QuestionsViewModel: ObservableObject {
         return possibilities
     }
 }
-
