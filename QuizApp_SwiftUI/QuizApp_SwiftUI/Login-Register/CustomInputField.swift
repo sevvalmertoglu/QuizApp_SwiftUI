@@ -20,25 +20,25 @@ struct CustomInputField: View {
     var body: some View {
         VStack {
             HStack {
-                Image(systemName: imageName)
+                Image(systemName: self.imageName)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 20, height: 20)
                     .foregroundColor(Color(.darkGray))
 
-                if isSecureField ?? false {
-                    SecureField(placeholderText, text: $text)
-                        .textContentType(textContentType != nil ? textContentType : .none)
+                if self.isSecureField ?? false {
+                    SecureField(self.placeholderText, text: self.$text)
+                        .textContentType(self.textContentType != nil ? self.textContentType : .none)
                 } else {
-                    TextField(placeholderText, text: $text, onEditingChanged: { _ in
-                        text = setTextCase(text: text)
+                    TextField(self.placeholderText, text: self.$text, onEditingChanged: { _ in
+                        self.text = setTextCase(text: self.text)
                     })
-                    .keyboardType(keyboardType != nil ? keyboardType! : .default)
-                    .textContentType(textContentType != nil ? textContentType : .none)
+                    .keyboardType(self.keyboardType != nil ? self.keyboardType! : .default)
+                    .textContentType(self.textContentType != nil ? self.textContentType : .none)
                     .disableAutocorrection(true)
-                    .textInputAutocapitalization(textInputAutoCapital != nil ? textInputAutoCapital : .none)
-                    .onChange(of: text) { _ in
-                        text = setTextCase(text: text)
+                    .textInputAutocapitalization(self.textInputAutoCapital != nil ? self.textInputAutoCapital : .none)
+                    .onChange(of: self.text) { _ in
+                        self.text = setTextCase(text: self.text)
                     }
                 }
             }

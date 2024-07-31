@@ -12,8 +12,8 @@ public protocol Endpoint {
     var headers: [String: String] { get }
 }
 
-public extension Endpoint {
-    var headers: [String: String] { [:] }
-    var parameters: [String: Any] { [:] }
-    var url: String { "\(baseUrl)\(path)" }
+extension Endpoint {
+    public var headers: [String: String] { [:] }
+    public var parameters: [String: Any] { [:] }
+    public var url: String { "\(baseUrl)\(path)" }
 }

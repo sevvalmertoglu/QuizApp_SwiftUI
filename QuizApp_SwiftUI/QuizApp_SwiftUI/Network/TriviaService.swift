@@ -16,7 +16,7 @@ public class TriviaService {
 
     public func fetchTriviaQuestions(difficulty: Difficulty, category: TriviaCategory, triviaType: TriviaType, quantity: Int) async -> (questions: [Question], error: String?) {
         await withCheckedContinuation { continuation in
-            networkManager.request(endpoint: .fetchTriviaQuestions(difficulty: difficulty, category: category, triviaType: triviaType, quantity: quantity), type: QuestionsDecodable.self) { result in
+            self.networkManager.request(endpoint: .fetchTriviaQuestions(difficulty: difficulty, category: category, triviaType: triviaType, quantity: quantity), type: QuestionsDecodable.self) { result in
                 switch result {
                 case let .success(response):
                     let questions = response.results
@@ -33,7 +33,7 @@ public class TriviaService {
 
     public func fetchCategories() async -> (categories: [TriviaCategory], error: String?) {
         await withCheckedContinuation { continuation in
-            networkManager.request(endpoint: .fetchCategories, type: TriviaCategories.self) { result in
+            self.networkManager.request(endpoint: .fetchCategories, type: TriviaCategories.self) { result in
                 switch result {
                 case let .success(response):
                     continuation.resume(returning: (response.trivia_categories, nil))

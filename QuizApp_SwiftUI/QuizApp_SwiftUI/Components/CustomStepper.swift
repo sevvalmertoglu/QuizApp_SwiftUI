@@ -15,8 +15,8 @@ struct CustomStepper: View {
     var body: some View {
         HStack {
             Button(action: {
-                if value > range.lowerBound {
-                    value -= step
+                if self.value > self.range.lowerBound {
+                    self.value -= self.step
                 }
             }) {
                 Image(systemName: "minus.circle.fill")
@@ -24,13 +24,13 @@ struct CustomStepper: View {
                     .foregroundColor(.gray)
             }
 
-            Text("\(value)")
+            Text("\(self.value)")
                 .font(.system(size: 22))
                 .padding(.horizontal)
 
             Button(action: {
-                if value < range.upperBound {
-                    value += step
+                if self.value < self.range.upperBound {
+                    self.value += self.step
                 }
             }) {
                 Image(systemName: "plus.circle.fill")

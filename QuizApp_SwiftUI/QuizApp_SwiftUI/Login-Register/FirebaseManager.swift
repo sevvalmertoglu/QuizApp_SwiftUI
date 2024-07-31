@@ -35,7 +35,7 @@ class FirebaseManager {
                 let userData = [
                     "name": name,
                     "nickname": nickname,
-                    "email": email,
+                    "email": email
                 ]
                 self.dbRef.child("users").child(user.uid).setValue(userData) { error, _ in
                     if let error = error {
@@ -54,7 +54,7 @@ class FirebaseManager {
     }
 
     func fetchUserData(userId: String, completion: @escaping (Result<User, Error>) -> Void) {
-        dbRef.child("users").child(userId).observeSingleEvent(of: .value) { snapshot in
+        self.dbRef.child("users").child(userId).observeSingleEvent(of: .value) { snapshot in
             guard let value = snapshot.value as? [String: Any],
                   let name = value["name"] as? String,
                   let nickname = value["nickname"] as? String,
@@ -78,14 +78,13 @@ class FirebaseManager {
     }
 
     func fetchLeaderboard(completion: @escaping (Result<[(nickname: String, totalScore: Int, userId: String)], Error>) -> Void) {
-        dbRef.child("leaderboard").queryOrdered(byChild: "totalScore").observeSingleEvent(of: .value) { snapshot in
+        self.dbRef.child("leaderboard").queryOrdered(byChild: "totalScore").observeSingleEvent(of: .value) { snapshot in
             var leaderboard: [(nickname: String, totalScore: Int, userId: String)] = []
             for child in snapshot.children.reversed() {
                 if let snapshot = child as? DataSnapshot,
                    let value = snapshot.value as? [String: Any],
                    let nickname = value["nickname"] as? String,
-                   let totalScore = value["totalScore"] as? Int
-                {
+                   let totalScore = value["totalScore"] as? Int {
                     let userId = snapshot.key
                     leaderboard.append((nickname: nickname, totalScore: totalScore, userId: userId))
                 }

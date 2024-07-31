@@ -16,39 +16,47 @@ struct RegisterView: View {
         VStack {
             AuthHeaderView(title1: "Get started,", title2: "Create your account")
             VStack(spacing: 40) {
-                CustomInputField(imageName: "envelope",
-                                 placeholderText: "Email",
-                                 textCase: .lowercase,
-                                 keyboardType: .emailAddress,
-                                 textContentType: .emailAddress,
-                                 text: $viewModel.email)
+                CustomInputField(
+                    imageName: "envelope",
+                    placeholderText: "Email",
+                    textCase: .lowercase,
+                    keyboardType: .emailAddress,
+                    textContentType: .emailAddress,
+                    text: self.$viewModel.email
+                )
 
-                CustomInputField(imageName: "person",
-                                 placeholderText: "Username",
-                                 textCase: .lowercase,
-                                 keyboardType: .default,
-                                 textContentType: .username,
-                                 text: $viewModel.nickname)
+                CustomInputField(
+                    imageName: "person",
+                    placeholderText: "Username",
+                    textCase: .lowercase,
+                    keyboardType: .default,
+                    textContentType: .username,
+                    text: self.$viewModel.nickname
+                )
 
-                CustomInputField(imageName: "person",
-                                 placeholderText: "Full name",
-                                 textContentType: .name,
-                                 textInputAutoCapital: .words,
-                                 text: $viewModel.name)
+                CustomInputField(
+                    imageName: "person",
+                    placeholderText: "Full name",
+                    textContentType: .name,
+                    textInputAutoCapital: .words,
+                    text: self.$viewModel.name
+                )
 
-                CustomInputField(imageName: "lock",
-                                 placeholderText: "Password",
-                                 textContentType: .newPassword,
-                                 isSecureField: true,
-                                 text: $viewModel.password)
+                CustomInputField(
+                    imageName: "lock",
+                    placeholderText: "Password",
+                    textContentType: .newPassword,
+                    isSecureField: true,
+                    text: self.$viewModel.password
+                )
             }
             .padding(32)
 
-            if viewModel.isLoading {
+            if self.viewModel.isLoading {
                 ProgressView()
             } else {
                 Button {
-                    viewModel.register()
+                    self.viewModel.register()
                 } label: {
                     Text("Sign Up")
                         .font(.headline)
@@ -80,17 +88,17 @@ struct RegisterView: View {
             .foregroundColor(Color.indigo)
         }
         .ignoresSafeArea()
-        .alert(isPresented: $viewModel.showAlert) {
-            Alert(title: Text("Warning"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
-        }.onChange(of: viewModel.isSignedIn) { _, isSignedIn in
+        .alert(isPresented: self.$viewModel.showAlert) {
+            Alert(title: Text("Warning"), message: Text(self.viewModel.alertMessage), dismissButton: .default(Text("OK")))
+        }.onChange(of: self.viewModel.isSignedIn) { _, isSignedIn in
             if isSignedIn {
-                navigateToMainView = true
+                self.navigateToMainView = true
             }
         }
         .background(NavigationLink(
             destination: MainView()
                 .navigationBarBackButtonHidden(true),
-            isActive: $navigateToMainView,
+            isActive: self.$navigateToMainView,
             label: {
                 EmptyView()
             }

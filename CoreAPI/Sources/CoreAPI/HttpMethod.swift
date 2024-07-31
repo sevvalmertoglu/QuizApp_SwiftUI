@@ -8,10 +8,10 @@ import Alamofire
 
 public typealias HTTPMethod = Alamofire.HTTPMethod
 
-public extension Endpoint {
-    var encoding: ParameterEncoding {
+extension Endpoint {
+    public var encoding: ParameterEncoding {
         switch method {
-        case .get: return URLEncoding.default //If the HTTP method is GET, the URLEncoding.default encoding method is used.
+        case .get: return URLEncoding.default // If the HTTP method is GET, the URLEncoding.default encoding method is used.
         default: return JSONEncoding.default
         }
     }

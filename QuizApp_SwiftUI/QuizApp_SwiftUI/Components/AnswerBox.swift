@@ -21,7 +21,7 @@ struct AnswerBox: View {
     @State private var audioPlayer: AVAudioPlayer?
 
     var selectionIcon: String {
-        let isCorrectAnswer = (clickedComplete && !possibility.incorrect)
+        let isCorrectAnswer = (clickedComplete && !self.possibility.incorrect)
         return isCorrectAnswer ? "checkmark" : "xmark"
     }
 
@@ -29,31 +29,31 @@ struct AnswerBox: View {
         ZStack {
             GeometryReader { geometry in
                 Button(action: {
-                    if possibility.incorrect == false {
-                        selectionCorrect = true
-                        playSound(named: "correct")
+                    if self.possibility.incorrect == false {
+                        self.selectionCorrect = true
+                        self.playSound(named: "correct")
                     } else {
-                        playSound(named: "incorrect")
+                        self.playSound(named: "incorrect")
                     }
                     withAnimation(.easeOut(duration: 0.1)) {
-                        clickedComplete = true
-                        wasSelected = true
+                        self.clickedComplete = true
+                        self.wasSelected = true
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        nextClicked() // To call the nextClicked function after 1 second
+                        self.nextClicked() // To call the nextClicked function after 1 second
                     }
                 }) {
                     HStack(spacing: 0) {
-                        Text(possibility.text)
+                        Text(self.possibility.text)
                             .font(.system(size: 24, weight: .medium))
                             .minimumScaleFactor(0.3)
                             .lineLimit(nil)
                             .foregroundColor(Color.black)
                             .padding(4)
-                            .padding([.leading], wasSelected ? 40 : 0)
+                            .padding([.leading], self.wasSelected ? 40 : 0)
                             .frame(maxWidth: .infinity)
                             .frame(height: 60)
-                        if wasSelected {
+                        if self.wasSelected {
                             Image(systemName: self.selectionIcon)
                                 .font(.system(size: 28, weight: .bold))
                                 .foregroundColor(Color.white)
@@ -66,7 +66,7 @@ struct AnswerBox: View {
                             .stroke(Color.indigo, lineWidth: 4)
                     }
                 } // button
-                .background(markCorrect())
+                .background(self.markCorrect())
                 .cornerRadius(12)
                 .frame(width: geometry.size.width) // Centers the ZStack
             }
@@ -75,11 +75,11 @@ struct AnswerBox: View {
     }
 
     func markCorrect() -> Color {
-        if clickedComplete == true && possibility.incorrect == false { // Correct; display correct unconditionally
+        if self.clickedComplete == true && self.possibility.incorrect == false { // Correct; display correct unconditionally
             return Color.green // Returns green color unconditionally after clicked complete was finished
         }
 
-        if wasSelected == true && possibility.incorrect == true { // Mark the incorrect button that was selected
+        if self.wasSelected == true && self.possibility.incorrect == true { // Mark the incorrect button that was selected
             return Color.red // Return red if selected was incorrect
         }
 
@@ -89,8 +89,8 @@ struct AnswerBox: View {
     func playSound(named soundName: String) {
         guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3") else { return }
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.play()
+            self.audioPlayer = try AVAudioPlayer(contentsOf: url)
+            self.audioPlayer?.play()
         } catch {
             print("Could not play sound file.")
         }

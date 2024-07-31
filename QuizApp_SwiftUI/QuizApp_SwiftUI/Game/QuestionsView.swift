@@ -31,40 +31,40 @@ struct QuestionsView: View {
             ZStack {
                 VStack {
                     HStack {
-                        if displayResults == false {
-                            Text("\(questions[currentQuestionIndex].category)")
+                        if self.displayResults == false {
+                            Text("\(self.questions[self.currentQuestionIndex].category)")
                         }
                         Spacer()
-                        Text("\(currentQuestionIndex + 1) / \(questions.count)")
+                        Text("\(self.currentQuestionIndex + 1) / \(self.questions.count)")
                     }
                     .font(.system(size: 20, weight: .bold))
                     .padding()
 
-                    if displayResults == false {
-                        triviaQuizView()
+                    if self.displayResults == false {
+                        self.triviaQuizView()
                     } else {
-                        resultsView()
+                        self.resultsView()
                     } // else
 
                     Spacer()
                 } // VStack
                 .onAppear {
-                    possibilities = viewModel.initPossiblities(question: questions[currentQuestionIndex])
-                    startTimer()
+                    self.possibilities = self.viewModel.initPossiblities(question: self.questions[self.currentQuestionIndex])
+                    self.startTimer()
                 }
             } // ZStack
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
             .toolbar(.hidden, for: .tabBar) // To hide TabView
 
-            ProgressBar(percentComplete: Double(currentQuestionIndex + 1) / Double(questions.count))
+            ProgressBar(percentComplete: Double(self.currentQuestionIndex + 1) / Double(self.questions.count))
         } // VStack
     }
 
     func startTimer() {
-        timeRemaining = 10
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+        self.timeRemaining = 10
+        self.timer?.invalidate()
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             if self.timeRemaining > 0 {
                 self.timeRemaining -= 1
             } else {
@@ -75,20 +75,20 @@ struct QuestionsView: View {
     }
 
     func nextClicked() {
-        if selectionCorrect {
-            viewModel.correctCount += 1
+        if self.selectionCorrect {
+            self.viewModel.correctCount += 1
         } else {
-            viewModel.incorrectCount += 1
+            self.viewModel.incorrectCount += 1
         }
-        if currentQuestionIndex + 1 >= questions.count {
-            displayResults = true
+        if self.currentQuestionIndex + 1 >= self.questions.count {
+            self.displayResults = true
             return
         }
-        currentQuestionIndex += 1
-        clicked = false
-        selectionCorrect = false
-        possibilities = viewModel.initPossiblities(question: questions[currentQuestionIndex])
-        startTimer()
+        self.currentQuestionIndex += 1
+        self.clicked = false
+        self.selectionCorrect = false
+        self.possibilities = self.viewModel.initPossiblities(question: self.questions[self.currentQuestionIndex])
+        self.startTimer()
     }
 
     @ViewBuilder
@@ -98,15 +98,15 @@ struct QuestionsView: View {
                 Image(systemName: "clock")
                     .font(.system(size: 22, weight: .bold))
                     .foregroundColor(.indigo)
-                Text("\(timeRemaining)")
+                Text("\(self.timeRemaining)")
                     .font(.system(size: 22, weight: .bold))
                     .foregroundColor(.indigo)
             }
             .padding([.top], 10)
 
-            QuestionView(question: questions[currentQuestionIndex].question, possibilities: possibilities, clicked: $clicked, selectionCorrect: $selectionCorrect, nextClicked: nextClicked)
-                .onChange(of: currentQuestionIndex) { _, _ in
-                    possibilities = viewModel.initPossiblities(question: questions[currentQuestionIndex])
+            QuestionView(question: self.questions[self.currentQuestionIndex].question, possibilities: self.possibilities, clicked: self.$clicked, selectionCorrect: self.$selectionCorrect, nextClicked: self.nextClicked)
+                .onChange(of: self.currentQuestionIndex) { _, _ in
+                    self.possibilities = self.viewModel.initPossiblities(question: self.questions[self.currentQuestionIndex])
                 }
         }
     }
@@ -127,12 +127,12 @@ struct QuestionsView: View {
 
             VStack(spacing: 30) {
                 VStack {
-                    if Double(viewModel.correctCount) / Double(questions.count) >= 0.8 {
-                        Text("Great work 🎉\n\nYou got \(viewModel.correctCount) out of \(questions.count) questions right!")
-                    } else if Double(viewModel.correctCount) / Double(questions.count) >= 0.5 {
-                        Text("Good job!\n\nYou got \(viewModel.correctCount) out of \(questions.count) questions right!")
+                    if Double(self.viewModel.correctCount) / Double(self.questions.count) >= 0.8 {
+                        Text("Great work 🎉\n\nYou got \(self.viewModel.correctCount) out of \(self.questions.count) questions right!")
+                    } else if Double(self.viewModel.correctCount) / Double(self.questions.count) >= 0.5 {
+                        Text("Good job!\n\nYou got \(self.viewModel.correctCount) out of \(self.questions.count) questions right!")
                     } else {
-                        Text("You got \(viewModel.correctCount) out of \(questions.count) questions right.\n\nPractice makes perfect!")
+                        Text("You got \(self.viewModel.correctCount) out of \(self.questions.count) questions right.\n\nPractice makes perfect!")
                     }
                 } // Message VStack
 

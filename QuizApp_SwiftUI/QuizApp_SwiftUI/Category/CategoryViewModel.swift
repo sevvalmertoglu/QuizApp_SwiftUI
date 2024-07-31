@@ -18,24 +18,24 @@ import Foundation
     private let triviaService: TriviaService
 
     init() {
-        selectedCategory = ""
-        categories = []
-        triviaService = TriviaService()
+        self.selectedCategory = ""
+        self.categories = []
+        self.triviaService = TriviaService()
     }
 
     public func setupCategories() async {
-        if !categories.isEmpty {
+        if !self.categories.isEmpty {
             return // Kategoriler zaten yüklendiyse tekrar yüklemeyin
         }
 
         let serviceResponse = await triviaService.fetchCategories()
 
         if let error = serviceResponse.error {
-            errorMessage = error
+            self.errorMessage = error
             return
         }
 
-        categories = serviceResponse.categories
+        self.categories = serviceResponse.categories
     }
 
     public func formatCategoryName(name: String) -> String {

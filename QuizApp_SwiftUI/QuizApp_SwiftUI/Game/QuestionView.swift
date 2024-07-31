@@ -23,15 +23,15 @@ struct QuestionView: View {
     var body: some View {
         ZStack {
             VStack {
-                Text(question)
+                Text(self.question)
                     .font(.system(size: 24, weight: .medium))
                     .padding()
 
                 // ForEach
                 VStack(spacing: 30) {
-                    ForEach(possibilities, id: \.uuid) { possibility in
-                        AnswerBox(possibility: possibility, selectedUUID: $selectedUUID, clickedComplete: $clicked, selectionCorrect: $selectionCorrect, nextClicked: nextClicked)
-                            .disabled(clicked)
+                    ForEach(self.possibilities, id: \.uuid) { possibility in
+                        AnswerBox(possibility: possibility, selectedUUID: self.$selectedUUID, clickedComplete: self.$clicked, selectionCorrect: self.$selectionCorrect, nextClicked: self.nextClicked)
+                            .disabled(self.clicked)
                     }
                 }
             } // VStack

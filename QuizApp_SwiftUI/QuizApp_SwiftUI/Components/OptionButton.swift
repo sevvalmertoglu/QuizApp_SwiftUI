@@ -15,17 +15,17 @@ struct OptionButton: View {
     @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
-        Button(action: action) {
-            Text(title)
+        Button(action: self.action) {
+            Text(self.title)
                 .font(.system(size: 22, weight: .regular))
-                .foregroundColor(isSelected == true
+                .foregroundColor(self.isSelected == true
                     ? Color.backgroundColor
                     : Color.indigo)
                 .padding([.leading, .trailing], 4)
                 .minimumScaleFactor(0.8) // Allows text to reduce in size, reduces to 24 * 0.5
                 .frame(maxWidth: 150)
                 .frame(height: 60)
-                .background(isSelected == true
+                .background(self.isSelected == true
                     ? Color.indigo
                     : Color.backgroundColor)
                 .cornerRadius(20)

@@ -3,7 +3,7 @@
 --enable isEmpty
 --disable andOperator
 --disable wrapMultilineStatementBraces
---exclude Pods 
+--exclude "QuizApp_SwiftUI/Pods"
 
 # format options
 --self insert

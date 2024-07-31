@@ -26,61 +26,61 @@ import SwiftUI
 
     init(triviaCategory: TriviaCategory) {
         self.triviaCategory = triviaCategory
-        selectedDifficulty = .any
-        selectedType = .both
-        numberOfQuestions = 10
+        self.selectedDifficulty = .any
+        self.selectedType = .both
+        self.numberOfQuestions = 10
     }
 
     // MARK: - - Methods
 
     public func updateDifficulty(selected: Difficulty) {
-        withAnimation(updateAnimation) {
+        withAnimation(self.updateAnimation) {
             self.selectedDifficulty = selected
         }
     }
 
     public func updateTriviaType(selected: TriviaType) {
-        withAnimation(updateAnimation) {
+        withAnimation(self.updateAnimation) {
             self.selectedType = selected
         }
     }
 
     public func updateQuantity(selected: Int) {
-        withAnimation(updateAnimation) {
+        withAnimation(self.updateAnimation) {
             self.numberOfQuestions = selected
         }
     }
 
     public func isDifficultyActive(_ difficulty: Difficulty) -> Bool {
-        return difficulty == selectedDifficulty
+        return difficulty == self.selectedDifficulty
     }
 
     public func isTriviaTypeActive(_ triviaType: TriviaType) -> Bool {
-        return triviaType == selectedType
+        return triviaType == self.selectedType
     }
 
     public func isQuantitySelected(_ number: Int) -> Bool {
-        return number == numberOfQuestions
+        return number == self.numberOfQuestions
     }
 
     public func fetchTriviaQuestions() async {
         let (questions, error) = await triviaService.fetchTriviaQuestions(
-            difficulty: selectedDifficulty,
-            category: triviaCategory,
-            triviaType: selectedType,
-            quantity: numberOfQuestions
+            difficulty: self.selectedDifficulty,
+            category: self.triviaCategory,
+            triviaType: self.selectedType,
+            quantity: self.numberOfQuestions
         )
         if let error = error {
             print("Error obtaining data.")
-            errorMessage = error
+            self.errorMessage = error
             return
         }
         if questions.isEmpty {
-            errorMessage = "There are not that many questions."
+            self.errorMessage = "There are not that many questions."
             return
         }
         print("Successfully obtained data.")
         self.questions = questions
-        successfulLoad = true
+        self.successfulLoad = true
     }
 }

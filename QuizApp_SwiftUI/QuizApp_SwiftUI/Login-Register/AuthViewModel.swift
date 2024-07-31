@@ -25,13 +25,13 @@ class AuthViewModel: ObservableObject {
     }
 
     func signIn() {
-        guard !email.isEmpty, !password.isEmpty else {
-            alertMessage = "No email or password found."
-            showAlert = true
+        guard !self.email.isEmpty, !self.password.isEmpty else {
+            self.alertMessage = "No email or password found."
+            self.showAlert = true
             return
         }
-        isLoading = true
-        FirebaseManager.shared.signIn(email: email, password: password) { [weak self] result in
+        self.isLoading = true
+        FirebaseManager.shared.signIn(email: self.email, password: self.password) { [weak self] result in
             DispatchQueue.main.async { // UI updates are done in the main thread
                 self?.isLoading = false
                 switch result {
@@ -47,8 +47,8 @@ class AuthViewModel: ObservableObject {
     }
 
     func register() {
-        isLoading = true
-        FirebaseManager.shared.register(email: email, password: password, name: name, nickname: nickname) { [weak self] result in
+        self.isLoading = true
+        FirebaseManager.shared.register(email: self.email, password: self.password, name: self.name, nickname: self.nickname) { [weak self] result in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 switch result {
@@ -66,11 +66,11 @@ class AuthViewModel: ObservableObject {
     func logOut() {
         do {
             try FirebaseManager.shared.signOut()
-            isSignedIn = false
-            appState.isUserLoggedIn = false
+            self.isSignedIn = false
+            self.appState.isUserLoggedIn = false
         } catch {
-            alertMessage = error.localizedDescription
-            showAlert = true
+            self.alertMessage = error.localizedDescription
+            self.showAlert = true
         }
     }
 }

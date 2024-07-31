@@ -9,9 +9,10 @@ import FirebaseCore
 import SwiftUI
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_: UIApplication,
-                     didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool
-    {
+    func application(
+        _: UIApplication,
+        didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil
+    ) -> Bool {
         FirebaseApp.configure()
         return true
     }
@@ -27,7 +28,7 @@ struct QuizApp_SwiftUIApp: App {
             let authViewModel = AuthViewModel(appState: appState)
             ContentView()
                 .environmentObject(authViewModel)
-                .environmentObject(appState)
+                .environmentObject(self.appState)
         }
     }
 }

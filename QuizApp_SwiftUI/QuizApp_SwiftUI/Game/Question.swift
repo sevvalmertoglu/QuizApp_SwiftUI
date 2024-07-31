@@ -29,38 +29,38 @@ public class Question: Decodable {
     public var incorrect_answers: [String]
 
     public init() {
-        category = "Geography"
-        type = "multiple"
-        difficulty = "medium"
-        question = "Which country inside the United Kingdom does NOT appear on its flag, the Union Jack?"
-        correct_answer = "Wales"
-        incorrect_answers = ["Scotland", "Ireland", "Isle of Wight"]
+        self.category = "Geography"
+        self.type = "multiple"
+        self.difficulty = "medium"
+        self.question = "Which country inside the United Kingdom does NOT appear on its flag, the Union Jack?"
+        self.correct_answer = "Wales"
+        self.incorrect_answers = ["Scotland", "Ireland", "Isle of Wight"]
     }
 
     public func decodeBase64Strings() {
         if let decodedCategory = decodeBase64(string: category) {
-            category = decodedCategory
+            self.category = decodedCategory
         }
 
         if let decodedType = decodeBase64(string: type) {
-            type = decodedType
+            self.type = decodedType
         }
 
         if let decodedDifficulty = decodeBase64(string: difficulty) {
-            difficulty = decodedDifficulty
+            self.difficulty = decodedDifficulty
         }
 
         if let decodedQuestion = decodeBase64(string: question) {
-            question = decodedQuestion
+            self.question = decodedQuestion
         }
 
         if let decodedCorrectAnswer = decodeBase64(string: correct_answer) {
-            correct_answer = decodedCorrectAnswer
+            self.correct_answer = decodedCorrectAnswer
         }
 
-        for i in 0 ..< incorrect_answers.count {
+        for i in 0..<self.incorrect_answers.count {
             if let decodedIncorrectAnswer = decodeBase64(string: incorrect_answers[i]) {
-                incorrect_answers[i] = decodedIncorrectAnswer
+                self.incorrect_answers[i] = decodedIncorrectAnswer
             }
         }
     }

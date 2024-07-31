@@ -18,12 +18,12 @@ struct ProfileView: View {
                 .font(.largeTitle)
                 .padding()
 
-            if viewModel.isLoading {
+            if self.viewModel.isLoading {
                 ProgressView()
             } else {
                 Button(action: {
-                    viewModel.logOut()
-                    navigateToSplashView = true
+                    self.viewModel.logOut()
+                    self.navigateToSplashView = true
                 }) {
                     Text("Log Out")
                         .foregroundColor(.white)
@@ -32,10 +32,11 @@ struct ProfileView: View {
                         .cornerRadius(8)
                 }
                 .background(
-                    NavigationLink(destination: SplashView()
-                        .navigationBarBackButtonHidden(true),
-                        isActive: $navigateToSplashView)
-                    {
+                    NavigationLink(
+                        destination: SplashView()
+                            .navigationBarBackButtonHidden(true),
+                        isActive: self.$navigateToSplashView
+                    ) {
                         EmptyView()
                     }
                     .hidden()

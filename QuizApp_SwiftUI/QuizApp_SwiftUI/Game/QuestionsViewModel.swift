@@ -14,9 +14,9 @@ class QuestionsViewModel: ObservableObject {
 
     public func initPossiblities(question: Question) -> [Answer] {
         if question.type == TriviaType.multipleChoice.rawValue {
-            return initMultipleChoice(question: question)
+            return self.initMultipleChoice(question: question)
         }
-        return initTrueFalse(question: question)
+        return self.initTrueFalse(question: question)
     }
 
     private func initMultipleChoice(question: Question) -> [Answer] {

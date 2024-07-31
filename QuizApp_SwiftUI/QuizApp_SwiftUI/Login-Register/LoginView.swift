@@ -16,7 +16,7 @@ struct LoginView: View {
             NavigationLink(
                 destination: MainView()
                     .navigationBarBackButtonHidden(true),
-                isActive: $navigateToMainView,
+                isActive: self.$navigateToMainView,
                 label: {
                     EmptyView()
                 }
@@ -24,20 +24,24 @@ struct LoginView: View {
             .hidden()
             AuthHeaderView(title1: "Hello,", title2: "Welcome back")
             VStack(spacing: 40) {
-                CustomInputField(imageName: "envelope",
-                                 placeholderText: "Email",
-                                 textCase: .lowercase,
-                                 keyboardType: .emailAddress,
-                                 textContentType: .emailAddress,
-                                 text: $viewModel.email)
+                CustomInputField(
+                    imageName: "envelope",
+                    placeholderText: "Email",
+                    textCase: .lowercase,
+                    keyboardType: .emailAddress,
+                    textContentType: .emailAddress,
+                    text: self.$viewModel.email
+                )
 
-                CustomInputField(imageName: "lock",
-                                 placeholderText: "Password",
-                                 textCase: .lowercase,
-                                 keyboardType: .default,
-                                 textContentType: .password,
-                                 isSecureField: true,
-                                 text: $viewModel.password)
+                CustomInputField(
+                    imageName: "lock",
+                    placeholderText: "Password",
+                    textCase: .lowercase,
+                    keyboardType: .default,
+                    textContentType: .password,
+                    isSecureField: true,
+                    text: self.$viewModel.password
+                )
             }
             .padding(.horizontal, 32)
             .padding(.top, 44)
@@ -56,11 +60,11 @@ struct LoginView: View {
                         .padding(.trailing, 24)
                 }
             }
-            if viewModel.isLoading {
+            if self.viewModel.isLoading {
                 ProgressView()
             } else {
                 Button {
-                    viewModel.signIn()
+                    self.viewModel.signIn()
                 } label: {
                     Text("Sign In")
                         .font(.headline)
@@ -92,12 +96,12 @@ struct LoginView: View {
             .foregroundColor(Color.indigo)
         }
         .ignoresSafeArea()
-        .alert(isPresented: $viewModel.showAlert) {
-            Alert(title: Text("Error"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+        .alert(isPresented: self.$viewModel.showAlert) {
+            Alert(title: Text("Error"), message: Text(self.viewModel.alertMessage), dismissButton: .default(Text("OK")))
         }
-        .onChange(of: viewModel.isSignedIn) { _, isSignedIn in
+        .onChange(of: self.viewModel.isSignedIn) { _, isSignedIn in
             if isSignedIn {
-                navigateToMainView = true
+                self.navigateToMainView = true
             }
         }
     }

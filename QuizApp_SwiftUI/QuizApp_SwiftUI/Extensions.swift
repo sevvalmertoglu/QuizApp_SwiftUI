@@ -6,12 +6,12 @@
 //
 import SwiftUI
 
-public extension Color {
-    static let backgroundColor = Color("BackgroundColor")
-    static let contrastColor = Color("ContrastColor")
+extension Color {
+    public static let backgroundColor = Color("BackgroundColor")
+    public static let contrastColor = Color("ContrastColor")
 
     // Custom initializer than accepts a hexadecimal
-    internal init(hex: Int, opacity: Double = 1.0) {
+    init(hex: Int, opacity: Double = 1.0) {
         // Note: 0xff = 255
         let red = Double((hex & 0xFF0000) >> 16) / 255.0
         let green = Double((hex & 0xFF00) >> 8) / 255.0

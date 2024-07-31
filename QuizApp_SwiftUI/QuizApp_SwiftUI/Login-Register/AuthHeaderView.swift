@@ -15,11 +15,11 @@ struct AuthHeaderView: View {
         VStack(alignment: .center) {
             HStack { Spacer() }
 
-            Text(title1)
+            Text(self.title1)
                 .font(.largeTitle)
                 .fontWeight(.semibold)
 
-            Text(title2)
+            Text(self.title2)
                 .font(.largeTitle)
                 .fontWeight(.semibold)
         }

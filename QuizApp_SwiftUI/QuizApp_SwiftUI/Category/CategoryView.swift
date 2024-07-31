@@ -24,11 +24,11 @@ struct CategoryView: View {
                         Text("Please select a category")
                             .font(.system(size: 24, weight: .bold))
                         VStack(spacing: 15) {
-                            ForEach(viewModel.categories, id: \.id) { category in
+                            ForEach(self.viewModel.categories, id: \.id) { category in
                                 NavigationLink(destination: GameSelectionView(triviaCategory: category)) {
                                     GeometryReader { geometry in
                                         HStack {
-                                            Text(viewModel.formatCategoryName(name: category.name))
+                                            Text(self.viewModel.formatCategoryName(name: category.name))
                                                 .font(.system(size: 22, weight: .bold))
                                                 .foregroundColor(Color.backgroundColor)
                                                 .padding()
@@ -45,25 +45,25 @@ struct CategoryView: View {
                             } // ForEach
                         } // VStack
                     } // ScrollView
-                }// ZStack
+                } // ZStack
                 .toolbar {
                     ToolbarItem {
-                        Button(action: { lightMode.toggle() }) {
-                            Image(systemName: lightMode == true ? "sun.max" : "sun.max.fill")
+                        Button(action: { self.lightMode.toggle() }) {
+                            Image(systemName: self.lightMode == true ? "sun.max" : "moon.fill")
                                 .font(.system(size: 20, weight: .medium))
-                                .foregroundColor(lightMode == true ? Color.black : Color.white)
+                                .foregroundColor(self.lightMode == true ? Color.black : Color.white)
                         }
                     }
                 }
                 .onAppear {
                     Task {
-                        await viewModel.setupCategories()
+                        await self.viewModel.setupCategories()
                     }
                 }
             } // NavigationView
             .navigationViewStyle(.stack) // Prevents constraint error
         } // Root ZStack
-        .preferredColorScheme(lightMode == true ? .light : .dark)
+        .preferredColorScheme(self.lightMode == true ? .light : .dark)
     }
 }
 

@@ -15,7 +15,7 @@ struct GameSelectionView: View {
 
     let column = [
         GridItem(.flexible(maximum: 150)),
-        GridItem(.flexible(maximum: 150)),
+        GridItem(.flexible(maximum: 150))
     ]
 
     init(triviaCategory: TriviaCategory) {
@@ -32,37 +32,37 @@ struct GameSelectionView: View {
                     Text("Difficulty")
                         .font(.system(size: 26, weight: .medium))
 
-                    LazyVGrid(columns: column, spacing: 20) {
+                    LazyVGrid(columns: self.column, spacing: 20) {
                         OptionButton(
                             title: "Any",
                             action: {
-                                viewModel.updateDifficulty(selected: .any)
+                                self.viewModel.updateDifficulty(selected: .any)
                             },
-                            isSelected: viewModel.isDifficultyActive(.any)
+                            isSelected: self.viewModel.isDifficultyActive(.any)
                         )
 
                         OptionButton(
                             title: "Easy",
                             action: {
-                                viewModel.updateDifficulty(selected: .easy)
+                                self.viewModel.updateDifficulty(selected: .easy)
                             },
-                            isSelected: viewModel.isDifficultyActive(.easy)
+                            isSelected: self.viewModel.isDifficultyActive(.easy)
                         )
 
                         OptionButton(
                             title: "Medium",
                             action: {
-                                viewModel.updateDifficulty(selected: .medium)
+                                self.viewModel.updateDifficulty(selected: .medium)
                             },
-                            isSelected: viewModel.isDifficultyActive(.medium)
+                            isSelected: self.viewModel.isDifficultyActive(.medium)
                         )
 
                         OptionButton(
                             title: "Hard",
                             action: {
-                                viewModel.updateDifficulty(selected: .hard)
+                                self.viewModel.updateDifficulty(selected: .hard)
                             },
-                            isSelected: viewModel.isDifficultyActive(.hard)
+                            isSelected: self.viewModel.isDifficultyActive(.hard)
                         )
                     }
                 }
@@ -71,30 +71,30 @@ struct GameSelectionView: View {
                     Text("Question Type")
                         .font(.system(size: 26, weight: .medium))
 
-                    LazyVGrid(columns: column, spacing: 20) {
+                    LazyVGrid(columns: self.column, spacing: 20) {
                         OptionButton(
                             title: "Both",
                             action: {
-                                viewModel.updateTriviaType(selected: .both)
+                                self.viewModel.updateTriviaType(selected: .both)
                             },
-                            isSelected: viewModel.isTriviaTypeActive(.both)
+                            isSelected: self.viewModel.isTriviaTypeActive(.both)
                         )
 
                         OptionButton(
                             title: "Multiple Choice",
                             action: {
-                                viewModel.updateTriviaType(selected: .multipleChoice)
+                                self.viewModel.updateTriviaType(selected: .multipleChoice)
                             },
-                            isSelected: viewModel.isTriviaTypeActive(.multipleChoice)
+                            isSelected: self.viewModel.isTriviaTypeActive(.multipleChoice)
                         )
                     }
 
                     OptionButton(
                         title: "True / False",
                         action: {
-                            viewModel.updateTriviaType(selected: .trueFalse)
+                            self.viewModel.updateTriviaType(selected: .trueFalse)
                         },
-                        isSelected: viewModel.isTriviaTypeActive(.trueFalse)
+                        isSelected: self.viewModel.isTriviaTypeActive(.trueFalse)
                     )
                 }
 
@@ -102,11 +102,11 @@ struct GameSelectionView: View {
                     Text("Number of questions")
                         .font(.system(size: 26, weight: .medium))
 
-                    CustomStepper(value: $viewModel.numberOfQuestions, range: 1 ... 25)
+                    CustomStepper(value: self.$viewModel.numberOfQuestions, range: 1...25)
                         .padding()
                 }
 
-                NavigationLink(destination: QuestionsView(questions: $viewModel.questions), isActive: $viewModel.successfulLoad) {
+                NavigationLink(destination: QuestionsView(questions: self.$viewModel.questions), isActive: self.$viewModel.successfulLoad) {
                     Text("Start!")
                         .font(.system(size: 26, weight: .bold))
                         .foregroundColor(Color.backgroundColor)
@@ -116,13 +116,13 @@ struct GameSelectionView: View {
                         .shadow(radius: 2)
                         .onTapGesture {
                             Task {
-                                isLoading.toggle()
-                                await viewModel.fetchTriviaQuestions()
-                                isLoading.toggle()
+                                self.isLoading.toggle()
+                                await self.viewModel.fetchTriviaQuestions()
+                                self.isLoading.toggle()
                             }
                         }
                         .overlay(alignment: .trailing) {
-                            if isLoading {
+                            if self.isLoading {
                                 ProgressView()
                                     .progressViewStyle(.circular)
                                     .tint(Color.backgroundColor)
@@ -133,15 +133,15 @@ struct GameSelectionView: View {
                         .padding([.top])
                 }
 
-                if viewModel.errorMessage != "" {
-                    Text(viewModel.errorMessage)
+                if self.viewModel.errorMessage != "" {
+                    Text(self.viewModel.errorMessage)
                         .font(.system(size: 16, weight: .medium))
                         .foregroundColor(Color.red)
                 }
 
                 Spacer()
             }
-            .navigationTitle(triviaCategory.name)
+            .navigationTitle(self.triviaCategory.name)
             .navigationBarTitleDisplayMode(.inline)
         }
     }
