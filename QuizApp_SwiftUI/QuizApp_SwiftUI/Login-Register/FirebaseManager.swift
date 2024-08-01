@@ -85,6 +85,13 @@ class FirebaseManager {
         }
     }
 
+    func deleteUserData(userId: String, completion: @escaping (Error?) -> Void) {
+        let userRef = self.dbRef.child("users").child(userId)
+        userRef.removeValue { error, _ in
+            completion(error)
+        }
+    }
+
     func fetchUserData(userId: String, completion: @escaping (Result<User, Error>) -> Void) {
         self.dbRef.child("users").child(userId).observeSingleEvent(of: .value) { snapshot in
             guard let value = snapshot.value as? [String: Any],

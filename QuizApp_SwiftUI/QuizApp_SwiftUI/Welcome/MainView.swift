@@ -9,6 +9,8 @@ import CoreAPI
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject var appState: AppState
+
     var body: some View {
         TabView {
             CategoryView()
@@ -16,7 +18,7 @@ struct MainView: View {
                     Label("Game", systemImage: "gamecontroller.fill")
                 }
 
-            ProfileView()
+            ProfileView(appState: self.appState)
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle.fill")
                 }
