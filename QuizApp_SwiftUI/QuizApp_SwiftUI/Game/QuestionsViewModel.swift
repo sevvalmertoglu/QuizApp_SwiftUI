@@ -41,4 +41,15 @@ class QuestionsViewModel: ObservableObject {
         }
         return possibilities
     }
+
+    func saveScoreToFirebase() {
+        FirebaseManager.shared.saveScore(correctCount: self.correctCount) { result in
+            switch result {
+            case .success:
+                print("Score saved successfully!")
+            case let .failure(error):
+                print("Failed to save score: \(error.localizedDescription)")
+            }
+        }
+    }
 }

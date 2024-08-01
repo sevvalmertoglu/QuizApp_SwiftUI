@@ -81,7 +81,10 @@ struct QuestionsView: View {
             self.viewModel.incorrectCount += 1
         }
         if self.currentQuestionIndex + 1 >= self.questions.count {
-            self.displayResults = true
+            if !self.displayResults {
+                self.displayResults = true
+                self.viewModel.saveScoreToFirebase() // Save score to Firebase
+            }
             return
         }
         self.currentQuestionIndex += 1

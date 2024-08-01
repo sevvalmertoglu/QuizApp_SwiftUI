@@ -53,6 +53,38 @@ class FirebaseManager {
         try Auth.auth().signOut()
     }
 
+    func saveScore(correctCount: Int, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User not logged in."])))
+            return
+        }
+
+        let score = correctCount * 100
+        let scoreData = Score(date: DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .short), score: score)
+
+        self.dbRef.child("users").child(userId).observeSingleEvent(of: .value) { snapshot in
+            if var userData = snapshot.value as? [String: Any] {
+                var scores = userData["scores"] as? [[String: Any]] ?? []
+                let newScore = [
+                    "date": scoreData.date,
+                    "score": scoreData.score
+                ] as [String: Any]
+                scores.append(newScore)
+                userData["scores"] = scores
+
+                self.dbRef.child("users").child(userId).setValue(userData) { error, _ in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(()))
+                    }
+                }
+            } else {
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch user data."])))
+            }
+        }
+    }
+
     func fetchUserData(userId: String, completion: @escaping (Result<User, Error>) -> Void) {
         self.dbRef.child("users").child(userId).observeSingleEvent(of: .value) { snapshot in
             guard let value = snapshot.value as? [String: Any],
@@ -74,24 +106,6 @@ class FirebaseManager {
             }
             let user = User(name: name, nickname: nickname, email: email, Scores: scores)
             completion(.success(user))
-        }
-    }
-
-    func fetchLeaderboard(completion: @escaping (Result<[(nickname: String, totalScore: Int, userId: String)], Error>) -> Void) {
-        self.dbRef.child("leaderboard").queryOrdered(byChild: "totalScore").observeSingleEvent(of: .value) { snapshot in
-            var leaderboard: [(nickname: String, totalScore: Int, userId: String)] = []
-            for child in snapshot.children.reversed() {
-                if let snapshot = child as? DataSnapshot,
-                   let value = snapshot.value as? [String: Any],
-                   let nickname = value["nickname"] as? String,
-                   let totalScore = value["totalScore"] as? Int {
-                    let userId = snapshot.key
-                    leaderboard.append((nickname: nickname, totalScore: totalScore, userId: userId))
-                }
-            }
-            completion(.success(leaderboard))
-        } withCancel: { error in
-            completion(.failure(error))
         }
     }
 }
