@@ -14,7 +14,8 @@ struct User {
     var Scores: [Score]
 }
 
-struct Score: Codable {
+struct Score: Codable, Identifiable {
+    var id = UUID()
     let date: String
     let score: Int
 }

@@ -115,4 +115,25 @@ class FirebaseManager {
             completion(.success(user))
         }
     }
+
+    func fetchScores(forUserId userId: String, completion: @escaping (Result<[Score], Error>) -> Void) {
+        self.dbRef.child("users").child(userId).child("scores").observeSingleEvent(of: .value) { snapshot in
+            var fetchedScores: [Score] = []
+
+            if let scoresData = snapshot.value as? [[String: Any]] {
+                fetchedScores = scoresData.compactMap { dict in
+                    guard let date = dict["date"] as? String,
+                          let score = dict["score"] as? Int else {
+                        return nil
+                    }
+                    return Score(date: date, score: score)
+                }
+                completion(.success(fetchedScores))
+            } else {
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No scores found."])))
+            }
+        } withCancel: { error in
+            completion(.failure(error))
+        }
+    }
 }

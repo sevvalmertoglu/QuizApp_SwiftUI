@@ -26,6 +26,8 @@
 		A92499BF2C53DF2B0044A0DF /* QuestionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92499BE2C53DF2B0044A0DF /* QuestionsViewModel.swift */; };
 		A92499C12C53DF530044A0DF /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92499C02C53DF530044A0DF /* ProgressBar.swift */; };
 		A93D941C2C5B7D7D00D47492 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941B2C5B7D7D00D47492 /* ProfileViewModel.swift */; };
+		A93D941E2C5BD23700D47492 /* PreviousScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941D2C5BD23700D47492 /* PreviousScoresView.swift */; };
+		A93D94202C5BD2FE00D47492 /* PreviousScoresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941F2C5BD2FE00D47492 /* PreviousScoresViewModel.swift */; };
 		A9505C882C4A95020075640F /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9505C872C4A95020075640F /* AuthHeaderView.swift */; };
 		A9505C8E2C4A9D1B0075640F /* GameSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9505C8D2C4A9D1B0075640F /* GameSelectionView.swift */; };
 		A9505C902C4A9E7F0075640F /* GameSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9505C8F2C4A9E7E0075640F /* GameSelectionViewModel.swift */; };
@@ -67,6 +69,8 @@
 		A92499BE2C53DF2B0044A0DF /* QuestionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewModel.swift; sourceTree = "<group>"; };
 		A92499C02C53DF530044A0DF /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		A93D941B2C5B7D7D00D47492 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		A93D941D2C5BD23700D47492 /* PreviousScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousScoresView.swift; sourceTree = "<group>"; };
+		A93D941F2C5BD2FE00D47492 /* PreviousScoresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousScoresViewModel.swift; sourceTree = "<group>"; };
 		A9505C872C4A95020075640F /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 		A9505C8D2C4A9D1B0075640F /* GameSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionView.swift; sourceTree = "<group>"; };
 		A9505C8F2C4A9E7E0075640F /* GameSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionViewModel.swift; sourceTree = "<group>"; };
@@ -239,6 +243,8 @@
 			children = (
 				A9C078B12C4FEE7700DD83B2 /* ProfileView.swift */,
 				A93D941B2C5B7D7D00D47492 /* ProfileViewModel.swift */,
+				A93D941D2C5BD23700D47492 /* PreviousScoresView.swift */,
+				A93D941F2C5BD2FE00D47492 /* PreviousScoresViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -379,6 +385,7 @@
 				A9BEDC742C577E4C00210FD8 /* Answer.swift in Sources */,
 				A9AB30CC2C46C4F100604B97 /* ContentView.swift in Sources */,
 				A9BEDC782C577FE100210FD8 /* TriviaService.swift in Sources */,
+				A93D94202C5BD2FE00D47492 /* PreviousScoresViewModel.swift in Sources */,
 				A92306CB2C4A753A0049A537 /* LoginView.swift in Sources */,
 				A92306C92C4A74F60049A537 /* CategoryView.swift in Sources */,
 				A9BEDC762C577E5000210FD8 /* TriviaCategory.swift in Sources */,
@@ -399,6 +406,7 @@
 				A9505C882C4A95020075640F /* AuthHeaderView.swift in Sources */,
 				A92499BF2C53DF2B0044A0DF /* QuestionsViewModel.swift in Sources */,
 				A92499BB2C53DDD20044A0DF /* AnswerBox.swift in Sources */,
+				A93D941E2C5BD23700D47492 /* PreviousScoresView.swift in Sources */,
 				A92306D32C4A89540049A537 /* AuthViewModel.swift in Sources */,
 				A9C078B22C4FEE7700DD83B2 /* ProfileView.swift in Sources */,
 				A92499B92C53DB9A0044A0DF /* QuestionView.swift in Sources */,
