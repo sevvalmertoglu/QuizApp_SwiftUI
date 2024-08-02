@@ -63,14 +63,21 @@ class AuthViewModel: ObservableObject {
         }
     }
 
-    func logOut() {
-        do {
-            try FirebaseManager.shared.signOut()
-            self.isSignedIn = false
-            self.appState.isUserLoggedIn = false
-        } catch {
-            self.alertMessage = error.localizedDescription
+    func resetPassword() {
+        guard !self.email.isEmpty else {
+            self.alertMessage = "Please enter your email address."
             self.showAlert = true
+            return
+        }
+
+        Auth.auth().sendPasswordReset(withEmail: self.email) { [weak self] error in
+            if let error = error {
+                self?.alertMessage = error.localizedDescription
+                self?.showAlert = true
+            } else {
+                self?.alertMessage = "Password reset email sent."
+                self?.showAlert = true
+            }
         }
     }
 }

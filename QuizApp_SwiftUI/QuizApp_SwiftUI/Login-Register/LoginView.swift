@@ -22,6 +22,7 @@ struct LoginView: View {
                 }
             )
             .hidden()
+
             AuthHeaderView(title1: "Hello,", title2: "Welcome back")
             VStack(spacing: 40) {
                 CustomInputField(
@@ -49,9 +50,9 @@ struct LoginView: View {
             HStack {
                 Spacer()
 
-                NavigationLink {
-                    Text("Reset View")
-                } label: {
+                Button(action: {
+                    self.viewModel.resetPassword()
+                }) {
                     Text("Forgot Password?")
                         .font(.caption)
                         .fontWeight(.semibold)
