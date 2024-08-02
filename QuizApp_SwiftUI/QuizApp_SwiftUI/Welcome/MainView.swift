@@ -22,7 +22,7 @@ struct MainView: View {
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle.fill")
                 }
-        }
+        }.accentColor(.indigo)
     }
 }
 
