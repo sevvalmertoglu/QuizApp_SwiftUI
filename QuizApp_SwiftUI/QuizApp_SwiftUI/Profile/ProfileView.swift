@@ -108,31 +108,6 @@ struct ProfileView: View {
                         .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
 
                         Button(action: {
-                            self.viewModel.showConfirmationDialog = true
-                        }) {
-                            Text("Delete Account")
-                                .padding()
-                                .font(.system(size: 15))
-                                .frame(maxWidth: .infinity)
-                                .background(Color.indigo)
-                                .foregroundColor(.white)
-                                .cornerRadius(20)
-                        }
-                        .padding(.horizontal, 20)
-                        .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
-                        .alert(isPresented: self.$viewModel.showConfirmationDialog) {
-                            Alert(
-                                title: Text("Confirm Delete"),
-                                message: Text("Are you sure you want to delete your account? This action cannot be undone."),
-                                primaryButton: .destructive(Text("Yes")) {
-                                    self.navigateToSplashView = true
-                                    self.viewModel.deleteUserAccount()
-                                },
-                                secondaryButton: .cancel()
-                            )
-                        }
-
-                        Button(action: {
                             self.viewModel.resetPassword()
                         }) {
                             Text("Reset Password")
@@ -145,6 +120,31 @@ struct ProfileView: View {
                         }
                         .padding(.horizontal, 20)
                         .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
+
+                        Button(action: {
+                            self.viewModel.showConfirmationDialog = true
+                        }) {
+                            Text("Delete Account")
+                                .padding()
+                                .font(.system(size: 15))
+                                .frame(maxWidth: .infinity, maxHeight: 30)
+                                .background(Color.red)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
+                        .padding(.horizontal, 50)
+                        .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
+                        .alert(isPresented: self.$viewModel.showConfirmationDialog) {
+                            Alert(
+                                title: Text("Confirm Delete"),
+                                message: Text("Are you sure you want to delete your account? This action cannot be undone."),
+                                primaryButton: .destructive(Text("Yes")) {
+                                    self.navigateToSplashView = true
+                                    self.viewModel.deleteUserAccount()
+                                },
+                                secondaryButton: .cancel()
+                            )
+                        }
                     }.padding(.bottom, -90)
 
                     Spacer()
