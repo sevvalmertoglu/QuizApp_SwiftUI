@@ -15,13 +15,4 @@ class AppState: ObservableObject {
     init() {
         self.isUserLoggedIn = Auth.auth().currentUser != nil
     }
-
-    func signOut() {
-        do {
-            try Auth.auth().signOut()
-            self.isUserLoggedIn = false
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-        }
-    }
 }
