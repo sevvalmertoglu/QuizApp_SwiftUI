@@ -46,6 +46,7 @@ struct SplashView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding(.top, 300)
             }
+            .toolbar(.hidden, for: .tabBar)
         }
     }
 }
