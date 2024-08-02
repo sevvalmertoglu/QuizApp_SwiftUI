@@ -25,7 +25,7 @@ import Foundation
 
     public func setupCategories() async {
         if !self.categories.isEmpty {
-            return // Kategoriler zaten yüklendiyse tekrar yüklemeyin
+            return
         }
 
         let serviceResponse = await triviaService.fetchCategories()

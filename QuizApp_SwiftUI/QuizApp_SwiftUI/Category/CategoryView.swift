@@ -62,7 +62,7 @@ struct CategoryView: View {
                 }
             } // NavigationView
             .navigationViewStyle(.stack) // Prevents constraint error
-        } // Root ZStack
+        } // ZStack
         .preferredColorScheme(self.lightMode == true ? .light : .dark)
     }
 }

@@ -9,7 +9,6 @@ import CoreAPI
 import SwiftUI
 
 struct AnswerBox: View {
-    // Parameters
     let possibility: Answer
     @Binding var selectedUUID: UUID // Relays to QuestionView of selection is incorrect / correct
     @Binding var clickedComplete: Bool

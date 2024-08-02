@@ -12,10 +12,8 @@ import SwiftUI
 struct QuestionsView: View {
     @StateObject private var viewModel = QuestionsViewModel()
 
-    // Parameters
     @Binding var questions: [Question]
 
-    // Properties
     @State var currentQuestionIndex: Int = 0
     @State var possibilities: [Answer] = []
     @State var clicked: Bool = false // State variable that determines if an option was clicked
@@ -44,7 +42,7 @@ struct QuestionsView: View {
                         self.triviaQuizView()
                     } else {
                         self.resultsView()
-                    } // else
+                    }
 
                     Spacer()
                 } // VStack
@@ -62,6 +60,7 @@ struct QuestionsView: View {
     }
 
     func startTimer() {
+        guard !self.displayResults else { return }
         self.timeRemaining = 10
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in

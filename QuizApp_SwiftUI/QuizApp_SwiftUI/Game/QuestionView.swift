@@ -10,14 +10,12 @@ import SwiftUI
 
 // Displays a singular question and relays back to QuestionsView once selected
 struct QuestionView: View {
-    // Required params:
     let question: String
     let possibilities: [Answer]
     @Binding var clicked: Bool
     @Binding var selectionCorrect: Bool
     var nextClicked: () -> Void
 
-    // Properties
     @State private var selectedUUID = UUID()
 
     var body: some View {

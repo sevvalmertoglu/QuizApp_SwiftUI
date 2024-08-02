@@ -14,8 +14,7 @@ struct ProgressBar: View {
             GeometryReader { geometry in
                 HStack(spacing: 0) {
                     GeometryReader { innerGeometry in
-                        RoundedRectangle(cornerRadius: 25) // This frame will be updated
-                            .fill(Color.indigo)
+                        RoundedRectangle(cornerRadius: 25).fill(Color.indigo)
                             .frame(width: innerGeometry.size.width * self.percentComplete)
                         RoundedRectangle(cornerRadius: 25)
                             .fill(Color.clear)

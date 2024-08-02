@@ -22,16 +22,12 @@ import SwiftUI
 
     private let updateAnimation = Animation.easeOut(duration: 0.25)
 
-    // MARK: - - Constructors
-
     init(triviaCategory: TriviaCategory) {
         self.triviaCategory = triviaCategory
         self.selectedDifficulty = .any
         self.selectedType = .both
         self.numberOfQuestions = 10
     }
-
-    // MARK: - - Methods
 
     public func updateDifficulty(selected: Difficulty) {
         withAnimation(self.updateAnimation) {
