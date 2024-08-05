@@ -10,6 +10,8 @@ import SwiftUI
 
 // View that controls which question to be displayed and redirects to result screen
 struct QuestionsView: View {
+    @State private var quizManager: QuizManager
+    @State private var quizTimer = TimerManager()
     @StateObject private var viewModel = QuestionsViewModel()
 
     @Binding var questions: [Question]
@@ -23,6 +25,12 @@ struct QuestionsView: View {
     @State var timer: Timer? = nil
 
     @Environment(\.dismiss) var dismiss
+
+    init(questions: Binding<[Question]>) {
+        self._questions = questions
+        self._viewModel = StateObject(wrappedValue: QuestionsViewModel())
+        self._quizManager = State(initialValue: QuizManager(viewModel: self._viewModel.wrappedValue, questions: questions.wrappedValue))
+    }
 
     var body: some View {
         VStack {
@@ -48,7 +56,7 @@ struct QuestionsView: View {
                 } // VStack
                 .onAppear {
                     self.possibilities = self.viewModel.initPossiblities(question: self.questions[self.currentQuestionIndex])
-                    self.startTimer()
+                    self.startQuizTimer()
                 }
             } // ZStack
             .navigationBarHidden(true)
@@ -59,57 +67,55 @@ struct QuestionsView: View {
         } // VStack
     }
 
-    func startTimer() {
-        guard !self.displayResults else { return }
-        self.timeRemaining = 10
-        self.timer?.invalidate()
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-            if self.timeRemaining > 0 {
-                self.timeRemaining -= 1
-            } else {
-                self.timer?.invalidate()
-                self.nextClicked()
-            }
-        }
+    private func startQuizTimer() {
+        self.quizTimer.start(onTick: { time in
+            self.timeRemaining = time
+        }, onComplete: {
+            self.handleNextQuestion()
+        })
     }
 
-    func nextClicked() {
-        if self.selectionCorrect {
-            self.viewModel.correctCount += 1
-        } else {
-            self.viewModel.incorrectCount += 1
-        }
-        if self.currentQuestionIndex + 1 >= self.questions.count {
-            if !self.displayResults {
-                self.displayResults = true
-                self.viewModel.saveScoreToFirebase() // Save score to Firebase
-            }
-            return
-        }
-        self.currentQuestionIndex += 1
+    private func handleNextQuestion() {
+        self.quizManager.handleAnswer(isCorrect: self.selectionCorrect)
         self.clicked = false
         self.selectionCorrect = false
-        self.possibilities = self.viewModel.initPossiblities(question: self.questions[self.currentQuestionIndex])
-        self.startTimer()
+        self.currentQuestionIndex += 1
+        if self.currentQuestionIndex < self.questions.count {
+            self.possibilities = self.viewModel.initPossiblities(question: self.questions[self.currentQuestionIndex])
+            self.startQuizTimer()
+        } else {
+            self.displayResults = true
+            self.quizTimer.stop() // Stop the time to not trigger the save results process again
+        }
     }
 
     @ViewBuilder
     func triviaQuizView() -> some View {
         VStack {
-            HStack {
-                Image(systemName: "clock")
-                    .font(.system(size: 22, weight: .bold))
-                    .foregroundColor(.indigo)
-                Text("\(self.timeRemaining)")
-                    .font(.system(size: 22, weight: .bold))
-                    .foregroundColor(.indigo)
-            }
-            .padding([.top], 10)
-
-            QuestionView(question: self.questions[self.currentQuestionIndex].question, possibilities: self.possibilities, clicked: self.$clicked, selectionCorrect: self.$selectionCorrect, nextClicked: self.nextClicked)
-                .onChange(of: self.currentQuestionIndex) { _, _ in
-                    self.possibilities = self.viewModel.initPossiblities(question: self.questions[self.currentQuestionIndex])
+            if !self.displayResults {
+                HStack {
+                    Image(systemName: "clock")
+                        .font(.system(size: 22, weight: .bold))
+                        .foregroundColor(.indigo)
+                    Text("\(self.timeRemaining)")
+                        .font(.system(size: 22, weight: .bold))
+                        .foregroundColor(.indigo)
                 }
+                .padding([.top], 10)
+
+                QuestionView(
+                    question: self.questions[self.currentQuestionIndex].question,
+                    possibilities: self.possibilities,
+                    clicked: self.$clicked,
+                    selectionCorrect: self.$selectionCorrect,
+                    nextClicked: self.handleNextQuestion
+                )
+                .onAppear {
+                    self.startQuizTimer()
+                }
+            } else {
+                self.resultsView()
+            }
         }
     }
 

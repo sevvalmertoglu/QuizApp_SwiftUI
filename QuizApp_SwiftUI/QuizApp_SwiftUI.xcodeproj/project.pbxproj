@@ -31,6 +31,8 @@
 		A9505C882C4A95020075640F /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9505C872C4A95020075640F /* AuthHeaderView.swift */; };
 		A9505C8E2C4A9D1B0075640F /* GameSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9505C8D2C4A9D1B0075640F /* GameSelectionView.swift */; };
 		A9505C902C4A9E7F0075640F /* GameSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9505C8F2C4A9E7E0075640F /* GameSelectionViewModel.swift */; };
+		A9A6CD632C60C1D1000E2570 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A6CD622C60C1D1000E2570 /* TimerManager.swift */; };
+		A9A6CD652C60C1EF000E2570 /* QuizManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A6CD642C60C1EF000E2570 /* QuizManager.swift */; };
 		A9AB30CA2C46C4F100604B97 /* QuizApp_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AB30C92C46C4F100604B97 /* QuizApp_SwiftUIApp.swift */; };
 		A9AB30CC2C46C4F100604B97 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AB30CB2C46C4F100604B97 /* ContentView.swift */; };
 		A9AB30CE2C46C4F400604B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9AB30CD2C46C4F400604B97 /* Assets.xcassets */; };
@@ -74,6 +76,8 @@
 		A9505C872C4A95020075640F /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 		A9505C8D2C4A9D1B0075640F /* GameSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionView.swift; sourceTree = "<group>"; };
 		A9505C8F2C4A9E7E0075640F /* GameSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionViewModel.swift; sourceTree = "<group>"; };
+		A9A6CD622C60C1D1000E2570 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		A9A6CD642C60C1EF000E2570 /* QuizManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizManager.swift; sourceTree = "<group>"; };
 		A9AB30C62C46C4F100604B97 /* QuizApp_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9AB30C92C46C4F100604B97 /* QuizApp_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizApp_SwiftUIApp.swift; sourceTree = "<group>"; };
 		A9AB30CB2C46C4F100604B97 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				A92499B82C53DB9A0044A0DF /* QuestionView.swift */,
 				A92499BC2C53DED20044A0DF /* QuestionsView.swift */,
 				A92499BE2C53DF2B0044A0DF /* QuestionsViewModel.swift */,
+				A9A6CD622C60C1D1000E2570 /* TimerManager.swift */,
+				A9A6CD642C60C1EF000E2570 /* QuizManager.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -387,6 +393,7 @@
 				A9BEDC782C577FE100210FD8 /* TriviaService.swift in Sources */,
 				A93D94202C5BD2FE00D47492 /* PreviousScoresViewModel.swift in Sources */,
 				A92306CB2C4A753A0049A537 /* LoginView.swift in Sources */,
+				A9A6CD652C60C1EF000E2570 /* QuizManager.swift in Sources */,
 				A92306C92C4A74F60049A537 /* CategoryView.swift in Sources */,
 				A9BEDC762C577E5000210FD8 /* TriviaCategory.swift in Sources */,
 				A92306C62C4A5F3C0049A537 /* CategoryViewModel.swift in Sources */,
@@ -399,6 +406,7 @@
 				A92306DB2C4A8FDC0049A537 /* User.swift in Sources */,
 				A9C078AE2C4FEA6600DD83B2 /* AppState.swift in Sources */,
 				A9AB30CA2C46C4F100604B97 /* QuizApp_SwiftUIApp.swift in Sources */,
+				A9A6CD632C60C1D1000E2570 /* TimerManager.swift in Sources */,
 				A92499C12C53DF530044A0DF /* ProgressBar.swift in Sources */,
 				A92499B72C53DA2D0044A0DF /* Extensions.swift in Sources */,
 				A9BEDC7B2C578CDE00210FD8 /* CustomStepper.swift in Sources */,
