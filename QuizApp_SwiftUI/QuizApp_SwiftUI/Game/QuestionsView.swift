@@ -10,9 +10,9 @@ import SwiftUI
 
 // View that controls which question to be displayed and redirects to result screen
 struct QuestionsView: View {
-    @State private var quizManager: QuizManager
-    @State private var quizTimer = TimerManager()
     @StateObject private var viewModel = QuestionsViewModel()
+    @State private var quizManager: QuizManager?
+    @State private var quizTimer = TimerManager()
 
     @Binding var questions: [Question]
 
@@ -28,8 +28,6 @@ struct QuestionsView: View {
 
     init(questions: Binding<[Question]>) {
         self._questions = questions
-        self._viewModel = StateObject(wrappedValue: QuestionsViewModel())
-        self._quizManager = State(initialValue: QuizManager(viewModel: self._viewModel.wrappedValue, questions: questions.wrappedValue))
     }
 
     var body: some View {
@@ -55,6 +53,7 @@ struct QuestionsView: View {
                     Spacer()
                 } // VStack
                 .onAppear {
+                    self.quizManager = QuizManager(viewModel: self.viewModel, questions: self.questions)
                     self.possibilities = self.viewModel.initPossiblities(question: self.questions[self.currentQuestionIndex])
                     self.startQuizTimer()
                 }
@@ -76,7 +75,7 @@ struct QuestionsView: View {
     }
 
     private func handleNextQuestion() {
-        self.quizManager.handleAnswer(isCorrect: self.selectionCorrect)
+        self.quizManager?.handleAnswer(isCorrect: self.selectionCorrect)
         self.clicked = false
         self.selectionCorrect = false
         self.currentQuestionIndex += 1
