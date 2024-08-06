@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OptionButton: View {
-    let title: String
+    let title: LocalizedStringKey
     let action: () -> Void
     let isSelected: Bool
 

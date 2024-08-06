@@ -166,11 +166,18 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		A9AB30BD2C46C4F100604B97 = {
+		A9A6CD6A2C626E27000E2570 /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
 				A9A6CD682C626AA6000E2570 /* Localizable.xcstrings */,
 				A9A6CD662C626646000E2570 /* InfoPlist.xcstrings */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
+		A9AB30BD2C46C4F100604B97 = {
+			isa = PBXGroup;
+			children = (
 				A9AB30C82C46C4F100604B97 /* QuizApp_SwiftUI */,
 				A9AB30C72C46C4F100604B97 /* Products */,
 				6991374890A5F8C3ADC98A91 /* Pods */,
@@ -189,6 +196,7 @@
 		A9AB30C82C46C4F100604B97 /* QuizApp_SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				A9A6CD6A2C626E27000E2570 /* Localizable */,
 				A92306CE2C4A81B80049A537 /* GoogleService-Info.plist */,
 				A9BEDC7C2C59043900210FD8 /* correct.mp3 */,
 				A9BEDC7E2C59053E00210FD8 /* incorrect.mp3 */,

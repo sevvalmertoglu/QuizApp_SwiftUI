@@ -27,12 +27,33 @@
         }
       }
     },
+    "Any" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiçbiri"
+          }
+        }
+      }
+    },
     "Are you sure you want to delete your account? This action cannot be undone." : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz."
+          }
+        }
+      }
+    },
+    "Both" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İkiside"
           }
         }
       }
@@ -83,6 +104,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hesabınız yok mu?"
+          }
+        }
+      }
+    },
+    "Easy" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kolay"
           }
         }
       }
@@ -159,6 +190,16 @@
         }
       }
     },
+    "Hard" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zor"
+          }
+        }
+      }
+    },
     "Loading Scores..." : {
       "localizations" : {
         "tr" : {
@@ -195,6 +236,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mail: %@"
+          }
+        }
+      }
+    },
+    "Medium" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orta"
+          }
+        }
+      }
+    },
+    "Multiple Choice" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çoktan seçmeli"
           }
         }
       }
@@ -345,6 +406,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Başla!"
+          }
+        }
+      }
+    },
+    "True / False" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doğru / Yanlış"
           }
         }
       }
