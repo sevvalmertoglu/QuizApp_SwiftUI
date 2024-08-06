@@ -12,7 +12,7 @@ import SwiftUI
 struct QuestionsView: View {
     @StateObject private var viewModel = QuestionsViewModel()
     @State private var quizManager: QuizManager?
-    @State private var quizTimer = TimerManager()
+    @State private var timerManager = TimerManager()
 
     @Binding var questions: [Question]
 
@@ -67,7 +67,7 @@ struct QuestionsView: View {
     }
 
     private func startQuizTimer() {
-        self.quizTimer.start(onTick: { time in
+        self.timerManager.start(onTick: { time in
             self.timeRemaining = time
         }, onComplete: {
             self.handleNextQuestion()
@@ -84,7 +84,7 @@ struct QuestionsView: View {
             self.startQuizTimer()
         } else {
             self.displayResults = true
-            self.quizTimer.stop() // Stop the time to not trigger the save results process again
+            self.timerManager.stop() // Stop the time to not trigger the save results process again
         }
     }
 
