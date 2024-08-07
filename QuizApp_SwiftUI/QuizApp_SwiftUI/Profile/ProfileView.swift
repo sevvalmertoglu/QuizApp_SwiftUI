@@ -17,6 +17,8 @@ struct ProfileView: View {
         _viewModel = StateObject(wrappedValue: ProfileViewModel(appState: appState))
     }
 
+    let userImage = QuizAppImage(resource: .user)
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -26,7 +28,7 @@ struct ProfileView: View {
                             .font(.title)
                             .padding(.top, 40)
 
-                        Image("user")
+                        self.userImage.asImage
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 150, height: 150, alignment: .top)
