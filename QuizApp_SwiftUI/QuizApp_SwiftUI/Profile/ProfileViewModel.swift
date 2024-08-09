@@ -12,6 +12,7 @@ class ProfileViewModel: ObservableObject {
     @Published var name: String = ""
     @Published var nickname: String = ""
     @Published var email: String = ""
+    @Published var userIcon: UIImage? = nil
     @Published var isLoading: Bool = false
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
@@ -40,6 +41,21 @@ class ProfileViewModel: ObservableObject {
                     self?.name = user.name
                     self?.nickname = user.nickname
                     self?.email = user.email
+                    self?.fetchSelectedUserIcon(userId: userId)
+                case let .failure(error):
+                    self?.alertMessage = error.localizedDescription
+                    self?.showAlert = true
+                }
+            }
+        }
+    }
+
+    func fetchSelectedUserIcon(userId: String) {
+        FirebaseManager.shared.fetchUserIcon(userId: userId) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case let .success(iconName):
+                    self?.userIcon = UIImage(named: iconName) // Load the image from assets
                 case let .failure(error):
                     self?.alertMessage = error.localizedDescription
                     self?.showAlert = true

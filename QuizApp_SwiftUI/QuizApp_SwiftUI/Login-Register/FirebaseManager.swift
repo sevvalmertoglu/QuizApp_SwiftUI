@@ -35,7 +35,8 @@ class FirebaseManager {
                 let userData = [
                     "name": name,
                     "nickname": nickname,
-                    "email": email
+                    "email": email,
+                    "userIcon": "user" // Set the default profile icon
                 ]
                 self.dbRef.child("users").child(user.uid).setValue(userData) { error, _ in
                     if let error = error {

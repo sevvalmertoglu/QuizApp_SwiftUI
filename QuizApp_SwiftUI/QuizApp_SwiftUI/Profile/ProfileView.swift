@@ -30,13 +30,23 @@ struct ProfileView: View {
                             .padding(.top, 40)
 
                         ZStack(alignment: .bottomTrailing) {
-                            self.userImage.asImage
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 130, height: 130, alignment: .top)
-                                .clipShape(Circle())
-                                .shadow(color: .purple, radius: 5, x: 5, y: 5)
-                            
+                            if let userIcon = viewModel.userIcon {
+                                Image(uiImage: userIcon)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 130, height: 130)
+                                    .clipShape(Circle())
+                                    .shadow(color: .purple, radius: 5, x: 5, y: 5)
+                            } else {
+                                // Default placeholder image if no icon is available
+                                self.userImage.asImage
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 130, height: 130)
+                                    .clipShape(Circle())
+                                    .shadow(color: .purple, radius: 5, x: 5, y: 5)
+                            }
+
                             Button(action: {
                                 self.navigateToUserIconView = true
                             }) {
@@ -172,14 +182,13 @@ struct ProfileView: View {
                             .padding()
                     }
 
-                    
                     NavigationLink(
                         destination: UserIconView(),
                         isActive: self.$navigateToUserIconView
                     ) {
                         EmptyView()
                     }
-                    
+
                     NavigationLink(
                         destination: PreviousScoresView(),
                         isActive: self.$navigateToPreviousScoresView
