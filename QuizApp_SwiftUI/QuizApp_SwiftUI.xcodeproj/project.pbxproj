@@ -28,6 +28,8 @@
 		A92619F92C65F813006B594A /* LeaderBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92619F82C65F813006B594A /* LeaderBoardView.swift */; };
 		A92619FB2C65FB4E006B594A /* UserIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92619FA2C65FB4E006B594A /* UserIconView.swift */; };
 		A92619FD2C65FF40006B594A /* UserIconViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92619FC2C65FF40006B594A /* UserIconViewModel.swift */; };
+		A92619FF2C663369006B594A /* QuizAppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92619FE2C663369006B594A /* QuizAppImages.swift */; };
+		A9261A012C663555006B594A /* QuizAppImageCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9261A002C663555006B594A /* QuizAppImageCatalog.swift */; };
 		A93D941C2C5B7D7D00D47492 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941B2C5B7D7D00D47492 /* ProfileViewModel.swift */; };
 		A93D941E2C5BD23700D47492 /* PreviousScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941D2C5BD23700D47492 /* PreviousScoresView.swift */; };
 		A93D94202C5BD2FE00D47492 /* PreviousScoresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941F2C5BD2FE00D47492 /* PreviousScoresViewModel.swift */; };
@@ -81,6 +83,8 @@
 		A92619F82C65F813006B594A /* LeaderBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardView.swift; sourceTree = "<group>"; };
 		A92619FA2C65FB4E006B594A /* UserIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIconView.swift; sourceTree = "<group>"; };
 		A92619FC2C65FF40006B594A /* UserIconViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIconViewModel.swift; sourceTree = "<group>"; };
+		A92619FE2C663369006B594A /* QuizAppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAppImages.swift; sourceTree = "<group>"; };
+		A9261A002C663555006B594A /* QuizAppImageCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAppImageCatalog.swift; sourceTree = "<group>"; };
 		A93D941B2C5B7D7D00D47492 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		A93D941D2C5BD23700D47492 /* PreviousScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousScoresView.swift; sourceTree = "<group>"; };
 		A93D941F2C5BD2FE00D47492 /* PreviousScoresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousScoresViewModel.swift; sourceTree = "<group>"; };
@@ -218,7 +222,9 @@
 			isa = PBXGroup;
 			children = (
 				A9A6CD742C6369D5000E2570 /* ImageResource.swift */,
+				A9261A002C663555006B594A /* QuizAppImageCatalog.swift */,
 				A9A6CD762C6369F3000E2570 /* QuizAppImage.swift */,
+				A92619FE2C663369006B594A /* QuizAppImages.swift */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -464,6 +470,7 @@
 				A92306CB2C4A753A0049A537 /* LoginView.swift in Sources */,
 				A9A6CD652C60C1EF000E2570 /* QuizManager.swift in Sources */,
 				A92306C92C4A74F60049A537 /* CategoryView.swift in Sources */,
+				A92619FF2C663369006B594A /* QuizAppImages.swift in Sources */,
 				A9BEDC762C577E5000210FD8 /* TriviaCategory.swift in Sources */,
 				A92306C62C4A5F3C0049A537 /* CategoryViewModel.swift in Sources */,
 				A92619F92C65F813006B594A /* LeaderBoardView.swift in Sources */,
@@ -490,6 +497,7 @@
 				A93D941E2C5BD23700D47492 /* PreviousScoresView.swift in Sources */,
 				A92306D32C4A89540049A537 /* AuthViewModel.swift in Sources */,
 				A9C078B22C4FEE7700DD83B2 /* ProfileView.swift in Sources */,
+				A9261A012C663555006B594A /* QuizAppImageCatalog.swift in Sources */,
 				A92499B92C53DB9A0044A0DF /* QuestionView.swift in Sources */,
 				A9C078A52C4E7CF600DD83B2 /* SplashView.swift in Sources */,
 				A92499BD2C53DED20044A0DF /* QuestionsView.swift in Sources */,

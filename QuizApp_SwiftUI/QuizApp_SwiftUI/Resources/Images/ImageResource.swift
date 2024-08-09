@@ -8,16 +8,8 @@
 import Foundation
 import SwiftUI
 
-enum ImageResource: String {
-    case background
-    case backgroundGameOver
-    case user
-
-    var uiImage: UIImage {
-        UIImage(named: self.rawValue) ?? UIImage()
-    }
-
-    var image: Image {
-        Image(self.rawValue)
-    }
+public protocol ImageResource {
+    var background: QuizAppImage { get }
+    var backgroundGameOver: QuizAppImage { get }
+    var user: QuizAppImage { get }
 }

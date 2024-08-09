@@ -10,7 +10,6 @@ import Foundation
 import SwiftUI
 
 class UserIconViewModel: ObservableObject {
-    // Sections and their items
     let sections = [
         ("Animals", (1...6).map { "animal\($0)" }),
         ("Men", (1...6).map { "man\($0)" }),
@@ -23,7 +22,7 @@ class UserIconViewModel: ObservableObject {
 
     func saveSelectedIcon() {
         guard let selectedIndex = selectedIndex else {
-            self.alertMessage = String(format: NSLocalizedString("Please select an icon.", comment: ""))
+            self.alertMessage = NSLocalizedString("Please select an icon.", comment: "")
             self.showAlert = true
             return
         }
@@ -33,7 +32,7 @@ class UserIconViewModel: ObservableObject {
         FirebaseManager.shared.saveUserIcon(userId: userId, iconName: iconName) { result in
             switch result {
             case .success():
-                self.alertMessage = String(format: NSLocalizedString("Profile icon saved successfully.", comment: ""))
+                self.alertMessage = NSLocalizedString("Profile icon saved successfully.", comment: "")
             case let .failure(error):
                 self.alertMessage = String(format: NSLocalizedString("Error saving profile icon: %@", comment: ""), error.localizedDescription)
             }

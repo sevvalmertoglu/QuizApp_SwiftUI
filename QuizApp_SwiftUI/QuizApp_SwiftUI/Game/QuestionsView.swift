@@ -120,10 +120,8 @@ struct QuestionsView: View {
 
     @ViewBuilder
     func resultsView() -> some View {
-        let backgroundGameOverImage = QuizAppImage(resource: .backgroundGameOver)
-
         ZStack {
-            backgroundGameOverImage.asImage
+            QuizAppImages.instance.backgroundGameOver.asImage
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea(.all)

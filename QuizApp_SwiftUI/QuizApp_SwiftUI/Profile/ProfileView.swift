@@ -18,8 +18,6 @@ struct ProfileView: View {
         _viewModel = StateObject(wrappedValue: ProfileViewModel(appState: appState))
     }
 
-    let userImage = QuizAppImage(resource: .user)
-
     var body: some View {
         NavigationView {
             ZStack {
@@ -39,7 +37,7 @@ struct ProfileView: View {
                                     .shadow(color: .purple, radius: 5, x: 5, y: 5)
                             } else {
                                 // Default placeholder image if no icon is available
-                                self.userImage.asImage
+                                QuizAppImages.instance.user.asImage
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 130, height: 130)

@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct SplashView: View {
-    let backgroundImage = QuizAppImage(resource: .background)
-
     var body: some View {
         NavigationView {
             ZStack {
-                self.backgroundImage.asImage
+                QuizAppImages.instance.background.asImage
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea(.all)

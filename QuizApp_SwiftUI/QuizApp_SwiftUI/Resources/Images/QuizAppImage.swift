@@ -9,17 +9,17 @@ import Foundation
 import SwiftUI
 
 public struct QuizAppImage: Equatable, Hashable {
-    let resource: ImageResource
+    let resourceName: String
 
-    init(resource: ImageResource) {
-        self.resource = resource
+    init(resourceName: String) {
+        self.resourceName = resourceName
     }
 
-    public var asUIImage: UIImage {
-        self.resource.uiImage
+    var asUIImage: UIImage {
+        UIImage(named: self.resourceName) ?? UIImage()
     }
 
-    public var asImage: Image {
-        self.resource.image
+    var asImage: Image {
+        Image(self.resourceName)
     }
 }
