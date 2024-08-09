@@ -17,6 +17,16 @@
         }
       }
     },
+    "Alert" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyarı"
+          }
+        }
+      }
+    },
     "Already have an account?" : {
       "localizations" : {
         "tr" : {
@@ -128,6 +138,16 @@
         }
       }
     },
+    "Error saving profile icon: %@" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil simgesi kaydedilirken hata oluştu: %@"
+          }
+        }
+      }
+    },
     "Forgot Password?" : {
       "localizations" : {
         "tr" : {
@@ -169,7 +189,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Güzel iş!\n\n%lld sorudan %lld tanesini doğru bildin!"
+            "value" : "Güzel!\n\n%lld sorudan %lld tanesini doğru bildin!"
           }
         }
       }
@@ -185,7 +205,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Harika iş 🎉\n\n%2$lld sorudan %1$lld tanesini doğru bildin!"
+            "value" : "Harika 🎉\n\n%2$lld sorudan %1$lld tanesini doğru bildin!"
           }
         }
       }
@@ -201,7 +221,14 @@
       }
     },
     "Leader Board" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liderlik Tablosu"
+          }
+        }
+      }
     },
     "Loading Scores..." : {
       "localizations" : {
@@ -323,6 +350,16 @@
         }
       }
     },
+    "Please select an icon." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lütfen bir ikon seçin."
+          }
+        }
+      }
+    },
     "Previous Scores" : {
       "localizations" : {
         "tr" : {
@@ -339,6 +376,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profil"
+          }
+        }
+      }
+    },
+    "Profile icon saved successfully." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil ikonu başarıyla kaydedildi."
           }
         }
       }
@@ -379,6 +426,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Skor: %lld"
+          }
+        }
+      }
+    },
+    "Select an Icon" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir İkon Seçin"
           }
         }
       }
