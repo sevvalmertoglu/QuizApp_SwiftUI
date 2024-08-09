@@ -12,6 +12,7 @@ struct ProfileView: View {
     @EnvironmentObject var appState: AppState
     @State private var navigateToSplashView = false
     @State private var navigateToPreviousScoresView = false
+    @State private var navigateToUserIconView = false
 
     init(appState: AppState) {
         _viewModel = StateObject(wrappedValue: ProfileViewModel(appState: appState))
@@ -28,12 +29,26 @@ struct ProfileView: View {
                             .font(.title)
                             .padding(.top, 40)
 
-                        self.userImage.asImage
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 150, height: 150, alignment: .top)
-                            .clipShape(Circle())
-                            .shadow(color: .purple, radius: 5, x: 5, y: 5)
+                        ZStack(alignment: .bottomTrailing) {
+                            self.userImage.asImage
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 130, height: 130, alignment: .top)
+                                .clipShape(Circle())
+                                .shadow(color: .purple, radius: 5, x: 5, y: 5)
+                            
+                            Button(action: {
+                                self.navigateToUserIconView = true
+                            }) {
+                                Image(systemName: "pencil.and.scribble")
+                                    .foregroundColor(.white)
+                                    .padding(10)
+                                    .background(Color.pink)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 5)
+                            }
+                            .offset(x: 0, y: 0)
+                        }
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
@@ -157,6 +172,14 @@ struct ProfileView: View {
                             .padding()
                     }
 
+                    
+                    NavigationLink(
+                        destination: UserIconView(),
+                        isActive: self.$navigateToUserIconView
+                    ) {
+                        EmptyView()
+                    }
+                    
                     NavigationLink(
                         destination: PreviousScoresView(),
                         isActive: self.$navigateToPreviousScoresView

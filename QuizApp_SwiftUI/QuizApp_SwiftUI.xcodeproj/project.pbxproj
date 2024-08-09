@@ -26,6 +26,7 @@
 		A92499BF2C53DF2B0044A0DF /* QuestionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92499BE2C53DF2B0044A0DF /* QuestionsViewModel.swift */; };
 		A92499C12C53DF530044A0DF /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92499C02C53DF530044A0DF /* ProgressBar.swift */; };
 		A92619F92C65F813006B594A /* LeaderBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92619F82C65F813006B594A /* LeaderBoardView.swift */; };
+		A92619FB2C65FB4E006B594A /* UserIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92619FA2C65FB4E006B594A /* UserIconView.swift */; };
 		A93D941C2C5B7D7D00D47492 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941B2C5B7D7D00D47492 /* ProfileViewModel.swift */; };
 		A93D941E2C5BD23700D47492 /* PreviousScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941D2C5BD23700D47492 /* PreviousScoresView.swift */; };
 		A93D94202C5BD2FE00D47492 /* PreviousScoresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941F2C5BD2FE00D47492 /* PreviousScoresViewModel.swift */; };
@@ -77,6 +78,7 @@
 		A92499BE2C53DF2B0044A0DF /* QuestionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewModel.swift; sourceTree = "<group>"; };
 		A92499C02C53DF530044A0DF /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		A92619F82C65F813006B594A /* LeaderBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardView.swift; sourceTree = "<group>"; };
+		A92619FA2C65FB4E006B594A /* UserIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIconView.swift; sourceTree = "<group>"; };
 		A93D941B2C5B7D7D00D47492 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		A93D941D2C5BD23700D47492 /* PreviousScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousScoresView.swift; sourceTree = "<group>"; };
 		A93D941F2C5BD2FE00D47492 /* PreviousScoresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousScoresViewModel.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				A93D941B2C5B7D7D00D47492 /* ProfileViewModel.swift */,
 				A93D941D2C5BD23700D47492 /* PreviousScoresView.swift */,
 				A93D941F2C5BD2FE00D47492 /* PreviousScoresViewModel.swift */,
+				A92619FA2C65FB4E006B594A /* UserIconView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				A9A6CD632C60C1D1000E2570 /* TimerManager.swift in Sources */,
 				A92499C12C53DF530044A0DF /* ProgressBar.swift in Sources */,
 				A92499B72C53DA2D0044A0DF /* Extensions.swift in Sources */,
+				A92619FB2C65FB4E006B594A /* UserIconView.swift in Sources */,
 				A9BEDC7B2C578CDE00210FD8 /* CustomStepper.swift in Sources */,
 				A9505C8E2C4A9D1B0075640F /* GameSelectionView.swift in Sources */,
 				A9505C882C4A95020075640F /* AuthHeaderView.swift in Sources */,
