@@ -18,6 +18,11 @@ struct MainView: View {
                     Label("Game", systemImage: "gamecontroller.fill")
                 }
 
+            LeaderBoardView()
+                .tabItem {
+                    Label("Leader Board", systemImage: "medal.star.fill")
+                }
+
             ProfileView(appState: self.appState)
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle.fill")
