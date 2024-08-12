@@ -35,7 +35,6 @@ struct LeaderBoardView: View {
             .offset(y: -80)
         }
         .sheet(isPresented: self.$showCategorySelector, onDismiss: {}) {
-            // Sheet içinde gösterilecek view
             LeaderRankingView()
                 .presentationDetents([.medium, .fraction(0.8), .height(300)])
                 .presentationBackground(.thinMaterial)
