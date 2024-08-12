@@ -174,12 +174,6 @@ struct ProfileView: View {
 
                     Spacer()
 
-                    if self.viewModel.showAlert {
-                        Text(self.viewModel.alertMessage)
-                            .foregroundColor(.red)
-                            .padding()
-                    }
-
                     NavigationLink(
                         destination: UserIconView(),
                         isActive: self.$navigateToUserIconView
