@@ -54,65 +54,6 @@ class FirebaseManager {
         try Auth.auth().signOut()
     }
 
-    func saveScore(correctCount: Int, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard let userId = Auth.auth().currentUser?.uid else {
-            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User not logged in."])))
-            return
-        }
-
-        let score = correctCount * 100
-        let scoreData = Score(date: DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .short), score: score)
-
-        self.dbRef.child("users").child(userId).observeSingleEvent(of: .value) { snapshot in
-            if var userData = snapshot.value as? [String: Any] {
-                var scores = userData["scores"] as? [[String: Any]] ?? []
-                let newScore = [
-                    "date": scoreData.date,
-                    "score": scoreData.score
-                ] as [String: Any]
-                scores.append(newScore)
-                userData["scores"] = scores
-
-                self.dbRef.child("users").child(userId).setValue(userData) { error, _ in
-                    if let error = error {
-                        completion(.failure(error))
-                    } else {
-                        completion(.success(()))
-                    }
-                }
-            } else {
-                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch user data."])))
-            }
-        }
-    }
-
-    func deleteUserData(userId: String, completion: @escaping (Error?) -> Void) {
-        let userRef = self.dbRef.child("users").child(userId)
-        userRef.removeValue { error, _ in
-            completion(error)
-        }
-    }
-
-    func saveUserIcon(userId: String, iconName: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        self.dbRef.child("users").child(userId).child("userIcon").setValue(iconName) { error, _ in
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success(()))
-            }
-        }
-    }
-
-    func fetchUserIcon(userId: String, completion: @escaping (Result<String, Error>) -> Void) {
-        self.dbRef.child("users").child(userId).child("userIcon").observe(.value) { snapshot in
-            if let iconName = snapshot.value as? String {
-                completion(.success(iconName))
-            } else {
-                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Icon not found."])))
-            }
-        }
-    }
-
     func fetchUserData(userId: String, completion: @escaping (Result<User, Error>) -> Void) {
         self.dbRef.child("users").child(userId).observeSingleEvent(of: .value) { snapshot in
             guard let value = snapshot.value as? [String: Any],
@@ -137,6 +78,85 @@ class FirebaseManager {
         }
     }
 
+    // MARK: - User Delete Methods
+
+    func deleteUserData(userId: String, completion: @escaping (Error?) -> Void) {
+        let userRef = self.dbRef.child("users").child(userId)
+        userRef.removeValue { error, _ in
+            completion(error)
+        }
+    }
+
+    // MARK: - Score Methods
+
+    func saveScore(correctCount: Int, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User not logged in."])))
+            return
+        }
+
+        let score = correctCount * 100
+        let scoreData = Score(date: DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .short), score: score)
+
+        self.fetchUserData(userId: userId) { result in
+            switch result {
+            case var .success(userData):
+                self.updateUserScores(with: scoreData, in: &userData)
+                let totalScore = self.calculateTotalScore(from: userData)
+                userData["totalScore"] = totalScore
+
+                self.saveUserData(userId: userId, userData: userData) { result in
+                    switch result {
+                    case .success:
+                        self.updateLeaderboard(userId: userId, nickname: userData["nickname"] as? String ?? "", totalScore: totalScore, completion: completion)
+                    case let .failure(error):
+                        completion(.failure(error))
+                    }
+                }
+
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    // Helper Functions
+
+    private func fetchUserData(userId: String, completion: @escaping (Result<[String: Any], Error>) -> Void) {
+        self.dbRef.child("users").child(userId).observeSingleEvent(of: .value) { snapshot in
+            if let userData = snapshot.value as? [String: Any] {
+                completion(.success(userData))
+            } else {
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch user data."])))
+            }
+        }
+    }
+
+    private func updateUserScores(with scoreData: Score, in userData: inout [String: Any]) {
+        var scores = userData["scores"] as? [[String: Any]] ?? []
+        let newScore = [
+            "date": scoreData.date,
+            "score": scoreData.score
+        ] as [String: Any]
+        scores.append(newScore)
+        userData["scores"] = scores
+    }
+
+    private func calculateTotalScore(from userData: [String: Any]) -> Int {
+        let scores = userData["scores"] as? [[String: Any]] ?? []
+        return scores.reduce(0) { $0 + ($1["score"] as? Int ?? 0) }
+    }
+
+    private func saveUserData(userId: String, userData: [String: Any], completion: @escaping (Result<Void, Error>) -> Void) {
+        self.dbRef.child("users").child(userId).setValue(userData) { error, _ in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+
     func fetchScores(forUserId userId: String, completion: @escaping (Result<[Score], Error>) -> Void) {
         self.dbRef.child("users").child(userId).child("scores").observeSingleEvent(of: .value) { snapshot in
             var fetchedScores: [Score] = []
@@ -144,7 +164,8 @@ class FirebaseManager {
             if let scoresData = snapshot.value as? [[String: Any]] {
                 fetchedScores = scoresData.compactMap { dict in
                     guard let date = dict["date"] as? String,
-                          let score = dict["score"] as? Int else {
+                          let score = dict["score"] as? Int
+                    else {
                         return nil
                     }
                     return Score(date: date, score: score)
@@ -153,6 +174,59 @@ class FirebaseManager {
             } else {
                 completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No scores found."])))
             }
+        } withCancel: { error in
+            completion(.failure(error))
+        }
+    }
+
+    // MARK: - User Icon Methods
+
+    func saveUserIcon(userId: String, iconName: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        self.dbRef.child("users").child(userId).child("userIcon").setValue(iconName) { error, _ in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+
+    func fetchUserIcon(userId: String, completion: @escaping (Result<String, Error>) -> Void) {
+        self.dbRef.child("users").child(userId).child("userIcon").observe(.value) { snapshot in
+            if let iconName = snapshot.value as? String {
+                completion(.success(iconName))
+            } else {
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Icon not found."])))
+            }
+        }
+    }
+
+    // MARK: - LeaderBoard Methods
+
+    func updateLeaderboard(userId: String, nickname: String, totalScore: Int, completion: @escaping (Result<Void, Error>) -> Void) {
+        let leaderboardRef = self.dbRef.child("leaderboard").child(userId)
+        let values = ["nickname": nickname, "totalScore": totalScore] as [String: Any]
+
+        leaderboardRef.updateChildValues(values) { error, _ in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+
+    func fetchLeaderboard(completion: @escaping (Result<[(nickname: String, totalScore: Int, userId: String)], Error>) -> Void) {
+        self.dbRef.child("leaderboard").queryOrdered(byChild: "totalScore").observeSingleEvent(of: .value) { snapshot in
+            var leaderboard: [(nickname: String, totalScore: Int, userId: String)] = []
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
+                let value = child.value as? [String: Any]
+                let nickname = value?["nickname"] as? String ?? ""
+                let totalScore = value?["totalScore"] as? Int ?? 0
+                let userId = child.key
+                leaderboard.append((nickname: nickname, totalScore: totalScore, userId: userId))
+            }
+            completion(.success(leaderboard))
         } withCancel: { error in
             completion(.failure(error))
         }
