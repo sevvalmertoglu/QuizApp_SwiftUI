@@ -12,4 +12,7 @@ public protocol ImageResource {
     var background: QuizAppImage { get }
     var backgroundGameOver: QuizAppImage { get }
     var user: QuizAppImage { get }
+    var Rank1: QuizAppImage { get }
+    var Rank2: QuizAppImage { get }
+    var Rank3: QuizAppImage { get }
 }
