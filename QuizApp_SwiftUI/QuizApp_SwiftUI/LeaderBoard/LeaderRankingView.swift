@@ -49,8 +49,5 @@ struct LeaderRankingView: View {
             }
         }
         .padding()
-        .onAppear {
-            self.viewModel.fetchOtherUsers()
-        }
     }
 }

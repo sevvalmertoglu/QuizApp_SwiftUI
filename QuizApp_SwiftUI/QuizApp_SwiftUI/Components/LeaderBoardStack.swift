@@ -12,7 +12,7 @@ struct LeaderBoardStack: View {
     let medalImage: Image
     let userImage: String
     let username: String
-    let score: String
+    let score: LocalizedStringKey
     let width: CGFloat
     let height: CGFloat
     let rankOffset: CGFloat
