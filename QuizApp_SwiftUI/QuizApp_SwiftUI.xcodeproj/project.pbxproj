@@ -33,6 +33,7 @@
 		A9261A032C6A204C006B594A /* LeaderBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9261A022C6A204C006B594A /* LeaderBoardViewModel.swift */; };
 		A9261A052C6A484A006B594A /* LeaderBoardStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9261A042C6A484A006B594A /* LeaderBoardStack.swift */; };
 		A9261A072C6A4E69006B594A /* LeaderRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9261A062C6A4E69006B594A /* LeaderRankingView.swift */; };
+		A9261A092C6B4CE3006B594A /* LeaderRankingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9261A082C6B4CE3006B594A /* LeaderRankingViewModel.swift */; };
 		A93D941C2C5B7D7D00D47492 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941B2C5B7D7D00D47492 /* ProfileViewModel.swift */; };
 		A93D941E2C5BD23700D47492 /* PreviousScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941D2C5BD23700D47492 /* PreviousScoresView.swift */; };
 		A93D94202C5BD2FE00D47492 /* PreviousScoresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941F2C5BD2FE00D47492 /* PreviousScoresViewModel.swift */; };
@@ -91,6 +92,7 @@
 		A9261A022C6A204C006B594A /* LeaderBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewModel.swift; sourceTree = "<group>"; };
 		A9261A042C6A484A006B594A /* LeaderBoardStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardStack.swift; sourceTree = "<group>"; };
 		A9261A062C6A4E69006B594A /* LeaderRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderRankingView.swift; sourceTree = "<group>"; };
+		A9261A082C6B4CE3006B594A /* LeaderRankingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderRankingViewModel.swift; sourceTree = "<group>"; };
 		A93D941B2C5B7D7D00D47492 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		A93D941D2C5BD23700D47492 /* PreviousScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousScoresView.swift; sourceTree = "<group>"; };
 		A93D941F2C5BD2FE00D47492 /* PreviousScoresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousScoresViewModel.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				A92619F82C65F813006B594A /* LeaderBoardView.swift */,
 				A9261A022C6A204C006B594A /* LeaderBoardViewModel.swift */,
 				A9261A062C6A4E69006B594A /* LeaderRankingView.swift */,
+				A9261A082C6B4CE3006B594A /* LeaderRankingViewModel.swift */,
 			);
 			path = LeaderBoard;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				A9261A012C663555006B594A /* QuizAppImageCatalog.swift in Sources */,
 				A92499B92C53DB9A0044A0DF /* QuestionView.swift in Sources */,
 				A9C078A52C4E7CF600DD83B2 /* SplashView.swift in Sources */,
+				A9261A092C6B4CE3006B594A /* LeaderRankingViewModel.swift in Sources */,
 				A92499BD2C53DED20044A0DF /* QuestionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

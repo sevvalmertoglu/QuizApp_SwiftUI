@@ -11,6 +11,10 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject var appState: AppState
 
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.systemBackground
+    }
+
     var body: some View {
         TabView {
             CategoryView()
@@ -27,7 +31,8 @@ struct MainView: View {
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle.fill")
                 }
-        }.accentColor(.indigo)
+        }
+        .accentColor(.indigo)
     }
 }
 
