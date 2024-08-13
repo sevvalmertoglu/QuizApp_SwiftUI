@@ -2,10 +2,24 @@
   "sourceLanguage" : "en",
   "strings" : {
     "%@" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
     },
     "%lld" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
     },
     "%lld / %lld" : {
       "localizations" : {
@@ -13,6 +27,22 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$lld / %2$lld"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld / %lld"
+          }
+        }
+      }
+    },
+    "%lld point" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld puan"
           }
         }
       }
@@ -189,7 +219,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Güzel!\n\n%lld sorudan %lld tanesini doğru bildin!"
+            "value" : "Güzel!\n\n%2$lld sorudan %1$lld tanesini doğru bildin!"
           }
         }
       }
@@ -226,6 +256,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Liderlik Tablosu"
+          }
+        }
+      }
+    },
+    "Loading Leaderboard..." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liderlik Tablosu Yükleniyor..."
           }
         }
       }
@@ -326,6 +366,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "Other Scores" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diğer Skorlar"
           }
         }
       }
