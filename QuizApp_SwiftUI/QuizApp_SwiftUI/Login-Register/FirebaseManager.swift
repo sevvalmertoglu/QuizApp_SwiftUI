@@ -55,28 +55,46 @@ class FirebaseManager {
     }
 
     func fetchUserData(userId: String, completion: @escaping (Result<User, Error>) -> Void) {
-        self.dbRef.child("users").child(userId).observeSingleEvent(of: .value) { snapshot in
-            guard let value = snapshot.value as? [String: Any],
-                  let name = value["name"] as? String,
-                  let nickname = value["nickname"] as? String,
-                  let email = value["email"] as? String
-            else {
+        self.dbRef.child("users").child(userId).observe(.value) { snapshot in
+            guard let value = snapshot.value as? [String: Any] else {
                 completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User data is malformed."])))
                 return
             }
-            var scores: [Score] = []
-            if let scoresData = value["scores"] as? [[String: Any]] {
-                scores = scoresData.compactMap { dict in
-                    guard let date = dict["date"] as? String,
-                          let score = dict["score"] as? Int
-                    else {
-                        return nil
-                    }
-                    return Score(date: date, score: score)
-                }
+            do {
+                let user = try self.parseUser(from: value)
+                let scores = self.parseScores(from: value)
+                let userWithScores = User(name: user.name, nickname: user.nickname, email: user.email, Scores: scores)
+                completion(.success(userWithScores))
+            } catch {
+                completion(.failure(error))
             }
-            let user = User(name: name, nickname: nickname, email: email, Scores: scores)
-            completion(.success(user))
+        }
+    }
+
+    // Helper function that parses user data
+    private func parseUser(from value: [String: Any]) throws -> (name: String, nickname: String, email: String) {
+        guard let name = value["name"] as? String,
+              let nickname = value["nickname"] as? String,
+              let email = value["email"] as? String
+        else {
+            throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User data is malformed."])
+        }
+        return (name, nickname, email)
+    }
+
+    // Helper function that separates scores
+    private func parseScores(from value: [String: Any]) -> [Score] {
+        guard let scoresData = value["scores"] as? [[String: Any]] else {
+            return []
+        }
+
+        return scoresData.compactMap { dict in
+            guard let date = dict["date"] as? String,
+                  let score = dict["score"] as? Int
+            else {
+                return nil
+            }
+            return Score(date: date, score: score)
         }
     }
 
