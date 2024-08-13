@@ -15,4 +15,8 @@ public protocol ImageResource {
     var Rank1: QuizAppImage { get }
     var Rank2: QuizAppImage { get }
     var Rank3: QuizAppImage { get }
+    var backgroundLeaderBoard: QuizAppImage { get }
+    var Medal1: QuizAppImage { get }
+    var Medal2: QuizAppImage { get }
+    var Medal3: QuizAppImage { get }
 }
