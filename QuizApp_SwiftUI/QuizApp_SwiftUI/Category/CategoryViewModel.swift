@@ -39,6 +39,6 @@ import Foundation
     }
 
     public func formatCategoryName(name: String) -> String {
-        return name.replacingOccurrences(of: "Entertainment: ", with: "")
+        return name
     }
 }
