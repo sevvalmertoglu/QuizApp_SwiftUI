@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LeaderBoardStack: View {
     let rankImage: Image
-    let medalImage: String
+    let medalImage: Image
     let userImage: String
     let username: String
     let score: String
@@ -23,7 +23,7 @@ struct LeaderBoardStack: View {
                 Image(self.userImage)
                     .resizable()
                     .frame(width: self.width, height: self.width)
-                Image(self.medalImage)
+                self.medalImage
                     .resizable()
                     .frame(width: self.width * 0.5, height: self.width * 0.5)
                     .offset(y: -self.width * 0.5)

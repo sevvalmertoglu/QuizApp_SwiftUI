@@ -8,19 +8,11 @@
 import SwiftUI
 
 struct LeaderRankingView: View {
-    let users = [
-        ("Madelyn Dias", 590, "user"),
-        ("Zain Vaccaro", 448, "user"),
-        ("Skylar Geidt", 448, "user"),
-        ("Justin Bator", 448, "user"),
-        ("Cooper Lipshutz", 448, "user"),
-        ("Alfredo Septimus", 448, "user"),
-        ("Paityn Aminoff", 448, "user")
-    ]
+    @StateObject private var viewModel = LeaderRankingViewModel()
 
     var body: some View {
         VStack(spacing: 10) {
-            ForEach(0..<self.users.count, id: \.self) { index in
+            ForEach(0..<self.viewModel.otherUsers.count, id: \.self) { index in
                 HStack {
                     ZStack {
                         Circle()
@@ -32,18 +24,18 @@ struct LeaderRankingView: View {
                     }
                     .frame(width: 40)
 
-                    Image(self.users[index].2) // Placeholder for user image
+                    Image(self.viewModel.otherUsers[index].userIcon) // User image
                         .resizable()
                         .frame(width: 40, height: 40)
                         .clipShape(Circle())
                         .padding(.trailing, 10)
 
                     VStack(alignment: .leading) {
-                        Text(self.users[index].0) // User name
+                        Text(self.viewModel.otherUsers[index].nickname) // User name
                             .font(.system(size: 18, weight: .bold))
                             .foregroundColor(.black)
 
-                        Text("\(self.users[index].1) points") // User points
+                        Text("\(self.viewModel.otherUsers[index].totalScore) point") // User points
                             .font(.system(size: 14))
                             .foregroundColor(.gray)
                     }
@@ -57,9 +49,8 @@ struct LeaderRankingView: View {
             }
         }
         .padding()
+        .onAppear {
+            self.viewModel.fetchOtherUsers()
+        }
     }
-}
-
-#Preview {
-    LeaderRankingView()
 }

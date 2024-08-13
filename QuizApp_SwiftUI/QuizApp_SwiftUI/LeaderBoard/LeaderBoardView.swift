@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct LeaderBoardView: View {
+    @StateObject private var viewModel = LeaderBoardViewModel()
     @State private var showCategorySelector: Bool = true
 
     var body: some View {
         ZStack {
-            Image("backgroundLeaderBoard")
+            QuizAppImages.instance.backgroundLeaderBoard.asImage
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea(.all)
@@ -29,13 +30,46 @@ struct LeaderBoardView: View {
 
                 HStack(spacing: 0) {
                     // Left Stack (Rank 2)
-                    LeaderBoardStack(rankImage: QuizAppImages.instance.Rank2.asImage, medalImage: "Medal2", userImage: "user", username: "Ayşe Can", score: "1500 puan", width: 90, height: 240, rankOffset: 30)
+                    if self.viewModel.topThreeUsers.count > 1 {
+                        LeaderBoardStack(
+                            rankImage: QuizAppImages.instance.Rank2.asImage,
+                            medalImage: QuizAppImages.instance.Medal2.asImage,
+                            userImage: self.viewModel.topThreeUsers[1].userIcon,
+                            username: self.viewModel.topThreeUsers[1].nickname,
+                            score: "\(self.viewModel.topThreeUsers[1].totalScore) point",
+                            width: 90,
+                            height: 240,
+                            rankOffset: 30
+                        )
+                    }
 
                     // Center Stack (Rank 1)
-                    LeaderBoardStack(rankImage: QuizAppImages.instance.Rank1.asImage, medalImage: "Medal1", userImage: "user", username: "Ayşe Can", score: "1500 puan", width: 100, height: 280, rankOffset: 0)
+                    if !self.viewModel.topThreeUsers.isEmpty {
+                        LeaderBoardStack(
+                            rankImage: QuizAppImages.instance.Rank1.asImage,
+                            medalImage: QuizAppImages.instance.Medal1.asImage,
+                            userImage: self.viewModel.topThreeUsers[0].userIcon,
+                            username: self.viewModel.topThreeUsers[0].nickname,
+                            score: "\(self.viewModel.topThreeUsers[0].totalScore) point",
+                            width: 100,
+                            height: 280,
+                            rankOffset: 0
+                        )
+                    }
 
                     // Right Stack (Rank 3)
-                    LeaderBoardStack(rankImage: QuizAppImages.instance.Rank3.asImage, medalImage: "Medal3", userImage: "user", username: "Ayşe Can", score: "1500 puan", width: 90, height: 240, rankOffset: 40)
+                    if self.viewModel.topThreeUsers.count > 2 {
+                        LeaderBoardStack(
+                            rankImage: QuizAppImages.instance.Rank3.asImage,
+                            medalImage: QuizAppImages.instance.Medal3.asImage,
+                            userImage: self.viewModel.topThreeUsers[2].userIcon,
+                            username: self.viewModel.topThreeUsers[2].nickname,
+                            score: "\(self.viewModel.topThreeUsers[2].totalScore) point",
+                            width: 90,
+                            height: 240,
+                            rankOffset: 40
+                        )
+                    }
                 }
                 .padding(.horizontal, 20)
                 .offset(y: -80)
@@ -47,9 +81,8 @@ struct LeaderBoardView: View {
                     .presentationCornerRadius(50)
             }
         }
+        .onAppear {
+            self.viewModel.fetchTopThreeUsers()
+        }
     }
-}
-
-#Preview {
-    LeaderBoardView()
 }

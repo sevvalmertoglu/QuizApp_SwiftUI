@@ -196,8 +196,10 @@ class FirebaseManager {
             if let iconName = snapshot.value as? String {
                 completion(.success(iconName))
             } else {
-                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Icon not found."])))
+                completion(.success("user")) // Default to "user" icon if not found
             }
+        } withCancel: { error in
+            completion(.failure(error))
         }
     }
 
@@ -205,7 +207,10 @@ class FirebaseManager {
 
     func updateLeaderboard(userId: String, nickname: String, totalScore: Int, completion: @escaping (Result<Void, Error>) -> Void) {
         let leaderboardRef = self.dbRef.child("leaderboard").child(userId)
-        let values = ["nickname": nickname, "totalScore": totalScore] as [String: Any]
+        let values = [
+            "nickname": nickname,
+            "totalScore": totalScore
+        ] as [String: Any]
 
         leaderboardRef.updateChildValues(values) { error, _ in
             if let error = error {
@@ -217,7 +222,7 @@ class FirebaseManager {
     }
 
     func fetchLeaderboard(completion: @escaping (Result<[(nickname: String, totalScore: Int, userId: String)], Error>) -> Void) {
-        self.dbRef.child("leaderboard").queryOrdered(byChild: "totalScore").observeSingleEvent(of: .value) { snapshot in
+        self.dbRef.child("leaderboard").queryOrdered(byChild: "totalScore").observe(.value) { snapshot in
             var leaderboard: [(nickname: String, totalScore: Int, userId: String)] = []
             for child in snapshot.children.allObjects as! [DataSnapshot] {
                 let value = child.value as? [String: Any]
