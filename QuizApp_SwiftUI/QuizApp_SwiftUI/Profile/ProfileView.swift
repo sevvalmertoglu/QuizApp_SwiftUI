@@ -97,6 +97,14 @@ struct ProfileView: View {
                                 .overlay(Text("Mail: \(self.viewModel.email)")
                                     .foregroundColor(.indigo)
                                     .font(.system(size: 17)))
+
+                            RoundedRectangle(cornerRadius: 120)
+                                .frame(width: 350, height: 35, alignment: .center)
+                                .foregroundColor(.white)
+                                .shadow(color: .blue, radius: 8, y: 5)
+                                .overlay(Text("Total Score: \(self.viewModel.totalScore)")
+                                    .foregroundColor(.indigo)
+                                    .font(.system(size: 17)))
                         }
                     }.padding(.top, -30)
 

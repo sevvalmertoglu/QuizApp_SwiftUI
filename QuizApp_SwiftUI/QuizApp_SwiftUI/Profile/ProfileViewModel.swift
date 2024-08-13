@@ -12,6 +12,7 @@ class ProfileViewModel: ObservableObject {
     @Published var name: String = ""
     @Published var nickname: String = ""
     @Published var email: String = ""
+    @Published var totalScore: Int = 0
     @Published var userIcon: UIImage? = nil
     @Published var isLoading: Bool = false
     @Published var showAlert: Bool = false
@@ -41,6 +42,7 @@ class ProfileViewModel: ObservableObject {
                     self?.name = user.name
                     self?.nickname = user.nickname
                     self?.email = user.email
+                    self?.totalScore = self?.calculateTotalScore(from: user.Scores) ?? 0
                     self?.fetchSelectedUserIcon(userId: userId)
                 case let .failure(error):
                     self?.alertMessage = error.localizedDescription
@@ -48,6 +50,10 @@ class ProfileViewModel: ObservableObject {
                 }
             }
         }
+    }
+
+    private func calculateTotalScore(from scores: [Score]) -> Int {
+        return scores.reduce(0) { $0 + $1.score }
     }
 
     func fetchSelectedUserIcon(userId: String) {

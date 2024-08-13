@@ -65,12 +65,14 @@ class FirebaseManager {
                 return
             }
             var scores: [Score] = []
-            if let scoresData = value["scores"] as? [String: [String: Any]] {
-                scores = scoresData.compactMap { _, value in
-                    if let date = value["date"] as? String, let score = value["score"] as? Int {
-                        return Score(date: date, score: score)
+            if let scoresData = value["scores"] as? [[String: Any]] {
+                scores = scoresData.compactMap { dict in
+                    guard let date = dict["date"] as? String,
+                          let score = dict["score"] as? Int
+                    else {
+                        return nil
                     }
-                    return nil
+                    return Score(date: date, score: score)
                 }
             }
             let user = User(name: name, nickname: nickname, email: email, Scores: scores)

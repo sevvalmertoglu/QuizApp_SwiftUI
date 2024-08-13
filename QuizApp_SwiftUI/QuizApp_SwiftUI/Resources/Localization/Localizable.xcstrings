@@ -520,6 +520,16 @@
         }
       }
     },
+    "Total Score: %lld" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam Skor: %lld"
+          }
+        }
+      }
+    },
     "True / False" : {
       "localizations" : {
         "tr" : {
