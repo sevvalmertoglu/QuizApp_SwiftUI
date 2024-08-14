@@ -12,30 +12,24 @@ struct LeaderBoardView: View {
     @State private var showCategorySelector: Bool = true
 
     var body: some View {
-        ZStack {
-            QuizAppImages.instance.backgroundLeaderBoard.asImage
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea(.all)
-
-            VStack {
-                if self.viewModel.isLoading {
-                    ProgressView("Loading Leaderboard...")
-                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                        .scaleEffect(1.5)
-                        .padding(.top, 50)
-                } else {
-                    VStack {
-                        Button(action: {
-                            self.showCategorySelector.toggle()
-                        }) {
-                            Text("Other Scores")
-                                .foregroundColor(.white)
-                                .padding(6)
-                                .background(self.showCategorySelector ? Color.green : Color.gray)
-                                .cornerRadius(15)
-                        }
-                    }.offset(x: 135, y: -100)
+        VStack {
+            if self.viewModel.isLoading {
+                ProgressView("Loading Leaderboard...")
+                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                    .scaleEffect(1.5)
+                    .padding(.top, 50)
+            } else {
+                ZStack(alignment: .topTrailing) {
+                    Button(action: {
+                        self.showCategorySelector.toggle()
+                    }) {
+                        Text("Other Scores")
+                            .foregroundColor(.white)
+                            .padding(6)
+                            .background(self.showCategorySelector ? Color.green : Color.gray)
+                            .cornerRadius(15)
+                    }
+                    .padding()
 
                     HStack(spacing: 0) {
                         // Left Stack (Rank 2)
@@ -80,16 +74,27 @@ struct LeaderBoardView: View {
                             )
                         }
                     }
-                    .padding(.horizontal, 20)
-                    .offset(y: -80)
+                    .padding([.horizontal, .top], 20)
+                    .padding(.bottom, 120)
+                    .frame(maxHeight: .infinity)
                 }
-            } // VStack
-            .sheet(isPresented: self.$showCategorySelector, onDismiss: {}) {
-                LeaderRankingView()
-                    .presentationDetents([.medium, .fraction(0.8), .height(300)])
-                    .presentationBackground(.thinMaterial)
-                    .presentationCornerRadius(50)
+                .background(
+                    QuizAppImages.instance.backgroundLeaderBoard.asImage
+                        .resizable()
+                        .scaledToFill()
+                        .ignoresSafeArea(.all)
+                )
+                .sheet(isPresented: self.$showCategorySelector, onDismiss: {}) {
+                    LeaderRankingView()
+                        .presentationDetents([.medium, .fraction(0.8), .height(300)])
+                        .presentationBackground(.thinMaterial)
+                        .presentationCornerRadius(50)
+                        .presentationDragIndicator(.hidden)
+                }
             }
+        }
+        .onAppear {
+            self.showCategorySelector = true
         }
     }
 }
