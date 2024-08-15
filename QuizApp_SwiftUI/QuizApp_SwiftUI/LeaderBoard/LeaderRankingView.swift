@@ -9,9 +9,33 @@ import SwiftUI
 
 struct LeaderRankingView: View {
     @StateObject private var viewModel = LeaderRankingViewModel()
+    var namespace: Namespace.ID
+    @Environment(\.dismiss) private var dismiss
+    @Binding var isClicked: Bool
 
     var body: some View {
         ScrollView {
+            HStack {
+                Spacer()
+                if self.isClicked {
+                    Button(action: {
+                        withAnimation(.easeInOut) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.dismiss()
+                            }
+                            self.isClicked.toggle()
+                        }
+                    }, label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .resizable()
+                            .foregroundStyle(.white)
+                            .frame(width: 25, height: 25)
+                            .padding([.top, .trailing], 25)
+                            .matchedGeometryEffect(id: "heroButton", in: self.namespace) // Hero effect
+                    })
+                }
+            }
+
             VStack {
                 ForEach(0..<self.viewModel.otherUsers.count, id: \.self) { index in
                     HStack {

@@ -10,6 +10,9 @@ import SwiftUI
 struct LeaderBoardView: View {
     @StateObject private var viewModel = LeaderBoardViewModel()
     @State private var showCategorySelector: Bool = true
+    @State private var isAnimating: Bool = false
+    @Namespace private var namespace
+    @State var isClicked: Bool = false
 
     var body: some View {
         VStack {
@@ -20,16 +23,27 @@ struct LeaderBoardView: View {
                     .padding(.top, 50)
             } else {
                 ZStack(alignment: .topTrailing) {
-                    Button(action: {
-                        self.showCategorySelector.toggle()
-                    }) {
-                        Text("Other Scores")
-                            .foregroundColor(.white)
-                            .padding(6)
-                            .background(self.showCategorySelector ? Color.green : Color.gray)
-                            .cornerRadius(15)
+                    if !self.isClicked {
+                        Button(action: {
+                            withAnimation(.easeInOut) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    self.showCategorySelector = true
+                                }
+                                self.isClicked.toggle()
+                            }
+                        }) {
+                            Text("Other Scores")
+                                .foregroundColor(.white)
+                                .padding(6)
+                                .background(Color.green)
+                                .cornerRadius(15)
+                                .matchedGeometryEffect(id: "heroButton", in: self.namespace)
+                        }
+                        .offset(y: self.isClicked ? UIScreen.main.bounds.height : 0)
+                        .padding()
                     }
-                    .padding()
+
+                    Spacer()
 
                     HStack(spacing: 0) {
                         // Left Stack (Rank 2)
@@ -85,7 +99,7 @@ struct LeaderBoardView: View {
                         .ignoresSafeArea(.all)
                 )
                 .sheet(isPresented: self.$showCategorySelector, onDismiss: {}) {
-                    LeaderRankingView()
+                    LeaderRankingView(namespace: self.namespace, isClicked: self.$isClicked)
                         .presentationDetents([.medium, .fraction(0.8), .height(300)])
                         .presentationBackground(.thinMaterial)
                         .presentationCornerRadius(50)

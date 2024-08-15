@@ -63,6 +63,7 @@
 		A9C078AE2C4FEA6600DD83B2 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078AD2C4FEA6600DD83B2 /* AppState.swift */; };
 		A9C078B02C4FEDED00DD83B2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078AF2C4FEDED00DD83B2 /* MainView.swift */; };
 		A9C078B22C4FEE7700DD83B2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078B12C4FEE7700DD83B2 /* ProfileView.swift */; };
+		A9DD75662C6E21CA008CD543 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DD75652C6E21CA008CD543 /* AnimationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +124,7 @@
 		A9C078AD2C4FEA6600DD83B2 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A9C078AF2C4FEDED00DD83B2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A9C078B12C4FEE7700DD83B2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		A9DD75652C6E21CA008CD543 /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		ACC8DD36D8A8D178CB843B26 /* Pods-QuizApp_SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp_SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-QuizApp_SwiftUI/Pods-QuizApp_SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +200,7 @@
 				A9261A022C6A204C006B594A /* LeaderBoardViewModel.swift */,
 				A9261A062C6A4E69006B594A /* LeaderRankingView.swift */,
 				A9261A082C6B4CE3006B594A /* LeaderRankingViewModel.swift */,
+				A9DD75652C6E21CA008CD543 /* AnimationView.swift */,
 			);
 			path = LeaderBoard;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				A92306C62C4A5F3C0049A537 /* CategoryViewModel.swift in Sources */,
 				A92619F92C65F813006B594A /* LeaderBoardView.swift in Sources */,
 				A92499B52C53D9D90044A0DF /* OptionButton.swift in Sources */,
+				A9DD75662C6E21CA008CD543 /* AnimationView.swift in Sources */,
 				A9A6CD752C6369D5000E2570 /* ImageResource.swift in Sources */,
 				A9A6CD772C6369F3000E2570 /* QuizAppImage.swift in Sources */,
 				A9505C902C4A9E7F0075640F /* GameSelectionViewModel.swift in Sources */,
