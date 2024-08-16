@@ -5,6 +5,7 @@
 //  Created by Şevval Mertoğlu on 26.07.2024.
 //
 
+import Combine
 import CoreAPI
 import SwiftUI
 
@@ -12,18 +13,14 @@ import SwiftUI
 struct QuestionsView: View {
     @StateObject private var viewModel = QuestionsViewModel()
     @State private var quizManager: QuizManager?
-    @State private var timerManager = TimerManager()
-
+    @ObservedObject private var timerManager = TimerManager()
     @Binding var questions: [Question]
-
     @State var currentQuestionIndex: Int = 0
     @State var possibilities: [Answer] = []
     @State var clicked: Bool = false // State variable that determines if an option was clicked
     @State var selectionCorrect: Bool = false
     @State var displayResults: Bool = false
-    @State var timeRemaining: Int = 10 // Countdown timer
     @State var timer: Timer? = nil
-
     @Environment(\.dismiss) var dismiss
 
     init(questions: Binding<[Question]>) {
@@ -67,11 +64,9 @@ struct QuestionsView: View {
     }
 
     private func startQuizTimer() {
-        self.timerManager.start(onTick: { time in
-            self.timeRemaining = time
-        }, onComplete: {
+        self.timerManager.start {
             self.handleNextQuestion()
-        })
+        }
     }
 
     private func handleNextQuestion() {
@@ -96,7 +91,7 @@ struct QuestionsView: View {
                     Image(systemName: "clock")
                         .font(.system(size: 22, weight: .bold))
                         .foregroundColor(.indigo)
-                    Text("\(self.timeRemaining)")
+                    Text("\(self.timerManager.timeRemaining)")
                         .font(.system(size: 22, weight: .bold))
                         .foregroundColor(.indigo)
                 }
