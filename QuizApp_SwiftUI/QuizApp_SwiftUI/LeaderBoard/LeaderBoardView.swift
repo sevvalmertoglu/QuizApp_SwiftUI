@@ -107,6 +107,11 @@ struct LeaderBoardView: View {
                 }
             }
         }
+        .onTapGesture {
+            withAnimation(.easeInOut) {
+                self.isClicked.toggle()
+            }
+        }
         .onAppear {
             self.showCategorySelector = true
         }
