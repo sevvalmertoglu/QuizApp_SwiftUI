@@ -165,7 +165,8 @@ struct ProfileView: View {
                     }
 
                     NavigationLink(
-                        destination: PreviousScoresView(),
+                        destination: PreviousScoresView()
+                            .navigationBarBackButtonHidden(true),
                         isActive: self.$navigateToPreviousScoresView
                     ) {
                         EmptyView()
