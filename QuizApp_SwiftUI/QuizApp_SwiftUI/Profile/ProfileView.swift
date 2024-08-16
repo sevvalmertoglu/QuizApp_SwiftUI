@@ -75,36 +75,32 @@ struct ProfileView: View {
                             ProgressView()
                         } else {
                             RoundedRectangle(cornerRadius: 120)
-                                .frame(width: 350, height: 35, alignment: .center)
-                                .foregroundColor(.white)
-                                .shadow(color: .purple, radius: 8, y: 5)
-                                .overlay(Text("Name: \(self.viewModel.name)")
-                                    .foregroundColor(.indigo)
-                                    .font(.system(size: 19)))
+                                .roundedRectangleStyle(
+                                    shadowColor: .purple,
+                                    text: "Name: \(self.viewModel.name)",
+                                    fontSize: 19
+                                )
 
                             RoundedRectangle(cornerRadius: 120)
-                                .frame(width: 350, height: 35, alignment: .center)
-                                .foregroundColor(.white)
-                                .shadow(color: .indigo, radius: 8, y: 5)
-                                .overlay(Text("Nickname: \(self.viewModel.nickname)")
-                                    .foregroundColor(.indigo)
-                                    .font(.system(size: 19)))
+                                .roundedRectangleStyle(
+                                    shadowColor: .indigo,
+                                    text: "Nickname: \(self.viewModel.nickname)",
+                                    fontSize: 19
+                                )
 
                             RoundedRectangle(cornerRadius: 120)
-                                .frame(width: 350, height: 35, alignment: .center)
-                                .foregroundColor(.white)
-                                .shadow(color: .pink, radius: 8, y: 5)
-                                .overlay(Text("Mail: \(self.viewModel.email)")
-                                    .foregroundColor(.indigo)
-                                    .font(.system(size: 17)))
+                                .roundedRectangleStyle(
+                                    shadowColor: .pink,
+                                    text: "Mail: \(self.viewModel.email)",
+                                    fontSize: 17
+                                )
 
                             RoundedRectangle(cornerRadius: 120)
-                                .frame(width: 350, height: 35, alignment: .center)
-                                .foregroundColor(.white)
-                                .shadow(color: .blue, radius: 8, y: 5)
-                                .overlay(Text("Total Score: \(self.viewModel.totalScore)")
-                                    .foregroundColor(.indigo)
-                                    .font(.system(size: 17)))
+                                .roundedRectangleStyle(
+                                    shadowColor: .blue,
+                                    text: "Total Score: \(self.viewModel.totalScore)",
+                                    fontSize: 17
+                                )
                         }
                     }.padding(.top, -30)
 
@@ -115,44 +111,23 @@ struct ProfileView: View {
                             self.navigateToPreviousScoresView = true
                         }) {
                             Text("Previous Scores")
-                                .padding()
-                                .font(.system(size: 15))
-                                .frame(maxWidth: .infinity)
-                                .background(Color.indigo)
-                                .foregroundColor(.white)
-                                .cornerRadius(20)
                         }
-                        .padding(.horizontal, 20)
-                        .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
+                        .buttonStyle()
 
                         Button(action: {
                             self.viewModel.logOut()
                             self.navigateToSplashView = true
                         }) {
                             Text("Log Out")
-                                .padding()
-                                .font(.system(size: 15))
-                                .frame(maxWidth: .infinity)
-                                .background(Color.indigo)
-                                .foregroundColor(.white)
-                                .cornerRadius(20)
                         }
-                        .padding(.horizontal, 20)
-                        .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
+                        .buttonStyle()
 
                         Button(action: {
                             self.viewModel.resetPassword()
                         }) {
                             Text("Reset Password")
-                                .padding()
-                                .font(.system(size: 15))
-                                .frame(maxWidth: .infinity)
-                                .background(Color.indigo)
-                                .foregroundColor(.white)
-                                .cornerRadius(20)
                         }
-                        .padding(.horizontal, 20)
-                        .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
+                        .buttonStyle()
 
                         Button(action: {
                             self.viewModel.showConfirmationDialog = true
