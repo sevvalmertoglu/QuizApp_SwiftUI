@@ -25,7 +25,7 @@ struct LeaderBoardView: View {
                 ZStack(alignment: .topTrailing) {
                     if !self.isClicked {
                         Button(action: {
-                            withAnimation(.easeInOut) {
+                            withAnimation(.easeInOut(duration: 0.5)) {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                     self.showCategorySelector = true
                                 }
