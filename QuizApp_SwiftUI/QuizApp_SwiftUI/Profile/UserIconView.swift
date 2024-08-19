@@ -10,6 +10,7 @@ import SwiftUI
 struct UserIconView: View {
     @StateObject private var viewModel = UserIconViewModel()
     @State private var isSavedUserIcon = false
+    @Environment(\.presentationMode) var presentationMode
 
     // 3 column grid layout
     private let columns = [
@@ -66,7 +67,15 @@ struct UserIconView: View {
             }
         }
         .alert(isPresented: self.$viewModel.showAlert) {
-            Alert(title: Text("Alert"), message: Text(self.viewModel.alertMessage), dismissButton: .default(Text("OK")))
+            Alert(
+                title: Text("Information"),
+                message: Text(self.viewModel.alertMessage),
+                dismissButton: .default(Text("OK"), action: {
+                    if self.viewModel.alertMessage == NSLocalizedString("Profile icon saved successfully.", comment: "") {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                })
+            )
         }
     }
 }

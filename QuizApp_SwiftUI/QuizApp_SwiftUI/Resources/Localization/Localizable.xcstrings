@@ -50,16 +50,6 @@
         }
       }
     },
-    "Alert" : {
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uyarı"
-          }
-        }
-      }
-    },
     "Already have an account?" : {
       "localizations" : {
         "tr" : {
