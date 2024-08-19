@@ -15,8 +15,8 @@ struct PreviousScoresView: View {
         ZStack {
             QuizAppImages.instance.backgroundPreviousScores.asImage
                 .resizable()
-                .scaledToFill()
                 .ignoresSafeArea()
+                .frame(maxHeight: .infinity)
 
             ScrollView {
                 VStack {
@@ -64,7 +64,6 @@ struct PreviousScoresView: View {
                         }
                     }
                 }
-                .padding(.top, 80)
                 .padding()
             }
         }
