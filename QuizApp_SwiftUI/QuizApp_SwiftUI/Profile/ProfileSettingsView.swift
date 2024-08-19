@@ -46,10 +46,10 @@ struct ProfileSettingsView: View {
                 .offset(x: 0, y: 0)
             }
 
-            VStack(spacing: 30) {
-                ProfileSettingsTextField(icon: "pencil.circle", placeHolder: "Name Surname", text: self.$viewModel.name)
+            VStack(spacing: 40) {
+                ProfileSettingsTextField(icon: "square.and.pencil", placeHolder: "Name Surname", text: self.$viewModel.name)
 
-                ProfileSettingsTextField(icon: "pencil.circle", placeHolder: "Nickname", text: self.$viewModel.nickname)
+                ProfileSettingsTextField(icon: "square.and.pencil", placeHolder: "Nickname", text: self.$viewModel.nickname)
             }
             .padding()
 
