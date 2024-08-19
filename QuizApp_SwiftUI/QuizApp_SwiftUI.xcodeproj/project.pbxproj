@@ -34,6 +34,9 @@
 		A9261A052C6A484A006B594A /* LeaderBoardStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9261A042C6A484A006B594A /* LeaderBoardStack.swift */; };
 		A9261A072C6A4E69006B594A /* LeaderRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9261A062C6A4E69006B594A /* LeaderRankingView.swift */; };
 		A9261A092C6B4CE3006B594A /* LeaderRankingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9261A082C6B4CE3006B594A /* LeaderRankingViewModel.swift */; };
+		A92C47322C6F95BD00B6C2D6 /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92C47312C6F95BD00B6C2D6 /* ProfileSettingsView.swift */; };
+		A92C47342C6F95DA00B6C2D6 /* ProfileSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92C47332C6F95DA00B6C2D6 /* ProfileSettingsViewModel.swift */; };
+		A92C47362C73408300B6C2D6 /* CustomTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92C47352C73408300B6C2D6 /* CustomTextFields.swift */; };
 		A93D941C2C5B7D7D00D47492 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941B2C5B7D7D00D47492 /* ProfileViewModel.swift */; };
 		A93D941E2C5BD23700D47492 /* PreviousScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941D2C5BD23700D47492 /* PreviousScoresView.swift */; };
 		A93D94202C5BD2FE00D47492 /* PreviousScoresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D941F2C5BD2FE00D47492 /* PreviousScoresViewModel.swift */; };
@@ -96,6 +99,9 @@
 		A9261A042C6A484A006B594A /* LeaderBoardStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardStack.swift; sourceTree = "<group>"; };
 		A9261A062C6A4E69006B594A /* LeaderRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderRankingView.swift; sourceTree = "<group>"; };
 		A9261A082C6B4CE3006B594A /* LeaderRankingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderRankingViewModel.swift; sourceTree = "<group>"; };
+		A92C47312C6F95BD00B6C2D6 /* ProfileSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsView.swift; sourceTree = "<group>"; };
+		A92C47332C6F95DA00B6C2D6 /* ProfileSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewModel.swift; sourceTree = "<group>"; };
+		A92C47352C73408300B6C2D6 /* CustomTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFields.swift; sourceTree = "<group>"; };
 		A93D941B2C5B7D7D00D47492 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		A93D941D2C5BD23700D47492 /* PreviousScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousScoresView.swift; sourceTree = "<group>"; };
 		A93D941F2C5BD2FE00D47492 /* PreviousScoresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousScoresViewModel.swift; sourceTree = "<group>"; };
@@ -193,6 +199,7 @@
 				A92499C02C53DF530044A0DF /* ProgressBar.swift */,
 				A9BEDC7A2C578CDE00210FD8 /* CustomStepper.swift */,
 				A9261A042C6A484A006B594A /* LeaderBoardStack.swift */,
+				A92C47352C73408300B6C2D6 /* CustomTextFields.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -341,6 +348,8 @@
 				A93D941F2C5BD2FE00D47492 /* PreviousScoresViewModel.swift */,
 				A92619FA2C65FB4E006B594A /* UserIconView.swift */,
 				A92619FC2C65FF40006B594A /* UserIconViewModel.swift */,
+				A92C47312C6F95BD00B6C2D6 /* ProfileSettingsView.swift */,
+				A92C47332C6F95DA00B6C2D6 /* ProfileSettingsViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -500,7 +509,9 @@
 				A93D94202C5BD2FE00D47492 /* PreviousScoresViewModel.swift in Sources */,
 				A9DD75692C6F3479008CD543 /* ButtonStyle.swift in Sources */,
 				A92306CB2C4A753A0049A537 /* LoginView.swift in Sources */,
+				A92C47362C73408300B6C2D6 /* CustomTextFields.swift in Sources */,
 				A9A6CD652C60C1EF000E2570 /* QuizManager.swift in Sources */,
+				A92C47322C6F95BD00B6C2D6 /* ProfileSettingsView.swift in Sources */,
 				A92306C92C4A74F60049A537 /* CategoryView.swift in Sources */,
 				A92619FF2C663369006B594A /* QuizAppImages.swift in Sources */,
 				A9BEDC762C577E5000210FD8 /* TriviaCategory.swift in Sources */,
@@ -521,6 +532,7 @@
 				A9AB30CA2C46C4F100604B97 /* QuizApp_SwiftUIApp.swift in Sources */,
 				A9A6CD632C60C1D1000E2570 /* TimerManager.swift in Sources */,
 				A92499C12C53DF530044A0DF /* ProgressBar.swift in Sources */,
+				A92C47342C6F95DA00B6C2D6 /* ProfileSettingsViewModel.swift in Sources */,
 				A92499B72C53DA2D0044A0DF /* Extensions.swift in Sources */,
 				A92619FB2C65FB4E006B594A /* UserIconView.swift in Sources */,
 				A9BEDC7B2C578CDE00210FD8 /* CustomStepper.swift in Sources */,

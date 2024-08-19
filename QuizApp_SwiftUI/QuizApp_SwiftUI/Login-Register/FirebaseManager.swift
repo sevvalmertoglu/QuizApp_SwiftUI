@@ -98,6 +98,22 @@ class FirebaseManager {
         }
     }
 
+    func updateUserProfile(userId: String, name: String, nickname: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let userRef = self.dbRef.child("users").child(userId)
+        let updatedData = [
+            "name": name,
+            "nickname": nickname
+        ]
+
+        userRef.updateChildValues(updatedData) { error, _ in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+
     // MARK: - User Delete Methods
 
     func deleteUserData(userId: String, completion: @escaping (Error?) -> Void) {
@@ -167,7 +183,7 @@ class FirebaseManager {
         return scores.reduce(0) { $0 + ($1["score"] as? Int ?? 0) }
     }
 
-    private func saveUserData(userId: String, userData: [String: Any], completion: @escaping (Result<Void, Error>) -> Void) {
+    func saveUserData(userId: String, userData: [String: Any], completion: @escaping (Result<Void, Error>) -> Void) {
         self.dbRef.child("users").child(userId).setValue(userData) { error, _ in
             if let error = error {
                 completion(.failure(error))

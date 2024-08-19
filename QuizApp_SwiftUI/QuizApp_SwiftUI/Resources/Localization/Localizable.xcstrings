@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%@" : {
       "localizations" : {
         "tr" : {
@@ -250,6 +253,16 @@
         }
       }
     },
+    "Information" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilgi"
+          }
+        }
+      }
+    },
     "Leader Board" : {
       "localizations" : {
         "tr" : {
@@ -440,6 +453,26 @@
         }
       }
     },
+    "Profile information saved successfully!" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil bilgileri başarıyla kaydedildi!"
+          }
+        }
+      }
+    },
+    "Profile Settings" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil Ayarları"
+          }
+        }
+      }
+    },
     "Question Type" : {
       "localizations" : {
         "tr" : {
@@ -466,6 +499,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Şifreyi Yenile"
+          }
+        }
+      }
+    },
+    "Save Changes" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Değişiklikleri Kaydet"
           }
         }
       }

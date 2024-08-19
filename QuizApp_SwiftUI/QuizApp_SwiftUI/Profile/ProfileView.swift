@@ -12,7 +12,7 @@ struct ProfileView: View {
     @EnvironmentObject var appState: AppState
     @State private var navigateToSplashView = false
     @State private var navigateToPreviousScoresView = false
-    @State private var navigateToUserIconView = false
+    @State private var navigateToProfileSettingsView = false
 
     init(appState: AppState) {
         _viewModel = StateObject(wrappedValue: ProfileViewModel(appState: appState))
@@ -46,7 +46,7 @@ struct ProfileView: View {
                             }
 
                             Button(action: {
-                                self.navigateToUserIconView = true
+                                self.navigateToProfileSettingsView = true
                             }) {
                                 Image(systemName: "pencil.and.scribble")
                                     .foregroundColor(.white)
@@ -158,8 +158,8 @@ struct ProfileView: View {
                     Spacer()
 
                     NavigationLink(
-                        destination: UserIconView(),
-                        isActive: self.$navigateToUserIconView
+                        destination: ProfileSettingsView(),
+                        isActive: self.$navigateToProfileSettingsView
                     ) {
                         EmptyView()
                     }
