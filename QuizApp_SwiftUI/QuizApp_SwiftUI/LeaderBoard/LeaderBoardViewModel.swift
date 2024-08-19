@@ -10,6 +10,8 @@ import Foundation
 class LeaderBoardViewModel: ObservableObject {
     @Published var topThreeUsers: [(nickname: String, totalScore: Int, userId: String, userIcon: String)] = []
     @Published var isLoading: Bool = false
+    @Published var showAlert: Bool = false
+    @Published var alertMessage: String = ""
 
     private let firebaseManager = FirebaseManager.shared
 
@@ -30,10 +32,27 @@ class LeaderBoardViewModel: ObservableObject {
                     self?.topThreeUsers = sortedLeaderboard.prefix(3).map { user in
                         (nickname: user.nickname, totalScore: user.totalScore, userId: user.userId, userIcon: "")
                     }
+                    self?.fetchUserDataForTopThree()
                     self?.fetchIconsForTopThreeUsers()
                 }
             case let .failure(error):
                 print("Failed to observe leaderboard changes: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    func fetchUserDataForTopThree() {
+        for (index, user) in self.topThreeUsers.enumerated() {
+            FirebaseManager.shared.fetchUserData(userId: user.userId) { [weak self] result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case let .success(fetchedUser):
+                        self?.topThreeUsers[index].nickname = fetchedUser.nickname
+                    case let .failure(error):
+                        self?.alertMessage = error.localizedDescription
+                        self?.showAlert = true
+                    }
+                }
             }
         }
     }
