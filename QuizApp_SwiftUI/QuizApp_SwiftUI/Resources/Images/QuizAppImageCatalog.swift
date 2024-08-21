@@ -19,4 +19,9 @@ public final class QuizAppImageCatalog: ImageResource {
     public var Medal2 = QuizAppImage(resourceName: "Medal2")
     public var Medal3 = QuizAppImage(resourceName: "Medal3")
     public var backgroundPreviousScores = QuizAppImage(resourceName: "backgroundPreviousScores")
+    public var back = QuizAppImage(resourceName: "back")
+    public var onboarding1 = QuizAppImage(resourceName: "onboarding1")
+    public var onboarding2 = QuizAppImage(resourceName: "onboarding2")
+    public var onboarding3 = QuizAppImage(resourceName: "onboarding3")
+    public var right = QuizAppImage(resourceName: "right")
 }

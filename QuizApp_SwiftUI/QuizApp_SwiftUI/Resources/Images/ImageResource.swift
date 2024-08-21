@@ -20,4 +20,9 @@ public protocol ImageResource {
     var Medal2: QuizAppImage { get }
     var Medal3: QuizAppImage { get }
     var backgroundPreviousScores: QuizAppImage { get }
+    var back: QuizAppImage { get }
+    var onboarding1: QuizAppImage { get }
+    var onboarding2: QuizAppImage { get }
+    var onboarding3: QuizAppImage { get }
+    var right: QuizAppImage { get }
 }

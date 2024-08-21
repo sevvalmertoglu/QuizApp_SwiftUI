@@ -20,11 +20,10 @@ extension Color {
     }
 }
 
-extension String {
-    func base64Decode() -> String? {
-        if let data = Data(base64Encoded: self, options: [.ignoreUnknownCharacters]) {
-            return String(data: data, encoding: .utf16)
-        }
-        return nil
-    }
+extension Color {
+    static let backgroundPurple = Color(red: 0.49, green: 0.45, blue: 0.89)
+    static let textColor = Color(red: 0.38, green: 0.36, blue: 0.73)
+    static let greenishGray = Color(red: 0.52, green: 0.48, blue: 0.91)
+    static let oliveGreen = Color(red: 0.46, green: 0.44, blue: 0.79)
+    static let shadowColor = Color(red: 0.25, green: 0.22, blue: 0.50).opacity(0.35)
 }

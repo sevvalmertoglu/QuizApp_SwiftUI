@@ -22,13 +22,18 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct QuizApp_SwiftUIApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject private var appState = AppState()
+    @AppStorage("isOnboarding") var isOnboarding: Bool = true
 
     var body: some Scene {
         WindowGroup {
             let authViewModel = AuthViewModel(appState: appState)
-            ContentView()
-                .environmentObject(authViewModel)
-                .environmentObject(self.appState)
+            if self.isOnboarding {
+                OnboardingView()
+            } else {
+                ContentView()
+                    .environmentObject(authViewModel)
+                    .environmentObject(self.appState)
+            }
         }
     }
 }

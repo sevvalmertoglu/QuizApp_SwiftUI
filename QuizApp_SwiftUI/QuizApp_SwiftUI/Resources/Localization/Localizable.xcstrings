@@ -91,12 +91,32 @@
         }
       }
     },
+    "Compete with others and climb to the top of the leaderboard. With our leaderboard, you can track your scores and see how you stack up against other users. Good luck!" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rakiplerinizle karşılaşın ve liderlik tablosunda üst sıralara çıkın. Puan tablomuz sayesinde, kendi skolarınızı ve diğer kullanıcıların başarılarını takip edebilirsiniz. Başarılar!"
+          }
+        }
+      }
+    },
     "Confirm Delete" : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Silmeyi Onayla"
+          }
+        }
+      }
+    },
+    "Create your account" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesabınızı oluşturun"
           }
         }
       }
@@ -201,6 +221,26 @@
         }
       }
     },
+    "Get started," : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlayalım,"
+          }
+        }
+      }
+    },
+    "Get to know our app! Explore your favorite categories and questions, and enjoy a fun experience. If you’re ready to start, let’s go!" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulamamızla tanışın! En sevdiğiniz kategori ve soruları keşfedin ve eğlenceli bir deneyim yaşayın. Başlamak için hazırsanız, devam edin! "
+          }
+        }
+      }
+    },
     "Good job!\n\nYou got %lld out of %lld questions right!" : {
       "localizations" : {
         "en" : {
@@ -243,6 +283,26 @@
         }
       }
     },
+    "Hello" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Merhaba"
+          }
+        }
+      }
+    },
+    "Hello," : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Merhaba,"
+          }
+        }
+      }
+    },
     "Information" : {
       "localizations" : {
         "tr" : {
@@ -259,6 +319,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Liderlik Tablosu"
+          }
+        }
+      }
+    },
+    "Leaderboard and Scores" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liderlik Tablosu Ve Skorlar"
           }
         }
       }
@@ -383,6 +453,16 @@
         }
       }
     },
+    "Our app offers a variety of game categories: Movies, books, nature, sports, music, and more! Discover games that suit your interests and have fun." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulamamızda birçok oyun kategorisi bulabilirsiniz: Filmler, kitaplar, doğa, spor, müzik ve daha fazlası! İhtiyacınıza uygun oyunları keşfedin ve keyfini çıkarın."
+          }
+        }
+      }
+    },
     "Play Again" : {
       "localizations" : {
         "tr" : {
@@ -493,6 +573,16 @@
         }
       }
     },
+    "Rich Game Categories" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zengin Oyun Kategorileri"
+          }
+        }
+      }
+    },
     "Save Changes" : {
       "localizations" : {
         "tr" : {
@@ -543,6 +633,16 @@
         }
       }
     },
+    "SKIP" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ATLA"
+          }
+        }
+      }
+    },
     "Start!" : {
       "localizations" : {
         "tr" : {
@@ -583,7 +683,27 @@
         }
       }
     },
+    "Welcome back" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekrar Hoş Geldin"
+          }
+        }
+      }
+    },
     "Welcome Quiz App!" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz App'e Hoş Geldin!"
+          }
+        }
+      }
+    },
+    "Welcome to Quiz App!" : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
