@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AuthHeaderView: View {
-    let title1: String
-    let title2: String
+    let title1: LocalizedStringKey
+    let title2: LocalizedStringKey
 
     var body: some View {
         VStack(alignment: .center) {
