@@ -101,33 +101,30 @@ struct LeaderBoardView: View {
                 }
             }
 
-            if self.shouldShownSheet {
-                // Custom Sheet
-                LeaderRankingView(namespace: self.namespace, shouldShownSheet: self.$shouldShownSheet)
-                    .offset(y: self.startingOffsetY)
-                    .offset(y: self.currentDragOffsetY)
-                    .offset(y: self.endingOffsetY)
-                    .gesture(
-                        DragGesture()
-                            .onChanged { value in
-                                withAnimation(.spring()) {
-                                    self.currentDragOffsetY = value.translation.height
-                                }
+            // Custom Sheet
+            LeaderRankingView(namespace: self.namespace, shouldShownSheet: self.$shouldShownSheet)
+                .offset(y: self.startingOffsetY)
+                .offset(y: self.currentDragOffsetY)
+                .offset(y: self.endingOffsetY)
+                .gesture(
+                    DragGesture()
+                        .onChanged { value in
+                            withAnimation(.spring()) {
+                                self.currentDragOffsetY = value.translation.height
                             }
-                            .onEnded { _ in
-                                withAnimation(.spring()) {
-                                    if self.currentDragOffsetY < -150 {
-                                        self.endingOffsetY = -self.startingOffsetY
-                                    } else if self.endingOffsetY != 0, self.currentDragOffsetY > 150 {
-                                        self.endingOffsetY = 0
-                                    }
-                                    self.currentDragOffsetY = 0
+                        }
+                        .onEnded { _ in
+                            withAnimation(.spring()) {
+                                if self.currentDragOffsetY < -150 {
+                                    self.endingOffsetY = -self.startingOffsetY
+                                } else if self.endingOffsetY != 0, self.currentDragOffsetY > 150 {
+                                    self.endingOffsetY = 0
                                 }
+                                self.currentDragOffsetY = 0
                             }
-                    )
-                    .transition(.move(edge: .bottom))
-                    .animation(.easeInOut(duration: 0.5), value: self.shouldShownSheet)
-            }
+                        }
+                )
+                .opacity(self.shouldShownSheet ? 1 : 0)
         }
         .onAppear {
             self.shouldShownSheet = true
