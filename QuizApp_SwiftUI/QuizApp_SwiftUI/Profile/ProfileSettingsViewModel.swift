@@ -52,7 +52,7 @@ class ProfileSettingsViewModel: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    self?.alertMessage = "Profile information saved successfully!"
+                    self?.alertMessage = NSLocalizedString("Profile information saved successfully!", comment: "")
                 case let .failure(error):
                     self?.alertMessage = error.localizedDescription
                 }
