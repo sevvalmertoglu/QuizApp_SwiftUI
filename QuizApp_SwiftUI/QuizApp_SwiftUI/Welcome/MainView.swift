@@ -24,7 +24,7 @@ struct MainView: View {
 
             LeaderBoardView()
                 .tabItem {
-                    Label("Leader Board", systemImage: "medal.star.fill")
+                    Label("Leader Board", systemImage: "medal.fill")
                 }
 
             ProfileView(appState: self.appState)
