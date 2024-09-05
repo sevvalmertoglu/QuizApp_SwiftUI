@@ -7,13 +7,17 @@
 
 import Foundation
 
-public class TriviaCategory: Decodable {
+public class TriviaCategory: Equatable, Decodable {
     public let id: Int
     public let name: String
 
     public init(id: Int, name: String) {
         self.id = id
         self.name = name
+    }
+
+    public static func ==(lhs: TriviaCategory, rhs: TriviaCategory) -> Bool {
+        return lhs.id == rhs.id && lhs.name == rhs.name
     }
 }
 

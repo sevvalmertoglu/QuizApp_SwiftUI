@@ -17,10 +17,10 @@ import Foundation
 
     private let triviaService: TriviaService
 
-    init() {
+    init(triviaService: TriviaService = TriviaService()) {
         self.selectedCategory = ""
         self.categories = []
-        self.triviaService = TriviaService()
+        self.triviaService = triviaService
     }
 
     public func setupCategories() async {
