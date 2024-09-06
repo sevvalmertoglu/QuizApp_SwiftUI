@@ -79,6 +79,7 @@
 		A9C255C32C8AED80009E7C30 /* GameSelectionViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C255C22C8AED80009E7C30 /* GameSelectionViewModelTest.swift */; };
 		A9C255C52C8AF664009E7C30 /* MockTriviaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C255C42C8AF664009E7C30 /* MockTriviaService.swift */; };
 		A9C255C82C8B1BD4009E7C30 /* TriviaServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C255C72C8B1BD4009E7C30 /* TriviaServiceTest.swift */; };
+		A9C255CA2C8B2DCA009E7C30 /* TriviaAPIEndpointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C255C92C8B2DCA009E7C30 /* TriviaAPIEndpointTest.swift */; };
 		A9DD75692C6F3479008CD543 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DD75682C6F3479008CD543 /* ButtonStyle.swift */; };
 		A9DD756B2C6F36A0008CD543 /* RoundedRectangleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DD756A2C6F36A0008CD543 /* RoundedRectangleModifier.swift */; };
 /* End PBXBuildFile section */
@@ -168,6 +169,7 @@
 		A9C255C22C8AED80009E7C30 /* GameSelectionViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionViewModelTest.swift; sourceTree = "<group>"; };
 		A9C255C42C8AF664009E7C30 /* MockTriviaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTriviaService.swift; sourceTree = "<group>"; };
 		A9C255C72C8B1BD4009E7C30 /* TriviaServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaServiceTest.swift; sourceTree = "<group>"; };
+		A9C255C92C8B2DCA009E7C30 /* TriviaAPIEndpointTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaAPIEndpointTest.swift; sourceTree = "<group>"; };
 		A9DD75682C6F3479008CD543 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		A9DD756A2C6F36A0008CD543 /* RoundedRectangleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleModifier.swift; sourceTree = "<group>"; };
 		ACC8DD36D8A8D178CB843B26 /* Pods-QuizApp_SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp_SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-QuizApp_SwiftUI/Pods-QuizApp_SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				A9C255C72C8B1BD4009E7C30 /* TriviaServiceTest.swift */,
+				A9C255C92C8B2DCA009E7C30 /* TriviaAPIEndpointTest.swift */,
 			);
 			path = NetworkTest;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9C255CA2C8B2DCA009E7C30 /* TriviaAPIEndpointTest.swift in Sources */,
 				A997E7E12C888060003BC589 /* FirebaseManagerTests.swift in Sources */,
 				A9C255C32C8AED80009E7C30 /* GameSelectionViewModelTest.swift in Sources */,
 				A9C255C52C8AF664009E7C30 /* MockTriviaService.swift in Sources */,
