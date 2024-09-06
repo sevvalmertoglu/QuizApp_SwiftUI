@@ -78,6 +78,7 @@
 		A9C078B22C4FEE7700DD83B2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078B12C4FEE7700DD83B2 /* ProfileView.swift */; };
 		A9C255C32C8AED80009E7C30 /* GameSelectionViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C255C22C8AED80009E7C30 /* GameSelectionViewModelTest.swift */; };
 		A9C255C52C8AF664009E7C30 /* MockTriviaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C255C42C8AF664009E7C30 /* MockTriviaService.swift */; };
+		A9C255C82C8B1BD4009E7C30 /* TriviaServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C255C72C8B1BD4009E7C30 /* TriviaServiceTest.swift */; };
 		A9DD75692C6F3479008CD543 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DD75682C6F3479008CD543 /* ButtonStyle.swift */; };
 		A9DD756B2C6F36A0008CD543 /* RoundedRectangleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DD756A2C6F36A0008CD543 /* RoundedRectangleModifier.swift */; };
 /* End PBXBuildFile section */
@@ -166,6 +167,7 @@
 		A9C078B12C4FEE7700DD83B2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A9C255C22C8AED80009E7C30 /* GameSelectionViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionViewModelTest.swift; sourceTree = "<group>"; };
 		A9C255C42C8AF664009E7C30 /* MockTriviaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTriviaService.swift; sourceTree = "<group>"; };
+		A9C255C72C8B1BD4009E7C30 /* TriviaServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaServiceTest.swift; sourceTree = "<group>"; };
 		A9DD75682C6F3479008CD543 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		A9DD756A2C6F36A0008CD543 /* RoundedRectangleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleModifier.swift; sourceTree = "<group>"; };
 		ACC8DD36D8A8D178CB843B26 /* Pods-QuizApp_SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp_SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-QuizApp_SwiftUI/Pods-QuizApp_SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 		A997E7972C884DA9003BC589 /* QuizApp_SwiftUITests */ = {
 			isa = PBXGroup;
 			children = (
+				A9C255C62C8B1B19009E7C30 /* NetworkTest */,
 				A9C255C12C8AED42009E7C30 /* ViewModelTest */,
 				A9C255C02C8AED30009E7C30 /* MockData */,
 				A997E7982C884DA9003BC589 /* QuizApp_SwiftUITests.swift */,
@@ -443,6 +446,14 @@
 				A9C255C22C8AED80009E7C30 /* GameSelectionViewModelTest.swift */,
 			);
 			name = ViewModelTest;
+			sourceTree = "<group>";
+		};
+		A9C255C62C8B1B19009E7C30 /* NetworkTest */ = {
+			isa = PBXGroup;
+			children = (
+				A9C255C72C8B1BD4009E7C30 /* TriviaServiceTest.swift */,
+			);
+			path = NetworkTest;
 			sourceTree = "<group>";
 		};
 		A9DD75672C6F3452008CD543 /* ViewModifier */ = {
@@ -625,6 +636,7 @@
 				A997E7A02C884DF8003BC589 /* CategoryViewModelTests.swift in Sources */,
 				A997E7DF2C887FF3003BC589 /* MockFirebaseManager.swift in Sources */,
 				A997E7992C884DA9003BC589 /* QuizApp_SwiftUITests.swift in Sources */,
+				A9C255C82C8B1BD4009E7C30 /* TriviaServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
