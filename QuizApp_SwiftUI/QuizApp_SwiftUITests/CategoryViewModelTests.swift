@@ -110,13 +110,3 @@ final class CategoryViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
 }
-
-// Mock TriviaService
-class MockTriviaService: TriviaService {
-    var mockCategories: [TriviaCategory] = []
-    var mockError: String?
-
-    override func fetchCategories() async -> (categories: [TriviaCategory], error: String?) {
-        return (self.mockCategories, self.mockError)
-    }
-}
