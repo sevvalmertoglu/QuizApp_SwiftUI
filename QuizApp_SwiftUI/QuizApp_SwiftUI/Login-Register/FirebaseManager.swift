@@ -13,7 +13,7 @@ class FirebaseManager {
     static let shared = FirebaseManager()
     private let dbRef = Database.database().reference()
 
-    private init() {}
+    init() {}
 
     // MARK: - Authentication Methods
 
@@ -134,7 +134,7 @@ class FirebaseManager {
         let score = correctCount * 100
         let scoreData = Score(date: DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .short), score: score)
 
-        self.fetchUserData(userId: userId) { result in
+        self.fetchUserDatas(userId: userId) { result in
             switch result {
             case var .success(userData):
                 self.updateUserScores(with: scoreData, in: &userData)
@@ -158,7 +158,7 @@ class FirebaseManager {
 
     // Helper Functions
 
-    private func fetchUserData(userId: String, completion: @escaping (Result<[String: Any], Error>) -> Void) {
+    private func fetchUserDatas(userId: String, completion: @escaping (Result<[String: Any], Error>) -> Void) {
         self.dbRef.child("users").child(userId).observeSingleEvent(of: .value) { snapshot in
             if let userData = snapshot.value as? [String: Any] {
                 completion(.success(userData))
@@ -208,7 +208,7 @@ class FirebaseManager {
                 }
                 completion(.success(fetchedScores))
             } else {
-                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No scores found."])))
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch scores"])))
             }
         } withCancel: { error in
             completion(.failure(error))
