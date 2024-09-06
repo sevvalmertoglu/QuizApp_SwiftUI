@@ -17,8 +17,8 @@ import SwiftUI
     @Published var questions: [Question] = []
     @Published var successfulLoad: Bool = false
 
-    private let triviaCategory: TriviaCategory
-    private let triviaService = TriviaService()
+    var triviaCategory: TriviaCategory
+    var triviaService = TriviaService()
 
     private let updateAnimation = Animation.easeOut(duration: 0.25)
 

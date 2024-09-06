@@ -49,7 +49,6 @@
 		A9505C882C4A95020075640F /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9505C872C4A95020075640F /* AuthHeaderView.swift */; };
 		A9505C8E2C4A9D1B0075640F /* GameSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9505C8D2C4A9D1B0075640F /* GameSelectionView.swift */; };
 		A9505C902C4A9E7F0075640F /* GameSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9505C8F2C4A9E7E0075640F /* GameSelectionViewModel.swift */; };
-		A972B9AF2C89A15600E10F62 /* AuthViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A972B9AE2C89A15600E10F62 /* AuthViewModelTests.swift */; };
 		A997E7992C884DA9003BC589 /* QuizApp_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A997E7982C884DA9003BC589 /* QuizApp_SwiftUITests.swift */; };
 		A997E7A02C884DF8003BC589 /* CategoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A997E79F2C884DF8003BC589 /* CategoryViewModelTests.swift */; };
 		A997E7DF2C887FF3003BC589 /* MockFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A997E7DE2C887FF3003BC589 /* MockFirebaseManager.swift */; };
@@ -77,6 +76,8 @@
 		A9C078AE2C4FEA6600DD83B2 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078AD2C4FEA6600DD83B2 /* AppState.swift */; };
 		A9C078B02C4FEDED00DD83B2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078AF2C4FEDED00DD83B2 /* MainView.swift */; };
 		A9C078B22C4FEE7700DD83B2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C078B12C4FEE7700DD83B2 /* ProfileView.swift */; };
+		A9C255C32C8AED80009E7C30 /* GameSelectionViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C255C22C8AED80009E7C30 /* GameSelectionViewModelTest.swift */; };
+		A9C255C52C8AF664009E7C30 /* MockTriviaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C255C42C8AF664009E7C30 /* MockTriviaService.swift */; };
 		A9DD75692C6F3479008CD543 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DD75682C6F3479008CD543 /* ButtonStyle.swift */; };
 		A9DD756B2C6F36A0008CD543 /* RoundedRectangleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DD756A2C6F36A0008CD543 /* RoundedRectangleModifier.swift */; };
 /* End PBXBuildFile section */
@@ -134,7 +135,6 @@
 		A9505C872C4A95020075640F /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 		A9505C8D2C4A9D1B0075640F /* GameSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionView.swift; sourceTree = "<group>"; };
 		A9505C8F2C4A9E7E0075640F /* GameSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionViewModel.swift; sourceTree = "<group>"; };
-		A972B9AE2C89A15600E10F62 /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
 		A997E7962C884DA9003BC589 /* QuizApp_SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizApp_SwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A997E7982C884DA9003BC589 /* QuizApp_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizApp_SwiftUITests.swift; sourceTree = "<group>"; };
 		A997E79F2C884DF8003BC589 /* CategoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModelTests.swift; sourceTree = "<group>"; };
@@ -164,6 +164,8 @@
 		A9C078AD2C4FEA6600DD83B2 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A9C078AF2C4FEDED00DD83B2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A9C078B12C4FEE7700DD83B2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		A9C255C22C8AED80009E7C30 /* GameSelectionViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionViewModelTest.swift; sourceTree = "<group>"; };
+		A9C255C42C8AF664009E7C30 /* MockTriviaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTriviaService.swift; sourceTree = "<group>"; };
 		A9DD75682C6F3479008CD543 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		A9DD756A2C6F36A0008CD543 /* RoundedRectangleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleModifier.swift; sourceTree = "<group>"; };
 		ACC8DD36D8A8D178CB843B26 /* Pods-QuizApp_SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp_SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-QuizApp_SwiftUI/Pods-QuizApp_SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
@@ -276,11 +278,10 @@
 		A997E7972C884DA9003BC589 /* QuizApp_SwiftUITests */ = {
 			isa = PBXGroup;
 			children = (
+				A9C255C12C8AED42009E7C30 /* ViewModelTest */,
+				A9C255C02C8AED30009E7C30 /* MockData */,
 				A997E7982C884DA9003BC589 /* QuizApp_SwiftUITests.swift */,
-				A997E79F2C884DF8003BC589 /* CategoryViewModelTests.swift */,
-				A997E7DE2C887FF3003BC589 /* MockFirebaseManager.swift */,
 				A997E7E02C888060003BC589 /* FirebaseManagerTests.swift */,
-				A972B9AE2C89A15600E10F62 /* AuthViewModelTests.swift */,
 			);
 			path = QuizApp_SwiftUITests;
 			sourceTree = "<group>";
@@ -424,6 +425,24 @@
 				A92C47332C6F95DA00B6C2D6 /* ProfileSettingsViewModel.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		A9C255C02C8AED30009E7C30 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				A997E7DE2C887FF3003BC589 /* MockFirebaseManager.swift */,
+				A9C255C42C8AF664009E7C30 /* MockTriviaService.swift */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
+		A9C255C12C8AED42009E7C30 /* ViewModelTest */ = {
+			isa = PBXGroup;
+			children = (
+				A997E79F2C884DF8003BC589 /* CategoryViewModelTests.swift */,
+				A9C255C22C8AED80009E7C30 /* GameSelectionViewModelTest.swift */,
+			);
+			name = ViewModelTest;
 			sourceTree = "<group>";
 		};
 		A9DD75672C6F3452008CD543 /* ViewModifier */ = {
@@ -601,9 +620,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A997E7E12C888060003BC589 /* FirebaseManagerTests.swift in Sources */,
+				A9C255C32C8AED80009E7C30 /* GameSelectionViewModelTest.swift in Sources */,
+				A9C255C52C8AF664009E7C30 /* MockTriviaService.swift in Sources */,
 				A997E7A02C884DF8003BC589 /* CategoryViewModelTests.swift in Sources */,
 				A997E7DF2C887FF3003BC589 /* MockFirebaseManager.swift in Sources */,
-				A972B9AF2C89A15600E10F62 /* AuthViewModelTests.swift in Sources */,
 				A997E7992C884DA9003BC589 /* QuizApp_SwiftUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
