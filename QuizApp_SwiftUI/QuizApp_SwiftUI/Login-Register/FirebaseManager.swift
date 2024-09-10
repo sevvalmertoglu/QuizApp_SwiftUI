@@ -10,7 +10,7 @@ import FirebaseDatabase
 import Foundation
 
 class FirebaseManager {
-    static let shared = FirebaseManager()
+    static var shared = FirebaseManager()
     private let dbRef = Database.database().reference()
 
     init() {}

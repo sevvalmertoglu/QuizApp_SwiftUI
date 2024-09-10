@@ -50,7 +50,7 @@
 		A9505C8E2C4A9D1B0075640F /* GameSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9505C8D2C4A9D1B0075640F /* GameSelectionView.swift */; };
 		A9505C902C4A9E7F0075640F /* GameSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9505C8F2C4A9E7E0075640F /* GameSelectionViewModel.swift */; };
 		A997E7992C884DA9003BC589 /* QuizApp_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A997E7982C884DA9003BC589 /* QuizApp_SwiftUITests.swift */; };
-		A997E7A02C884DF8003BC589 /* CategoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A997E79F2C884DF8003BC589 /* CategoryViewModelTests.swift */; };
+		A997E7A02C884DF8003BC589 /* CategoryViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A997E79F2C884DF8003BC589 /* CategoryViewModelTest.swift */; };
 		A997E7DF2C887FF3003BC589 /* MockFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A997E7DE2C887FF3003BC589 /* MockFirebaseManager.swift */; };
 		A997E7E12C888060003BC589 /* FirebaseManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A997E7E02C888060003BC589 /* FirebaseManagerTests.swift */; };
 		A9A6CD632C60C1D1000E2570 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A6CD622C60C1D1000E2570 /* TimerManager.swift */; };
@@ -80,6 +80,7 @@
 		A9C255C52C8AF664009E7C30 /* MockTriviaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C255C42C8AF664009E7C30 /* MockTriviaService.swift */; };
 		A9C255C82C8B1BD4009E7C30 /* TriviaServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C255C72C8B1BD4009E7C30 /* TriviaServiceTest.swift */; };
 		A9C255CA2C8B2DCA009E7C30 /* TriviaAPIEndpointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C255C92C8B2DCA009E7C30 /* TriviaAPIEndpointTest.swift */; };
+		A9C255CC2C8B312A009E7C30 /* QuestionsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C255CB2C8B312A009E7C30 /* QuestionsViewModelTest.swift */; };
 		A9DD75692C6F3479008CD543 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DD75682C6F3479008CD543 /* ButtonStyle.swift */; };
 		A9DD756B2C6F36A0008CD543 /* RoundedRectangleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DD756A2C6F36A0008CD543 /* RoundedRectangleModifier.swift */; };
 /* End PBXBuildFile section */
@@ -139,7 +140,7 @@
 		A9505C8F2C4A9E7E0075640F /* GameSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionViewModel.swift; sourceTree = "<group>"; };
 		A997E7962C884DA9003BC589 /* QuizApp_SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizApp_SwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A997E7982C884DA9003BC589 /* QuizApp_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizApp_SwiftUITests.swift; sourceTree = "<group>"; };
-		A997E79F2C884DF8003BC589 /* CategoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModelTests.swift; sourceTree = "<group>"; };
+		A997E79F2C884DF8003BC589 /* CategoryViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModelTest.swift; sourceTree = "<group>"; };
 		A997E7DE2C887FF3003BC589 /* MockFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFirebaseManager.swift; sourceTree = "<group>"; };
 		A997E7E02C888060003BC589 /* FirebaseManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManagerTests.swift; sourceTree = "<group>"; };
 		A9A6CD622C60C1D1000E2570 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 		A9C255C42C8AF664009E7C30 /* MockTriviaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTriviaService.swift; sourceTree = "<group>"; };
 		A9C255C72C8B1BD4009E7C30 /* TriviaServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaServiceTest.swift; sourceTree = "<group>"; };
 		A9C255C92C8B2DCA009E7C30 /* TriviaAPIEndpointTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaAPIEndpointTest.swift; sourceTree = "<group>"; };
+		A9C255CB2C8B312A009E7C30 /* QuestionsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewModelTest.swift; sourceTree = "<group>"; };
 		A9DD75682C6F3479008CD543 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		A9DD756A2C6F36A0008CD543 /* RoundedRectangleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleModifier.swift; sourceTree = "<group>"; };
 		ACC8DD36D8A8D178CB843B26 /* Pods-QuizApp_SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp_SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-QuizApp_SwiftUI/Pods-QuizApp_SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
@@ -444,8 +446,9 @@
 		A9C255C12C8AED42009E7C30 /* ViewModelTest */ = {
 			isa = PBXGroup;
 			children = (
-				A997E79F2C884DF8003BC589 /* CategoryViewModelTests.swift */,
+				A997E79F2C884DF8003BC589 /* CategoryViewModelTest.swift */,
 				A9C255C22C8AED80009E7C30 /* GameSelectionViewModelTest.swift */,
+				A9C255CB2C8B312A009E7C30 /* QuestionsViewModelTest.swift */,
 			);
 			name = ViewModelTest;
 			sourceTree = "<group>";
@@ -633,11 +636,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9C255CC2C8B312A009E7C30 /* QuestionsViewModelTest.swift in Sources */,
 				A9C255CA2C8B2DCA009E7C30 /* TriviaAPIEndpointTest.swift in Sources */,
 				A997E7E12C888060003BC589 /* FirebaseManagerTests.swift in Sources */,
 				A9C255C32C8AED80009E7C30 /* GameSelectionViewModelTest.swift in Sources */,
 				A9C255C52C8AF664009E7C30 /* MockTriviaService.swift in Sources */,
-				A997E7A02C884DF8003BC589 /* CategoryViewModelTests.swift in Sources */,
+				A997E7A02C884DF8003BC589 /* CategoryViewModelTest.swift in Sources */,
 				A997E7DF2C887FF3003BC589 /* MockFirebaseManager.swift in Sources */,
 				A997E7992C884DA9003BC589 /* QuizApp_SwiftUITests.swift in Sources */,
 				A9C255C82C8B1BD4009E7C30 /* TriviaServiceTest.swift in Sources */,
