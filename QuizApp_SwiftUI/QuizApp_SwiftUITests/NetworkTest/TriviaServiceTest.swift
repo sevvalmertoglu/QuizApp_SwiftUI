@@ -8,7 +8,7 @@
 @testable import QuizApp_SwiftUI
 import XCTest
 
-class TriviaServiceTests: XCTestCase {
+class TriviaServiceTest: XCTestCase {
     var mockTriviaService: MockTriviaService!
 
     override func setUp() {

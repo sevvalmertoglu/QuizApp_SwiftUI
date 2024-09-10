@@ -1,5 +1,5 @@
 //
-//  CategoryViewModelTests.swift
+//  CategoryViewModelTest.swift
 //  QuizApp_SwiftUITests
 //
 //  Created by Şevval Mertoğlu on 4.09.2024.
@@ -9,7 +9,7 @@
 import Combine
 import XCTest
 
-final class CategoryViewModelTests: XCTestCase {
+final class CategoryViewModelTest: XCTestCase {
     private var viewModel: CategoryViewModel!
     private var cancellables: Set<AnyCancellable> = []
     private var mockTriviaService: MockTriviaService!
