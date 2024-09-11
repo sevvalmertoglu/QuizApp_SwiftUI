@@ -26,7 +26,7 @@ class QuestionsViewModelTest: XCTestCase {
     }
 
     // Test: Multiple Choice
-    func testInitMultipleChoice() {
+    func test_whenMultipleChoiceQuestionInitialized_shouldReturnFourPossibleAnswers() {
         let question = Question()
         question.correct_answer = "Wales"
         question.incorrect_answers = ["Scotland", "Ireland", "Isle of Wight"]
@@ -39,7 +39,7 @@ class QuestionsViewModelTest: XCTestCase {
     }
 
     // Test: True/False
-    func testInitTrueFalse() {
+    func test_whenTrueFalseQuestionInitialized_shouldReturnTwoPossibleAnswers() {
         let question = Question()
         question.correct_answer = "True"
         question.incorrect_answers = ["False"]
@@ -53,7 +53,7 @@ class QuestionsViewModelTest: XCTestCase {
     }
 
     // Test: Successfully save score to Firebase
-    func testSaveScoreToFirebaseSuccess() {
+    func test_whenSaveScoreToFirebaseSucceeds_shouldCallSaveScore() {
         self.mockFirebaseManager.saveScoreResult = .success(()) // Set mock to return a successful response
         self.viewModel.correctCount = 5
 
@@ -63,7 +63,7 @@ class QuestionsViewModelTest: XCTestCase {
     }
 
     // Test: Failure to register points
-    func testSaveScoreToFirebaseFailure() {
+    func test_whenSaveScoreToFirebaseFails_shouldHandleFailureGracefully() {
         self.mockFirebaseManager.saveScoreResult = .failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Mock save score error"]))
         self.viewModel.correctCount = 3
 
