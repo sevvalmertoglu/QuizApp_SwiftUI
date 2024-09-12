@@ -30,6 +30,7 @@ struct OptionButton: View {
                     : Color.backgroundColor)
                 .cornerRadius(20)
         }
+        .accessibilityValue(self.isSelected ? "Selected" : "Not Selected")
     }
 }
 

@@ -10,6 +10,7 @@ import SwiftUI
 struct GameSelectionView: View {
     @StateObject private var viewModel: GameSelectionViewModel
     @State private var isLoading: Bool = false
+    @State private var showAlert: Bool = false
 
     let triviaCategory: TriviaCategory
 
@@ -118,6 +119,12 @@ struct GameSelectionView: View {
                             Task {
                                 self.isLoading.toggle()
                                 await self.viewModel.fetchTriviaQuestions()
+
+                                // Show alert if there is an error
+                                if !self.viewModel.errorMessage.isEmpty {
+                                    self.showAlert = true
+                                }
+
                                 self.isLoading.toggle()
                             }
                         }
@@ -143,6 +150,13 @@ struct GameSelectionView: View {
             }
             .navigationTitle(self.triviaCategory.name)
             .navigationBarTitleDisplayMode(.inline)
+            .alert(isPresented: self.$showAlert) {
+                Alert(
+                    title: Text("Unexpected Error"),
+                    message: Text("Unable to load trivia questions."),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
     }
 }
