@@ -423,6 +423,16 @@
         }
       }
     },
+    "Not Selected" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçilmedi"
+          }
+        }
+      }
+    },
     "Number of questions" : {
       "localizations" : {
         "tr" : {
@@ -553,6 +563,16 @@
         }
       }
     },
+    "Questions could not be loaded. Please check your internet connection." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorular yüklenemedi. Lütfen internet bağlantınızı kontrol edin."
+          }
+        }
+      }
+    },
     "Register" : {
       "localizations" : {
         "tr" : {
@@ -613,6 +633,16 @@
         }
       }
     },
+    "Selected" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçildi"
+          }
+        }
+      }
+    },
     "Sign In" : {
       "localizations" : {
         "tr" : {
@@ -669,6 +699,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Doğru / Yanlış"
+          }
+        }
+      }
+    },
+    "Unexpected Error" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beklenmeyen Hata"
           }
         }
       }

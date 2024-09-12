@@ -153,7 +153,7 @@ struct GameSelectionView: View {
             .alert(isPresented: self.$showAlert) {
                 Alert(
                     title: Text("Unexpected Error"),
-                    message: Text("Unable to load trivia questions."),
+                    message: Text("Questions could not be loaded. Please check your internet connection."),
                     dismissButton: .default(Text("OK"))
                 )
             }
