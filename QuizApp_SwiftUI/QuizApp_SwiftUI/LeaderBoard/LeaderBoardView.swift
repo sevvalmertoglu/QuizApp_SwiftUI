@@ -95,8 +95,8 @@ struct LeaderBoardView: View {
                     .background(
                         QuizAppImages.instance.backgroundLeaderBoard.asImage
                             .resizable()
-                            .scaledToFill()
-                            .ignoresSafeArea(.all)
+                            .frame(width: UIScreen.main.bounds.width)
+                            .ignoresSafeArea()
                     )
                 }
             }
@@ -118,9 +118,9 @@ struct LeaderBoardView: View {
                                 if self.currentDragOffsetY < -150 {
                                     self.endingOffsetY = -self.startingOffsetY
                                 } else if self.endingOffsetY != 0, self.currentDragOffsetY > 150 {
-                                    self.endingOffsetY = 0
+                                    self.endingOffsetY = -70
                                 }
-                                self.currentDragOffsetY = 0
+                                self.currentDragOffsetY = 50
                             }
                         }
                 )
