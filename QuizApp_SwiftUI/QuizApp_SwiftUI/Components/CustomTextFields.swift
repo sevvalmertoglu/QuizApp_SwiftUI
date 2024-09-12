@@ -20,7 +20,6 @@ struct ProfileSettingsTextField: View {
             TextField("", text: self.$text)
                 .foregroundColor(.indigo)
                 .font(.system(size: 20, weight: .bold))
-                .keyboardType(.numberPad)
                 .padding(EdgeInsets(top: 15, leading: 60, bottom: 15, trailing: 60))
                 .overlay {
                     GeometryReader { geo in
