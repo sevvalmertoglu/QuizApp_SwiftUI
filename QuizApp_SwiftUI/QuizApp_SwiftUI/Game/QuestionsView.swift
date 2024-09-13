@@ -125,6 +125,7 @@ struct QuestionsView: View {
                 .font(.system(size: 50, weight: .heavy))
                 .foregroundColor(.indigo)
                 .padding(.bottom, 260)
+                .padding(20)
 
             VStack(spacing: 30) {
                 VStack {
@@ -136,6 +137,7 @@ struct QuestionsView: View {
                         Text("You got \(self.viewModel.correctCount) out of \(self.questions.count) questions right.\n\nPractice makes perfect!")
                     }
                 } // Message VStack
+                .padding(20)
 
                 Button(action: {
                     self.dismiss()
