@@ -9,23 +9,27 @@
 import SwiftUI
 import XCTest
 
-class ProfileViewUITests: XCTestCase {
+class ProfileViewUITest: XCTestCase {
+    private var app: XCUIApplication!
+
+    override func setUpWithError() throws {
+        self.app = XCUIApplication()
+        self.app.launch()
+    }
+
     func testProfileViewUIElements() {
-        let app = XCUIApplication()
-        app.launch()
+        self.app.tabBars["Tab Bar"].buttons["Profile"].tap()
 
-        app.tabBars["Tab Bar"].buttons["Profile"].tap()
-
-        let profileTitle = app.staticTexts["Profile"]
-        let nameLabel = app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH 'Name:'")).element
-        let nicknameLabel = app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH 'Nickname:'")).element
-        let emailLabel = app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH 'Mail:'")).element
-        let totalScoreLabel = app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH 'Total Score:'")).element
-        let pencilButton = app.buttons["pencil.and.scribble"]
-        let previousScoresButton = app.buttons["Previous Scores"]
-        let logOutButton = app.buttons["Log Out"]
-        let resetPasswordButton = app.buttons["Reset Password"]
-        let deleteAccountButton = app.buttons["Delete Account"]
+        let profileTitle = self.app.staticTexts["Profile"]
+        let nameLabel = self.app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH 'Name:'")).element
+        let nicknameLabel = self.app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH 'Nickname:'")).element
+        let emailLabel = self.app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH 'Mail:'")).element
+        let totalScoreLabel = self.app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH 'Total Score:'")).element
+        let pencilButton = self.app.buttons["pencil.and.scribble"]
+        let previousScoresButton = self.app.buttons["Previous Scores"]
+        let logOutButton = self.app.buttons["Log Out"]
+        let resetPasswordButton = self.app.buttons["Reset Password"]
+        let deleteAccountButton = self.app.buttons["Delete Account"]
 
         XCTAssertTrue(profileTitle.waitForExistence(timeout: 5))
         XCTAssertTrue(nameLabel.waitForExistence(timeout: 5))
@@ -40,80 +44,68 @@ class ProfileViewUITests: XCTestCase {
     }
 
     func testNavigationToPreviousScores() {
-        let app = XCUIApplication()
-        app.launch()
+        self.app.tabBars["Tab Bar"].buttons["Profile"].tap()
 
-        app.tabBars["Tab Bar"].buttons["Profile"].tap()
-
-        let previousScoresButton = app.buttons["Previous Scores"]
+        let previousScoresButton = self.app.buttons["Previous Scores"]
         XCTAssertTrue(previousScoresButton.exists, "Previous Scores button does not exist.")
         previousScoresButton.tap()
 
-        let previousScoresViewTitle = app.navigationBars["Previous Scores"]
+        let previousScoresViewTitle = self.app.navigationBars["Previous Scores"]
         XCTAssertTrue(previousScoresViewTitle.exists, "Failed to navigate to Previous Scores view.")
     }
 
     func testProfileSettingsNavigation() {
-        let app = XCUIApplication()
-        app.launch()
+        self.app.tabBars["Tab Bar"].buttons["Profile"].tap()
 
-        app.tabBars["Tab Bar"].buttons["Profile"].tap()
-
-        let profileSettingsButton = app.buttons["pencil.and.scribble"]
+        let profileSettingsButton = self.app.buttons["pencil.and.scribble"]
         XCTAssertTrue(profileSettingsButton.exists, "Profile settings button does not exist.")
         profileSettingsButton.tap()
 
-        let profileSettingsViewTitle = app.navigationBars["Profile Settings"]
+        let profileSettingsViewTitle = self.app.navigationBars["Profile Settings"]
         XCTAssertTrue(profileSettingsViewTitle.exists, "Failed to navigate to Profile Settings view.")
     }
 
     func testLogOutAction() {
-        let app = XCUIApplication()
-        app.launch()
+        self.app.tabBars["Tab Bar"].buttons["Profile"].tap()
 
-        app.tabBars["Tab Bar"].buttons["Profile"].tap()
-
-        let logOutButton = app.buttons["Log Out"]
+        let logOutButton = self.app.buttons["Log Out"]
         XCTAssertTrue(logOutButton.exists, "Log Out button does not exist.")
         logOutButton.tap()
 
-        let splashViewTitle = app.staticTexts["Welcome Quiz App!"]
+        let splashViewTitle = self.app.staticTexts["Welcome Quiz App!"]
         XCTAssertTrue(splashViewTitle.exists, "Failed to navigate to SplashView after logging out.")
     }
 
     func testDeleteAccountConfirmation() {
-        let app = XCUIApplication()
-        app.launch()
+        self.app.buttons["Login"].tap()
 
-        app.buttons["Login"].tap()
-
-        let emailTextField = app.textFields["Email"]
+        let emailTextField = self.app.textFields["Email"]
         emailTextField.tap()
         emailTextField.typeText("sevva@gmail.com")
 
-        let passwordSecureField = app.secureTextFields["Password"]
+        let passwordSecureField = self.app.secureTextFields["Password"]
         passwordSecureField.tap()
         passwordSecureField.typeText("123456")
 
-        app.buttons["Sign In"].tap()
+        self.app.buttons["Sign In"].tap()
 
-        let profilButton = app.tabBars["Tab Bar"].buttons["Profile"]
+        let profilButton = self.app.tabBars["Tab Bar"].buttons["Profile"]
         XCTAssertTrue(profilButton.waitForExistence(timeout: 5))
         profilButton.tap()
 
-        let deleteAccountButton = app.buttons["Delete Account"]
+        let deleteAccountButton = self.app.buttons["Delete Account"]
         XCTAssertTrue(deleteAccountButton.exists, "Delete Account button does not exist.")
         deleteAccountButton.tap()
 
         // Assert the confirmation dialog is shown
-        let alert = app.alerts["Confirm Delete"]
+        let alert = self.app.alerts["Confirm Delete"]
         XCTAssertTrue(alert.exists, "Delete confirmation alert did not appear.")
 
         let confirmButton = alert.buttons["Yes"]
         XCTAssertTrue(confirmButton.exists, "Confirm button on delete account alert does not exist.")
         confirmButton.tap()
 
-        let splashViewTitle = app.staticTexts["Welcome Quiz App!"]
+        let splashViewTitle = self.app.staticTexts["Welcome Quiz App!"]
         XCTAssertTrue(splashViewTitle.waitForExistence(timeout: 5), "Failed to navigate to SplashView after account deletion.")
     }
 }
