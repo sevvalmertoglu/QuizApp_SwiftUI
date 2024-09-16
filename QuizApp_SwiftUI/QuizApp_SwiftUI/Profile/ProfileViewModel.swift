@@ -19,7 +19,7 @@ class ProfileViewModel: ObservableObject {
     @Published var alertMessage: String = ""
     @Published var showConfirmationDialog: Bool = false
 
-    private var appState: AppState
+    var appState: AppState
 
     init(appState: AppState) {
         self.appState = appState
@@ -121,13 +121,16 @@ class ProfileViewModel: ObservableObject {
 
     func resetPassword() {
         guard let email = Auth.auth().currentUser?.email else { return }
-
-        Auth.auth().sendPasswordReset(withEmail: email) { [weak self] error in
-            if let error = error {
-                self?.alertMessage = error.localizedDescription
-                self?.showAlert = true
-            } else {
-                self?.alertMessage = "Password reset email sent."
+        isLoading = true
+        FirebaseManager.shared.resetPassword(email: email) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                switch result {
+                case .success:
+                    self?.alertMessage = "Password reset email sent."
+                case .failure(let error):
+                    self?.alertMessage = error.localizedDescription
+                }
                 self?.showAlert = true
             }
         }

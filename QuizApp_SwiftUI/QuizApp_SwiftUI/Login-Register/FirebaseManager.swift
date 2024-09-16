@@ -123,6 +123,18 @@ class FirebaseManager {
         }
     }
 
+    // MARK: - User Reset Password Methods
+    
+    func resetPassword(email: String, completion: @escaping (Result<Void, Error>) -> Void) {
+            Auth.auth().sendPasswordReset(withEmail: email) { error in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(()))
+                }
+            }
+        }
+    
     // MARK: - Score Methods
 
     func saveScore(correctCount: Int, completion: @escaping (Result<Void, Error>) -> Void) {

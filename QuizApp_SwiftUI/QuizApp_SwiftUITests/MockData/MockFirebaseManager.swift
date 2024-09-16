@@ -21,6 +21,7 @@ class MockFirebaseManager: FirebaseManager {
     var fetchScoresResult: Result<[Score], Error>?
     var fetchUserIconResult: Result<String, Error>?
     var updateLeaderboardResult: Result<Void, Error>?
+    var resetPasswordResult: Result<Void, Error>?
 
     override func signIn(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
         if let result = resultToReturn {
@@ -100,6 +101,12 @@ class MockFirebaseManager: FirebaseManager {
             completion(result)
         } else {
             completion(.success("user"))
+        }
+    }
+    
+    override func resetPassword(email: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        if let result = resetPasswordResult {
+            completion(result)
         }
     }
 }
