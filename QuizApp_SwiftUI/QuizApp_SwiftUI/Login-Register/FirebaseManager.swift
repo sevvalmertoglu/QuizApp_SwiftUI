@@ -115,14 +115,27 @@ class FirebaseManager {
     }
 
     // MARK: - User Delete Methods
-
+    
     func deleteUserData(userId: String, completion: @escaping (Error?) -> Void) {
         let userRef = self.dbRef.child("users").child(userId)
         userRef.removeValue { error, _ in
+            if let error = error {
+                completion(error)
+                return
+            }
+            self.deleteUserFromLeaderboard(userId: userId) { error in
+                completion(error)
+            }
+        }
+    }
+    
+    private func deleteUserFromLeaderboard(userId: String, completion: @escaping (Error?) -> Void) {
+        let leaderboardRef = self.dbRef.child("leaderboard").child(userId)
+        leaderboardRef.removeValue { error, _ in
             completion(error)
         }
     }
-
+    
     // MARK: - User Reset Password Methods
     
     func resetPassword(email: String, completion: @escaping (Result<Void, Error>) -> Void) {
