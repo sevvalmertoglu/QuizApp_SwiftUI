@@ -1,6 +1,6 @@
 [![Build Status](https://img.shields.io/badge/platforms-iOS-green.svg)](https://github.com/sevvalmertoglu/QuizApp_SwiftUI)
-[![Swift](https://img.shields.io/badge/Swift-5.10-orange.svg)](https://swift.org)
-[![Xcode](https://img.shields.io/badge/Xcode-15.4-blue.svg)](https://developer.apple.com/xcode)
+[![Swift](https://img.shields.io/badge/Swift-6-orange.svg)](https://swift.org)
+[![Xcode](https://img.shields.io/badge/Xcode-16-blue.svg)](https://developer.apple.com/xcode)
 [![MIT](https://img.shields.io/badge/licenses-MIT-red.svg)](https://opensource.org/licenses/MIT)
 
 # Quiz App
