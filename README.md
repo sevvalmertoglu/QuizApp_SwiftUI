@@ -1,3 +1,8 @@
+[![Build Status](https://img.shields.io/badge/platforms-iOS-green.svg)](https://github.com/sevvalmertoglu/QuizApp_SwiftUI)
+[![Swift](https://img.shields.io/badge/Swift-6-orange.svg)](https://swift.org)
+[![Xcode](https://img.shields.io/badge/Xcode-16-blue.svg)](https://developer.apple.com/xcode)
+[![MIT](https://img.shields.io/badge/licenses-MIT-red.svg)](https://opensource.org/licenses/MIT)
+
 # Quiz App
 A SwiftUI-based Quiz App inspired by Trivia Crack. This app leverages MVVM architecture, and integrates Firebase for real-time database management and user authentication. Users can log in, choose quiz categories, set difficulty levels, and more, providing a rich and interactive quiz experience.
 
