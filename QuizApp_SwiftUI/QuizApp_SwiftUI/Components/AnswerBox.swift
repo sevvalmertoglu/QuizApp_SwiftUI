@@ -44,7 +44,7 @@ struct AnswerBox: View {
                 }) {
                     HStack(spacing: 0) {
                         Text(self.possibility.text)
-                            .font(.system(size: 24, weight: .medium))
+                            .font(.system(size: 17, weight: .medium))
                             .minimumScaleFactor(0.3)
                             .lineLimit(nil)
                             .foregroundColor(Color.black)
@@ -54,7 +54,7 @@ struct AnswerBox: View {
                             .frame(height: 60)
                         if self.wasSelected {
                             Image(systemName: self.selectionIcon)
-                                .font(.system(size: 28, weight: .bold))
+                                .font(.system(size: 17, weight: .bold))
                                 .foregroundColor(Color.white)
                                 .frame(width: 40, height: 40)
                         }

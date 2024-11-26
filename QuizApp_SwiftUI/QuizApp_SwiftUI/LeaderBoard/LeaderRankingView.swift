@@ -39,7 +39,7 @@ struct LeaderRankingView: View {
                                 .frame(width: 30, height: 30)
 
                             Text("\(index + 4)")
-                                .font(.system(size: 16, weight: .medium))
+                                .font(.system(size: 17, weight: .medium))
                                 .foregroundColor(.black)
                         }
                         .frame(width: 40)
@@ -52,7 +52,7 @@ struct LeaderRankingView: View {
 
                         VStack(alignment: .leading) {
                             Text(self.viewModel.otherUsers[index].nickname) // User name
-                                .font(.system(size: 18, weight: .bold))
+                                .font(.system(size: 17, weight: .bold))
                                 .foregroundColor(.black)
 
                             Text("\(self.viewModel.otherUsers[index].totalScore) point") // User points

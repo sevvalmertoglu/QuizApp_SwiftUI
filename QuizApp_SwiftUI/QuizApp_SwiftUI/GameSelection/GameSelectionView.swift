@@ -31,7 +31,7 @@ struct GameSelectionView: View {
             VStack(spacing: 35) {
                 VStack {
                     Text("Difficulty")
-                        .font(.system(size: 26, weight: .medium))
+                        .font(.system(size: 20, weight: .medium))
 
                     LazyVGrid(columns: self.column, spacing: 20) {
                         OptionButton(
@@ -70,7 +70,7 @@ struct GameSelectionView: View {
 
                 VStack {
                     Text("Question Type")
-                        .font(.system(size: 26, weight: .medium))
+                        .font(.system(size: 20, weight: .medium))
 
                     LazyVGrid(columns: self.column, spacing: 20) {
                         OptionButton(
@@ -101,7 +101,7 @@ struct GameSelectionView: View {
 
                 VStack {
                     Text("Number of questions")
-                        .font(.system(size: 26, weight: .medium))
+                        .font(.system(size: 20, weight: .medium))
 
                     CustomStepper(value: self.$viewModel.numberOfQuestions, range: 1...25)
                         .padding()
@@ -109,7 +109,7 @@ struct GameSelectionView: View {
 
                 NavigationLink(destination: QuestionsView(questions: self.$viewModel.questions), isActive: self.$viewModel.successfulLoad) {
                     Text("Start!")
-                        .font(.system(size: 26, weight: .bold))
+                        .font(.system(size: 20, weight: .bold))
                         .foregroundColor(Color.backgroundColor)
                         .frame(width: 200, height: 50)
                         .background(Color.indigo)
@@ -142,7 +142,7 @@ struct GameSelectionView: View {
 
                 if self.viewModel.errorMessage != "" {
                     Text(self.viewModel.errorMessage)
-                        .font(.system(size: 16, weight: .medium))
+                        .font(.system(size: 17, weight: .medium))
                         .foregroundColor(Color.red)
                 }
 

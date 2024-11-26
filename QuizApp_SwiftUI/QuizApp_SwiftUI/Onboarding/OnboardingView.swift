@@ -15,21 +15,9 @@ struct OnboardingView: View {
             if self.viewModel.shouldShowSplash {
                 SplashView()
             } else {
-                Color.black.ignoresSafeArea()
-
-                GeometryReader { proxy in
-                    Path {
-                        path in
-
-                        path.move(to: CGPoint(x: 0, y: 0))
-                        path.addLine(to: CGPoint(x: proxy.size.width * 0.65, y: 0))
-                        path.addLine(to: CGPoint(x: proxy.size.width * 0.35, y: proxy.size.height))
-                        path.addLine(to: CGPoint(x: 0, y: proxy.size.height))
-                        path.closeSubpath()
-                    }
-                    .fill(self.viewModel.pageColors[self.viewModel.currentPageIndex])
-                }
-                .ignoresSafeArea()
+                QuizAppImages.instance.backgroundGame.asImage
+                    .resizable()
+                    .ignoresSafeArea(.all)
 
                 Rectangle()
                     .cornerRadius(radius: 100, corners: [.topRight])
@@ -44,13 +32,13 @@ struct OnboardingView: View {
                     Button(action: self.viewModel.skipOnboarding) {
                         Rectangle()
                             .frame(width: 60, height: 25)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Color.textColor)
                             .cornerRadius(radius: 15, corners: [.topRight])
                             .cornerRadius(3)
                             .overlay {
                                 Text("SKIP")
-                                    .foregroundStyle(Color.textColor)
-                                    .font(.system(size: 12))
+                                    .foregroundStyle(.white)
+                                    .font(.system(size: 14))
                                     .kerning(0.6)
                             }
                     }
@@ -92,7 +80,7 @@ struct OnboardingView: View {
                                 .cornerRadius(radius: 25, corners: [.topRight])
                                 .shadow(color: .shadowColor, radius: 7.5, y: 5)
                                 .overlay {
-                                    QuizAppImages.instance.right.asImage
+                                    QuizAppImages.instance.rightButton.asImage
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 18, height: 18)
@@ -118,7 +106,7 @@ struct OnboardingPageView: View {
                 .frame(maxWidth: .infinity, maxHeight: 400, alignment: .trailing)
 
             Text(self.page.title)
-                .font(.system(size: 22).weight(.semibold))
+                .font(.system(size: 24).weight(.semibold))
                 .kerning(0.44)
                 .lineSpacing(2.5)
 
@@ -131,7 +119,7 @@ struct OnboardingPageView: View {
                 .cornerRadius(2)
 
             Text(self.page.description)
-                .font(.system(size: 14))
+                .font(.system(size: 17))
                 .kerning(0.28)
                 .foregroundStyle(Color.textColor)
                 .lineSpacing(5)

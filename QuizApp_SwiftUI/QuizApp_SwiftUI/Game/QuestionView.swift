@@ -22,7 +22,7 @@ struct QuestionView: View {
         ZStack {
             VStack {
                 Text(self.question)
-                    .font(.system(size: 24, weight: .medium))
+                    .font(.system(size: 20, weight: .medium))
                     .padding()
 
                 // ForEach

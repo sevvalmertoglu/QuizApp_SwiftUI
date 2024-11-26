@@ -17,7 +17,7 @@ struct OptionButton: View {
     var body: some View {
         Button(action: self.action) {
             Text(self.title)
-                .font(.system(size: 22, weight: .regular))
+                .font(.system(size: 17, weight: .regular))
                 .foregroundColor(self.isSelected == true
                     ? Color.backgroundColor
                     : Color.indigo)

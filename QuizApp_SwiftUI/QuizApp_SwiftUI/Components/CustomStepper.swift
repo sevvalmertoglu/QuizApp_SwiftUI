@@ -20,12 +20,12 @@ struct CustomStepper: View {
                 }
             }) {
                 Image(systemName: "minus.circle.fill")
-                    .font(.system(size: 30))
+                    .font(.system(size: 20))
                     .foregroundColor(.gray)
             }
 
             Text("\(self.value)")
-                .font(.system(size: 22))
+                .font(.system(size: 20))
                 .padding(.horizontal)
 
             Button(action: {
@@ -34,7 +34,7 @@ struct CustomStepper: View {
                 }
             }) {
                 Image(systemName: "plus.circle.fill")
-                    .font(.system(size: 30))
+                    .font(.system(size: 20))
                     .foregroundColor(.indigo) // To make the "+" button purple
             }
         }
