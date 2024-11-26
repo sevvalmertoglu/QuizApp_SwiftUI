@@ -17,55 +17,55 @@ struct CategoryView: View {
 
     var body: some View {
         ZStack {
-            Color.backgroundColor
-                .ignoresSafeArea([.all])
-            NavigationView {
-                ZStack {
-                    ScrollView {
-                        Text("Please select a category")
-                            .font(.system(size: 22, weight: .bold))
-                        VStack(spacing: 10) {
-                            ForEach(self.searchResults, id: \.id) { category in
-                                NavigationLink(destination: GameSelectionView(triviaCategory: category)) {
-                                    GeometryReader { geometry in
-                                        HStack {
-                                            Text(self.viewModel.formatCategoryName(name: category.name))
-                                                .font(.system(size: 20, weight: .bold))
-                                                .foregroundColor(Color.backgroundColor)
-                                                .padding()
-                                                .multilineTextAlignment(.leading)
-                                            Spacer()
+                Color.backgroundColor
+                    .ignoresSafeArea([.all])
+                NavigationView {
+                    ZStack {
+                        ScrollView {
+                            Text("Please select a category")
+                                .font(.system(size: 17, weight: .bold))
+                            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 5) {
+                                ForEach(self.searchResults, id: \.id) { category in
+                                    NavigationLink(destination: GameSelectionView(triviaCategory: category)) {
+                                        VStack {
+                                            HStack {
+                                                Text(self.viewModel.formatCategoryName(name: category.name))
+                                                    .font(.system(size: 17, weight: .bold))
+                                                    .foregroundColor(Color.backgroundColor)
+                                                    .padding()
+                                                    .multilineTextAlignment(.leading)
+                                                    .fixedSize(horizontal: false, vertical: true)
+                                                Spacer()
+                                            }
+                                            .background(Color.indigo)
+                                            .cornerRadius(15)
                                         }
-                                        .frame(width: geometry.size.width * 0.95)
-                                        .background(Color.indigo)
-                                        .cornerRadius(15)
-                                        .frame(width: geometry.size.width) // Center horizontally
-                                    } // GeometryReader
-                                    .frame(height: 50)
-                                } // NavigationLink
-                            } // ForEach
-                        } // VStack
-                    } // ScrollView
-                } // ZStack
-                .toolbar {
-                    ToolbarItem {
-                        Button(action: { self.lightMode.toggle() }) {
-                            Image(systemName: self.lightMode == true ? "sun.max" : "moon.fill")
-                                .font(.system(size: 20, weight: .medium))
-                                .foregroundColor(self.lightMode == true ? Color.black : Color.white)
+                                        .padding(.horizontal, 5)
+                                    }
+                                }
+                            }
                         }
                     }
-                }
-                .onAppear {
-                    Task {
-                        await self.viewModel.setupCategories()
+                    .toolbar {
+                        ToolbarItem {
+                            Button(action: { self.lightMode.toggle() }) {
+                                Image(systemName: self.lightMode == true ? "sun.max" : "moon.fill")
+                                    .font(.system(size: 17, weight: .medium))
+                                    .foregroundColor(self.lightMode == true ? Color.black : Color.white)
+                            }
+                        }
                     }
-                }
-            } // NavigationView
-            .navigationViewStyle(.stack) // Prevents constraint error
+                    .onAppear {
+                        Task {
+                            await self.viewModel.setupCategories()
+                        }
+                    }
+                } // NavigationView
+                .navigationViewStyle(.stack) // Prevents constraint error
         } // ZStack
         .preferredColorScheme(self.lightMode == true ? .light : .dark)
         .searchable(text: self.$searchText)
+        
     }
 
     var searchResults: [TriviaCategory] {
