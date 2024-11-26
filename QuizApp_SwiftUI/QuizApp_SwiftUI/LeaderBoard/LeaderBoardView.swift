@@ -49,8 +49,8 @@ struct LeaderBoardView: View {
                             // Left Stack (Rank 2)
                             if self.viewModel.topThreeUsers.count > 1 {
                                 LeaderBoardStack(
-                                    rankImage: QuizAppImages.instance.Rank2.asImage,
-                                    medalImage: QuizAppImages.instance.Medal2.asImage,
+                                    rankImage: QuizAppImages.instance.Step2.asImage,
+                                    medalImage: QuizAppImages.instance.Crown2.asImage,
                                     userImage: self.viewModel.topThreeUsers[1].userIcon,
                                     username: self.viewModel.topThreeUsers[1].nickname,
                                     score: "\(self.viewModel.topThreeUsers[1].totalScore) point",
@@ -63,8 +63,8 @@ struct LeaderBoardView: View {
                             // Center Stack (Rank 1)
                             if !self.viewModel.topThreeUsers.isEmpty {
                                 LeaderBoardStack(
-                                    rankImage: QuizAppImages.instance.Rank1.asImage,
-                                    medalImage: QuizAppImages.instance.Medal1.asImage,
+                                    rankImage: QuizAppImages.instance.Step1.asImage,
+                                    medalImage: QuizAppImages.instance.Crown1.asImage,
                                     userImage: self.viewModel.topThreeUsers[0].userIcon,
                                     username: self.viewModel.topThreeUsers[0].nickname,
                                     score: "\(self.viewModel.topThreeUsers[0].totalScore) point",
@@ -77,8 +77,8 @@ struct LeaderBoardView: View {
                             // Right Stack (Rank 3)
                             if self.viewModel.topThreeUsers.count > 2 {
                                 LeaderBoardStack(
-                                    rankImage: QuizAppImages.instance.Rank3.asImage,
-                                    medalImage: QuizAppImages.instance.Medal3.asImage,
+                                    rankImage: QuizAppImages.instance.Step3.asImage,
+                                    medalImage: QuizAppImages.instance.Crown3.asImage,
                                     userImage: self.viewModel.topThreeUsers[2].userIcon,
                                     username: self.viewModel.topThreeUsers[2].nickname,
                                     score: "\(self.viewModel.topThreeUsers[2].totalScore) point",
