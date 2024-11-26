@@ -29,6 +29,10 @@ struct QuestionsView: View {
     var body: some View {
         VStack {
             ZStack {
+                QuizAppImages.instance.backgroundGame.asImage
+                    .resizable()
+                    .ignoresSafeArea(.all)
+                
                 VStack {
                     HStack {
                         if self.displayResults == false {
@@ -43,7 +47,7 @@ struct QuestionsView: View {
                     if self.displayResults == false {
                         self.triviaQuizView()
                     } else {
-                        self.resultsView()
+                        resultsView()
                     }
 
                     Spacer()
@@ -107,53 +111,54 @@ struct QuestionsView: View {
                     self.startQuizTimer()
                 }
             } else {
-                self.resultsView()
+                resultsView()
             }
         }
     }
 
     @ViewBuilder
-    func resultsView() -> some View {
-        ZStack {
-            QuizAppImages.instance.backgroundGameOver.asImage
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea(.all)
-                .offset(x: -10)
+       func resultsView() -> some View {
+           ZStack {
+               QuizAppImages.instance.backgroundGameOver.asImage
+                   .resizable()
+                   .scaledToFill()
+                   .ignoresSafeArea(.all)
+                   .offset(x: -10)
 
-            Text("GAME OVER!")
-                .font(.system(size: 50, weight: .heavy))
-                .foregroundColor(.indigo)
-                .padding(.bottom, 260)
-                .padding(20)
+               Text("GAME OVER!")
+                   .font(.system(size: 50, weight: .heavy))
+                   .foregroundColor(.indigo)
+                   .padding(.bottom, 260)
+                   .padding(20)
 
-            VStack(spacing: 30) {
-                VStack {
-                    if Double(self.viewModel.correctCount) / Double(self.questions.count) >= 0.8 {
-                        Text("Great work 🎉\n\nYou got \(self.viewModel.correctCount) out of \(self.questions.count) questions right!")
-                    } else if Double(self.viewModel.correctCount) / Double(self.questions.count) >= 0.5 {
-                        Text("Good job!\n\nYou got \(self.viewModel.correctCount) out of \(self.questions.count) questions right!")
-                    } else {
-                        Text("You got \(self.viewModel.correctCount) out of \(self.questions.count) questions right.\n\nPractice makes perfect!")
-                    }
-                } // Message VStack
-                .padding(20)
+               VStack(spacing: 30) {
+                   VStack {
+                       if Double(self.viewModel.correctCount) / Double(self.questions.count) >= 0.8 {
+                           Text("Great work 🎉\n\nYou got \(self.viewModel.correctCount) out of \(self.questions.count) questions right!")
+                       } else if Double(self.viewModel.correctCount) / Double(self.questions.count) >= 0.5 {
+                           Text("Good job!\n\nYou got \(self.viewModel.correctCount) out of \(self.questions.count) questions right!")
+                       } else {
+                           Text("You got \(self.viewModel.correctCount) out of \(self.questions.count) questions right.\n\nPractice makes perfect!")
+                       }
+                   } // Message VStack
+                   .padding(20)
 
-                Button(action: {
-                    self.dismiss()
-                }) {
-                    Text("Play Again")
-                        .font(.system(size: 24, weight: .bold))
-                        .frame(width: 200, height: 50)
-                        .foregroundColor(Color.backgroundColor)
-                        .background(Color.indigo)
-                        .cornerRadius(12)
-                } // Button
-            } // VStack
-            .font(.system(size: 28, weight: .medium))
-            .padding([.top], 100)
-        }
-    }
+                   Button(action: {
+                       self.dismiss()
+                   }) {
+                       Text("Play Again")
+                           .font(.system(size: 24, weight: .bold))
+                           .frame(width: 200, height: 50)
+                           .foregroundColor(Color.backgroundColor)
+                           .background(Color.indigo)
+                           .cornerRadius(12)
+                   } // Button
+               } // VStack
+               .font(.system(size: 28, weight: .medium))
+               .padding([.top], 100)
+           }
+       }
+   
 }
 
 #Preview {

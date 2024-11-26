@@ -21,6 +21,9 @@ struct ProfileView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                QuizAppImages.instance.backgroundGame.asImage
+                    .resizable()
+                
                 VStack {
                     VStack {
                         Text("Profile")
@@ -78,14 +81,14 @@ struct ProfileView: View {
                                 .roundedRectangleStyle(
                                     shadowColor: .purple,
                                     text: "Name: \(self.viewModel.name)",
-                                    fontSize: 19
+                                    fontSize: 17
                                 )
 
                             RoundedRectangle(cornerRadius: 120)
                                 .roundedRectangleStyle(
                                     shadowColor: .indigo,
                                     text: "Nickname: \(self.viewModel.nickname)",
-                                    fontSize: 19
+                                    fontSize: 17
                                 )
 
                             RoundedRectangle(cornerRadius: 120)

@@ -27,9 +27,6 @@ class OnboardingViewModel: ObservableObject {
         )
     ]
 
-    // Define colors for each onboarding page
-    @Published var pageColors: [Color] = [.backgroundPurple.opacity(0.33), .backgroundPurple.opacity(0.66), .backgroundPurple]
-
     @Published var currentPageIndex: Int = 0
     @Published var shouldShowSplash: Bool = false
 

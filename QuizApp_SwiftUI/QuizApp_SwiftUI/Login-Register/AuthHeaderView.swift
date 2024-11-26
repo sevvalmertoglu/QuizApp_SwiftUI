@@ -12,36 +12,30 @@ struct AuthHeaderView: View {
     let title2: LocalizedStringKey
 
     var body: some View {
-        VStack(alignment: .center) {
-            HStack { Spacer() }
+        ZStack {
+            RoundedRectangle(cornerRadius: 0)
+                .foregroundColor(Color.indigo)
+                .rotationEffect(Angle(degrees: 15))
+            VStack(alignment: .center) {
 
-            Text(self.title1)
-                .font(.largeTitle)
-                .fontWeight(.semibold)
+                Text(self.title1)
+                    .font(.largeTitle)
+                    .fontWeight(.semibold)
 
-            Text(self.title2)
-                .font(.largeTitle)
-                .fontWeight(.semibold)
+                Text(self.title2)
+                    .font(.largeTitle)
+                    .fontWeight(.semibold)
+            }.padding(.top, 30)
+            .padding(.leading)
+            .foregroundColor(.white)
         }
-        .frame(height: 260)
-        .padding(.leading)
-        .background(Color.indigo)
-        .foregroundColor(.white)
-        .clipShape(RoundedShape(corners: [.bottomLeft, .bottomRight]))
+        .frame(width: UIScreen.main.bounds.width * 3, height: 300)
+        .offset(y: -40)
     }
 }
 
 struct AuthHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         AuthHeaderView(title1: "Hello", title2: "Welcome back")
-    }
-}
-
-struct RoundedShape: Shape {
-    var corners: UIRectCorner
-
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: 80, height: 80))
-        return Path(path.cgPath)
     }
 }

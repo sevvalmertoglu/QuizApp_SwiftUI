@@ -12,7 +12,7 @@ struct MainView: View {
     @EnvironmentObject var appState: AppState
 
     init() {
-        UITabBar.appearance().backgroundColor = UIColor.systemBackground
+        UITabBar.appearance().backgroundColor = UIColor.white
     }
 
     var body: some View {
