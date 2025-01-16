@@ -28,11 +28,11 @@ A SwiftUI-based Quiz App inspired by Trivia Crack. This app leverages MVVM archi
 ## Installation
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/yourusername/yourrepository.git
+    git clone https://github.com/sevvalmertoglu/QuizApp_SwiftUI.git
     ```
 2. **Navigate to the Project Directory**:
     ```bash
-    cd yourrepository
+    cd QuizApp_SwiftUI
     ```
 3. **Install Dependencies**:
     - Ensure you have [CocoaPods](https://cocoapods.org/) installed:
@@ -46,7 +46,7 @@ A SwiftUI-based Quiz App inspired by Trivia Crack. This app leverages MVVM archi
 4. **Open the Project in Xcode**:
     - Open the `.xcworkspace` file:
         ```bash
-        open yourrepository.xcworkspace
+        open QuizApp_SwiftUI.xcworkspace
         ```
 5. **Configure Firebase**:
     - Create a new project in [Firebase Console](https://console.firebase.google.com/).
